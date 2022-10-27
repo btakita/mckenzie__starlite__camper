@@ -8,7 +8,7 @@
 	"author": "Portfolio.me",
 	"license": "Apache-2.0",
 	"bin": {
-		"build": "./bin/build/index.sh"
+		"bumper": "./bin/bumper/index.sh"
 	},
 	"main": "index.js",
 	"scripts": {
