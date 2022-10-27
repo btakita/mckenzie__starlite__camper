@@ -294,8 +294,8 @@ export function bumper__page_2__svg_(y?:number) {
 					height="${side__bumper__height}"
 				>
 					<rect
-						width="${side__fender__width}"
-						height="${side__fender__height}"
+						width="${side__bumper__width}"
+						height="${side__bumper__height}"
 						stroke="black"
 						fill="gray"
 						fill-opacity="0.8"
