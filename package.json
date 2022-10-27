@@ -1,0 +1,26 @@
+{
+	"name": "@mckenzie_starlite__camper/dev",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "Replacement parts for the McKenzie Starlite camper",
+	"homepage": "https://github.com/btakita/mckenzie_starlite__camper",
+	"repository": "portfoliome/censible-core",
+	"author": "Portfolio.me",
+	"license": "Apache-2.0",
+	"bin": {
+		"build": "./bin/build/index.sh"
+	},
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"devDependencies": {
+		"@mckenzie_starlite__camper/dev": "workspace:^1.0.0",
+		"@types/node": "^18.11.7",
+		"pdfkit": "^0.13.0",
+		"svg-to-pdfkit": "^0.1.8",
+		"tsx": "^3.11.0",
+		"typescript": "^4.8.4"
+	}
+}

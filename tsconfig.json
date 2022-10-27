@@ -1,0 +1,30 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": ".",
+		"composite": true,
+		"declaration": true,
+		"esModuleInterop": true,
+		"lib": ["ESNext", "dom"],
+		"module": "esnext",
+		"moduleResolution": "node",
+		"noEmitOnError": true,
+		"noErrorTruncation": true,
+		"noImplicitAny": false,
+		"noImplicitThis": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"target": "es2022",
+		"typeRoots": [
+			"node_modules/@types"
+		]
+	},
+	"exclude": [],
+	"ts-node": {
+		"extensions": [".ts", ".js"],
+		"experimentalResolver": true
+	}
+}

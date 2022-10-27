@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="doc" width="816" height="2112">
+	
+		<svg class="page_1" width="816" height="1056">
+			
+		<defs>
+			<pattern
+				id="sheet__pattern"
+				x="7"
+				y="7"
+				width="10"
+				height="10"
+				patternUnits="userSpaceOnUse"
+				patternTransform="rotate(45)"
+			>
+				<rect x="5" y="5" width="5" height="5" fill="gray"/>
+			</pattern>
+		</defs>
+	
+			<svg
+				class="page_1__content"
+				x="24"
+				y="24"
+				width="768"
+				height="1008"
+			>
+				
+			<svg class="view__back" height="186.05426356589146">
+				<svg class="camper__back" x="5.684341886080802e-14" width="815.9999999999999" height="96.99224806201549">
+					<rect
+						width="815.9999999999999"
+						height="96.99224806201549"
+						fill="lightgray"
+					>
+						<title>camper back</title>
+					</rect>
+					<line
+						class="screw__row"
+						x1="0"
+						y1="12.651162790697672"
+						x2="815.9999999999999"
+						y2="12.651162790697672"
+						stroke="black"
+						stroke-dasharray="3 1"
+					>
+						<title>screw row</title>	
+					</line>
+				</svg>
+				<svg
+					class="back__receivers"
+					x="5.684341886080802e-14"
+					y="96.99224806201549"
+					width="815.9999999999999"
+					height="89.06201550387595"
+				>
+					<svg
+						x="121.24031007751933"
+						y="8.434108527131782"
+						width="573.5193798449612"
+						height="31.627906976744182"
+					>
+						<rect class="back__driver__receiver" width="16.868217054263564" height="31.627906976744182" fill="gray">
+							<title>driver receiver</title>
+						</rect>
+						<rect
+							class="back__passenger__receiver"
+							x="556.6511627906976"
+							width="16.868217054263564"
+							height="31.627906976744182"
+							fill="gray"
+						>
+							<title>passenger receiver</title>
+						</rect>
+					</svg>
+					<svg
+						class="back__receiver__dimensions"
+						y="64.06201550387595"
+						width="556.6511627906976"
+						height="25"
+					>
+						<line width="556.6511627906976">
+							<title>back receiver dimensions</title>
+						</line>
+					</svg>
+				</svg>
+				<svg
+					class="bumper__back"
+					x="5.684341886080802e-14"
+					y="96.99224806201549"
+					width="815.9999999999999"
+					height="89.06201550387595"
+				>
+					<rect
+						width="815.9999999999999"
+						height="31.627906976744182"
+						y="8.434108527131782"
+						stroke="black"
+						fill="gray"
+						fill-opacity="0.8"
+					></rect>
+				</svg>
+				
+				<svg
+					class="bumper__sheet"
+					x="5.684341886080802e-14"
+					width="815.9999999999999"
+					height="168.68217054263565"
+				>
+					<rect fill="url(#sheet__pattern)" width="100%" height="100%">
+						<title>bumper sheet</title>
+					</rect>
+				</svg>
+			
+			</svg>
+		
+			</svg>
+		</svg>
+	
+	
+		<svg class="page_2" y="1056" width="816" height="1056">
+			
+		<defs>
+			<pattern
+				id="sheet__pattern"
+				x="7"
+				y="7"
+				width="10"
+				height="10"
+				patternUnits="userSpaceOnUse"
+				patternTransform="rotate(45)"
+			>
+				<rect x="5" y="5" width="5" height="5" fill="gray"/>
+			</pattern>
+		</defs>
+	
+			<svg
+				class="page_2__content"
+				x="24"
+				y="24"
+				width="768"
+				height="1008"
+			>
+				<svg class="driver__view" width="768" height="877.7142857142857">
+				
+				<svg class="driver__camper" width="438.85714285714283" height="411.4285714285714">
+					<rect width="438.85714285714283" height="411.4285714285714" fill="lightgray">
+						<title>driver camper</title>
+					</rect>
+				</svg>
+			
+				
+				<svg
+					class="side__frame"
+					y="466.2857142857142"
+					width="658.2857142857142"
+					height="205.7142857142857"
+				>
+					<rect width="658.2857142857142" height="205.7142857142857" fill="gray" fill-opacity="0.8">
+						<title>driver frame</title>
+					</rect>
+				</svg>
+			
+				
+				<svg
+					class="driver__bumper"
+					x="658.2857142857142"
+					y="466.2857142857142"
+					width="109.71428571428571"
+					height="205.7142857142857"
+				>
+					<rect
+						width="768"
+						height="877.7142857142857"
+						stroke="black"
+						fill="gray"
+						fill-opacity="0.8"
+					>
+						<title>driver bumper</title>
+					</rect>
+				</svg>
+			
+				
+				<svg class="driver__sheet" width="768" height="877.7142857142857">
+					<path
+						d="M 438.85714285714283 0 V 466.2857142857142 H 768 V 877.7142857142857 H 0 V 411.4285714285714 C 0 308.57142857142856, 219.42857142857142 411.4285714285714, 329.1428571428571 308.57142857142856 C 329.1428571428571 308.57142857142856, 394.97142857142853 205.7142857142857, 394.97142857142853 41.14285714285714 C 394.97142857142853 41.14285714285714, 394.97142857142853 0, 438.85714285714283 0"
+						fill="url(#sheet__pattern)"
+					></path>
+				</svg>
+			
+			</svg>
+			</svg>
+		</svg>
+	
+</svg>
