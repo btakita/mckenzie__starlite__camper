@@ -1,4 +1,4 @@
-import { Svg_Bumper, Svg_Bumper_Page_1, Svg_Bumper_page_2 } from '@mckenzie_starlite__camper/bumper'
+import { Svg_Bumper, C__page_1, C__page_2 } from '@mckenzie_starlite__camper/bumper'
 import { writeFile } from 'fs/promises'
 import { join, resolve } from 'path'
 import PDFDocument from 'pdfkit'
@@ -16,9 +16,9 @@ export async function Svg_Bumper__run() {
 		layout: 'portrait'
 	})
 	pdf.font('Helvetica-Bold', 'Helvetica-Bold', 16)
-	SVGToPdf(pdf, await renderToStringAsync(()=>createComponent(Svg_Bumper_Page_1, {})))
+	SVGToPdf(pdf, await renderToStringAsync(()=>createComponent(C__page_1, {})))
 	pdf.addPage()
-	SVGToPdf(pdf, await renderToStringAsync(()=>createComponent(Svg_Bumper_page_2, {})))
+	SVGToPdf(pdf, await renderToStringAsync(()=>createComponent(C__page_2, {})))
 	pdf.end()
 	const pdf__path = join(build_dir, 'bumper.pdf')
 	writeFile(pdf__path, pdf).then()

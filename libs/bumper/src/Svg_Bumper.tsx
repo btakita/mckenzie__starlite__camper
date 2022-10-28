@@ -98,11 +98,16 @@ const side__bumper__y = side__frame__top__y
 const side__receiver__height = receiver__height__in * side__in__px
 const side__frame__hole__cx = side__frame__width - 2 * .75 * side__in__px
 const side__frame__hole__cy = side__receiver__height / 2
-const side__frame__hole__r = .75 * side__in__px
+const side__frame__hole__r__in = .75
+const side__frame__hole__r = side__frame__hole__r__in * side__in__px
+const side__frame__hole__placement__axis__x = side__frame__hole__cx + side__frame__hole__r
+const side__frame__hole__placement__axis__y = side__frame__hole__cy - 2 * side__frame__hole__r
+const side__frame__hole__placement__axis__width = side__frame__hole__r
+const side__frame__hole__placement__axis__height = side__frame__hole__r
 const side__frame__hole__axis__x = side__frame__hole__cx
-const side__frame__hole__axis__y = side__frame__hole__cy + side__frame__hole__r + 20
-const side__frame__hole__axis__width = 2 * side__frame__hole__r
-const side__frame__hole__axis__height = side__axis__across
+const side__frame__hole__axis__y = side__frame__hole__cy + side__frame__hole__r
+const side__frame__hole__axis__width = side__frame__hole__r
+const side__frame__hole__axis__height = side__frame__hole__r
 const side__bumper__cross__width__in = receiver__width__in
 const side__bumper__cross__width = side__bumper__cross__width__in * side__in__px
 const side__bumper__cross__x__in = side__fender__width__in - side__bumper__cross__width__in
@@ -118,15 +123,14 @@ const side__x_axis__width = side__fender__width
 export function Svg_Bumper() {
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" class="doc" width={doc__width} height={doc__height}>
-			<Svg_Bumper_Page_1/>
-			<Svg_Bumper_page_2 y={page__height}/>
+			<C__page_1/>
+			<C__page_2 y={page__height}/>
 		</svg>
 	)
 }
-export function Svg_Bumper_Page_1() {
-	// language=SVG
+export function C__page_1() {
 	return (
-		<svg class="page_1" width={page__width} height={page__height}>
+		<svg class="C__page_1" width={page__width} height={page__height}>
 			<Pattern_sheet/>
 			<svg
 				class="page_1__content"
@@ -259,11 +263,11 @@ export function Svg_Bumper_Page_1() {
 		}
 	}
 }
-export function Svg_Bumper_page_2($p:VoidProps<{
+export function C__page_2($p:VoidProps<{
 	y?:number
 }>) {
 	return (
-		<svg class="page_2" y={$p.y} width={page__width} height={page__height}>
+		<svg class="C__page_2" y={$p.y} width={page__width} height={page__height}>
 			<Pattern_sheet/>
 			<svg
 				class="page_2__content"
@@ -272,19 +276,20 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 				width={content__width}
 				height={content__height}
 			>
-				<Svg_Driver/>
+				<C__driver/>
 			</svg>
 		</svg>
 	)
-	function Svg_Driver() {
+	function C__driver() {
 		return (
-			<svg class="driver__svg" width={side__width} height={side__height}>
+			<svg class="C__driver" width={side__width} height={side__height}>
 				<Camper/>
 				<Frame/>
 				<Bumper/>
 				<Fender/>
 				<Y_Axis/>
 				<X_Axis/>
+				<Axis_side_frame/>
 			</svg>
 		)
 		function Camper() {
@@ -316,28 +321,8 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 					>
 						<title>bolt hole</title>
 					</circle>
-					<Bumper_Connect_Hole_Axis/>
 				</svg>
 			)
-			function Bumper_Connect_Hole_Axis() {
-				return (
-					<svg
-						x={side__frame__hole__axis__x}
-						y={side__frame__hole__axis__y}
-						width={side__frame__hole__axis__width}
-						height={side__frame__hole__axis__height}
-					>
-						<line
-							x1={0}
-							x2={side__frame__hole__axis__width}
-							y1={axis__line__position}
-							y2={axis__line__position}
-							stroke="black"
-						></line>
-
-					</svg>
-				)
-			}
 		}
 		function Bumper() {
 			return (
@@ -544,6 +529,91 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 				</svg>
 			)
 		}
+		function Axis_side_frame() {
+			return (
+				<svg
+					class="Axis_side_frame"
+					y={side__frame__top__y}
+					width={side__frame__width}
+					height={side__frame__height}
+				>
+					<C__side__frame__hole__placement__axis/>
+					<C__side__frame__hole__axis/>
+				</svg>
+			)
+			function C__side__frame__hole__placement__axis() {
+				return (
+					<svg
+						x={side__frame__hole__placement__axis__x}
+						y={side__frame__hole__placement__axis__y}
+						width={side__frame__hole__placement__axis__width}
+						height={side__frame__hole__placement__axis__height}
+					>
+						<line
+							x1={0}
+							x2={side__frame__hole__placement__axis__width}
+							y1={axis__line__position}
+							y2={axis__line__position}
+							stroke="black"
+						></line>
+						<Tick
+							class="C__side__frame__hole__placement__axis__tick_0"
+							x1={0}
+							y1={2}
+							x2={0}
+							y2={axis__line__position * 2 - 4}
+						/>
+						<Tick
+							class="C__side__frame__hole__placement__axis__tick_1"
+							x1={side__frame__hole__r}
+							y1={2}
+							x2={side__frame__hole__r}
+							y2={axis__line__position * 2 - 4}
+							text_x={0}
+							text_y={axis__line__position + 10}
+							text={`${side__frame__hole__r__in}in`}
+							font_size={10}
+						/>
+					</svg>
+				)
+			}
+			function C__side__frame__hole__axis() {
+				return (
+					<svg
+						x={side__frame__hole__axis__x}
+						y={side__frame__hole__axis__y}
+						width={side__frame__hole__axis__width}
+						height={side__frame__hole__axis__height}
+					>
+						<line
+							x1={0}
+							x2={side__frame__hole__axis__width}
+							y1={axis__line__position}
+							y2={axis__line__position}
+							stroke="black"
+						></line>
+						<Tick
+							class="C__side__frame__hole__axis__tick_0"
+							x1={0}
+							y1={2}
+							x2={0}
+							y2={axis__line__position * 2 - 4}
+						/>
+						<Tick
+							class="C__side__frame__hole__axis__tick_1"
+							x1={side__frame__hole__r}
+							y1={2}
+							x2={side__frame__hole__r}
+							y2={axis__line__position * 2 - 4}
+							text_x={0}
+							text_y={axis__line__position + 10}
+							text={`${side__frame__hole__r__in}in`}
+							font_size={10}
+						/>
+					</svg>
+				)
+			}
+		}
 	}
 }
 function Tick(_$p:VoidProps<{
@@ -557,9 +627,11 @@ function Tick(_$p:VoidProps<{
 	text?:string
 	dominant_baseline?:JSX.PresentationSVGAttributes['dominant-baseline']
 	text_anchor?:JSX.PresentationSVGAttributes['text-anchor']
+	font_size?:number
 }>) {
 	const $p = mergeProps({
 		dominant_baseline: 'middle' as JSX.PresentationSVGAttributes['dominant-baseline'],
+		font_size: 16,
 	}, _$p)
 	return [
 		<line
@@ -575,6 +647,7 @@ function Tick(_$p:VoidProps<{
 			<text
 				x={$p.text_x}
 				y={$p.text_y}
+				font-size={$p.font_size}
 				dominant-baseline={$p.dominant_baseline}
 				text-anchor={$p.text_anchor}
 			>{$p.text}</text>
