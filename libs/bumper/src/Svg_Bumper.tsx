@@ -137,13 +137,13 @@ export function C__page_1() {
 				width={content__width}
 				height={content__height}
 			>
-				<Back/>
+				<C__back/>
 			</svg>
 		</svg>
 	)
-	function Back() {
+	function C__back() {
 		return (
-			<svg class="Back" height={back__svg__height} width={back__width}>
+			<svg class="C__back" height={back__svg__height} width={back__width}>
 				<Camper/>
 				<Receivers/>
 				<Bumper/>
