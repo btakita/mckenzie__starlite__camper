@@ -38,7 +38,7 @@ const back__screw__y = 1.5 * back__in__px
 const back__camper__height = 11.5 * back__in__px
 const back__receiver__width = receiver__width__in * back__in__px
 const receiver__under__body__y__in = 1
-const receiver__under__body__y = receiver__under__body__y__in * back__in__px
+const back__receiver__under__body__y = receiver__under__body__y__in * back__in__px
 const back__receiver__height = receiver__height__in * back__in__px
 const back__receivers__mid__distance__width__in = 66
 const back__receivers__mid__distance__width = back__receivers__mid__distance__width__in * back__in__px
@@ -48,7 +48,7 @@ const back__receivers__x2 = back__camper__x2
 const back__receivers__width = back__receivers__mid__distance__width + back__receiver__width
 const back__receivers__height = back__receiver__height
 const back__receivers__offset__x = (back__camper__width - back__receivers__width) / 2
-const back__receiver__y1 = receiver__under__body__y
+const back__receiver__y1 = back__receiver__under__body__y
 const back__receiver__y2 = back__receiver__y1 + back__receiver__height
 const back__receiver__dimensions__width = back__receivers__mid__distance__width
 const back__receiver__dimensions__x = (back__camper__width - back__receivers__mid__distance__width) / 2
@@ -61,11 +61,11 @@ const back__receiver__dimensions__height =
 	back__receiver__dimensions__line__stroke_width + back__receiver__dimensions__text__height
 const back__receivers__svg__height = back__receiver__dimensions__y + back__receiver__dimensions__height
 const back__fender__width = back__camper__width
-const back__fender__sheet__bumper__height = fender__bumper__height__in * back__in__px
+const back__fender__bumper__height = fender__bumper__height__in * back__in__px
 const back__fender__height =
 	back__camper__height
-	+ receiver__under__body__y
-	+ back__fender__sheet__bumper__height
+	+ back__receiver__under__body__y
+	+ back__fender__bumper__height
 const back__view__height = back__camper__height + back__receivers__svg__height
 const side__camper__width__in = 8
 const side__camper__height__in = 7.5
@@ -76,18 +76,26 @@ const side__fender__height__in =
 const side__view__y = back__view__height + 50
 const side__fender__width__in = side__camper__width__in + 6
 const side__view__frame__width__in = side__fender__width__in - receiver__width__in
-const side__in__px = in__px / (side__fender__width__in / content__width__in)
+const side__in__px = in__px / (1.1 * side__fender__width__in / content__width__in)
+const side__axis__across = 100
+const side__receiver__under__body__y = receiver__under__body__y__in * side__in__px
 const side__fender__height = side__fender__height__in * side__in__px
 const side__fender__width = side__fender__width__in * side__in__px
-const side__view__height = side__fender__height
-const side__view__width = side__fender__width
+const side__view__height = side__fender__height + side__axis__across
+const side__view__width = side__fender__width + side__axis__across
+const side__axis__x = side__fender__width
+const side__axis__y_axis__x = 10
 const side__camper__width = side__camper__width__in * side__in__px
 const side__camper__height = side__camper__height__in * side__in__px
-const side__frame__y = side__camper__height + receiver__under__body__y__in * side__in__px
+const side__axis__height = side__fender__height
+const side__camper__view__width = side__camper__width + side__axis__across
+const side__camper__view__height = side__camper__height
+const side__frame__top__y = side__camper__height + receiver__under__body__y__in * side__in__px
 const side__frame__width = side__view__frame__width__in * side__in__px
 const side__frame__height = receiver__height__in * side__in__px
+const side__frame__bottom__y = side__frame__top__y + side__frame__height
 const side__bumper__x = side__frame__width
-const side__bumper__y = side__frame__y
+const side__bumper__y = side__frame__top__y
 const side__receiver__height = receiver__height__in * side__in__px
 const side__receiver__width = receiver__width__in * side__in__px
 const side__bumper__height = side__receiver__height
@@ -256,12 +264,13 @@ export function bumper__page_2__svg_(y?:number) {
 				${driver__frame_()}
 				${driver__bumper_()}
 				${driver__sheet_()}
+				${driver__camper__axis_()}
 			</svg>
 	  `.trim()
 		function driver__camper_() {
 			// language=SVG
 			return `
-				<svg class="driver__camper" width="${side__camper__width}" height="${side__camper__height}">
+				<svg class="driver__camper" width="${side__camper__view__width}" height="${side__camper__view__height}">
 					<rect width="${side__camper__width}" height="${side__camper__height}" fill="lightgray">
 						<title>driver camper</title>
 					</rect>
@@ -273,7 +282,7 @@ export function bumper__page_2__svg_(y?:number) {
 			return `
 				<svg
 					class="side__frame"
-					y="${side__frame__y}"
+					y="${side__frame__top__y}"
 					width="${side__frame__width}"
 					height="${side__frame__height}"
 				>
@@ -312,7 +321,7 @@ export function bumper__page_2__svg_(y?:number) {
 					<path
 						d="${[
 							`M ${side__camper__width} 0`,
-							`V ${side__frame__y}`,
+							`V ${side__frame__top__y}`,
 							`H ${side__fender__width}`,
 							`V ${side__fender__height}`,
 							`H ${0}`,
@@ -336,6 +345,96 @@ export function bumper__page_2__svg_(y?:number) {
 						].join(' ')}"
 						fill="url(#sheet__pattern)"
 					></path>
+				</svg>
+			`
+		}
+		function driver__camper__axis_() {
+			// language=svg
+			return `
+				<svg
+					x="${side__axis__x}"
+					width="${side__axis__across}"
+					height="${side__axis__height}"
+					y="0"
+				>
+					<line
+						class="driver__camper__y_axis"
+						x1="${side__axis__y_axis__x}"
+						y1="0"
+						x2="${side__axis__y_axis__x}"
+						y2="${side__axis__height}"
+						stroke="black"
+						stroke-dasharray="1"
+					>
+						<title>
+							driver camper y-axis
+						</title>
+					</line>
+					<line
+						class="driver__camper__top__tick"
+						x1="2"
+						y1="${0}"
+						x2="${side__axis__y_axis__x * 2 - 4}"
+						y2="${0}"
+						stroke="black"
+						stroke-dasharray="1"
+					></line>
+					<text
+						x="${side__axis__y_axis__x + 10}"
+						y="${side__camper__height / 2}"
+					>${side__camper__height__in}in
+					</text>
+					<line
+						class="driver__camper__body__tick"
+						x1="2"
+						y1="${side__camper__height}"
+						x2="${side__axis__y_axis__x * 2 - 4}"
+						y2="${side__camper__height}"
+						stroke="black"
+						stroke-dasharray="1"
+					></line>
+					<text
+						x="${side__axis__y_axis__x + 10}"
+						y="${side__camper__height + side__receiver__under__body__y / 2}"
+					>${receiver__under__body__y__in}in
+					</text>
+					<line
+						class="driver__frame__top__tick"
+						x1="2"
+						y1="${side__frame__top__y}"
+						x2="${side__axis__y_axis__x * 2 - 4}"
+						y2="${side__frame__top__y}"
+						stroke="black"
+						stroke-dasharray="1"
+					></line>
+					<text
+						x="${side__axis__y_axis__x + 10}"
+						y="${side__frame__top__y + side__frame__height / 2}"
+					>${receiver__height__in}in
+					</text>
+					<line
+						class="driver__frame__top__tick"
+						x1="2"
+						y1="${side__frame__bottom__y}"
+						x2="${side__axis__y_axis__x * 2 - 4}"
+						y2="${side__frame__bottom__y}"
+						stroke="black"
+						stroke-dasharray="1"
+					></line>
+					<line
+						class="driver__sheet__bottom__tick"
+						x1="2"
+						y1="${side__fender__height}"
+						x2="${side__axis__y_axis__x * 2 - 4}"
+						y2="${side__fender__height}"
+						stroke="black"
+						stroke-dasharray="1"
+					></line>
+					<text
+						x="${side__axis__y_axis__x + 10}"
+						y="${side__frame__bottom__y + side__frame__height / 2}"
+					>${receiver__height__in}in
+					</text>
 				</svg>
 			`
 		}

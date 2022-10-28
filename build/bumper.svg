@@ -139,10 +139,10 @@
 				width="768"
 				height="1008"
 			>
-				<svg class="driver__view" width="768" height="877.7142857142857">
+				<svg class="driver__view" width="798.1818181818181" height="897.9220779220778">
 				
-				<svg class="driver__camper" width="438.85714285714283" height="411.4285714285714">
-					<rect width="438.85714285714283" height="411.4285714285714" fill="lightgray">
+				<svg class="driver__camper" width="498.9610389610389" height="374.025974025974">
+					<rect width="398.9610389610389" height="374.025974025974" fill="lightgray">
 						<title>driver camper</title>
 					</rect>
 				</svg>
@@ -150,11 +150,11 @@
 				
 				<svg
 					class="side__frame"
-					y="466.2857142857142"
-					width="658.2857142857142"
-					height="205.7142857142857"
+					y="423.89610389610385"
+					width="598.4415584415584"
+					height="187.012987012987"
 				>
-					<rect width="658.2857142857142" height="205.7142857142857" fill="gray" fill-opacity="0.8">
+					<rect width="598.4415584415584" height="187.012987012987" fill="gray" fill-opacity="0.8">
 						<title>driver frame</title>
 					</rect>
 				</svg>
@@ -162,14 +162,14 @@
 				
 				<svg
 					class="driver__bumper"
-					x="658.2857142857142"
-					y="466.2857142857142"
-					width="109.71428571428571"
-					height="205.7142857142857"
+					x="598.4415584415584"
+					y="423.89610389610385"
+					width="99.74025974025973"
+					height="187.012987012987"
 				>
 					<rect
-						width="109.71428571428571"
-						height="205.7142857142857"
+						width="99.74025974025973"
+						height="187.012987012987"
 						stroke="black"
 						fill="gray"
 						fill-opacity="0.8"
@@ -179,11 +179,98 @@
 				</svg>
 			
 				
-				<svg class="driver__sheet" width="768" height="877.7142857142857">
+				<svg class="driver__sheet" width="698.1818181818181" height="797.9220779220778">
 					<path
-						d="M 438.85714285714283 0 V 466.2857142857142 H 768 V 877.7142857142857 H 0 V 411.4285714285714 C 0 308.57142857142856, 219.42857142857142 411.4285714285714, 329.1428571428571 308.57142857142856 C 329.1428571428571 308.57142857142856, 394.97142857142853 205.7142857142857, 394.97142857142853 41.14285714285714 C 394.97142857142853 41.14285714285714, 394.97142857142853 0, 438.85714285714283 0"
+						d="M 398.9610389610389 0 V 423.89610389610385 H 698.1818181818181 V 797.9220779220778 H 0 V 374.025974025974 C 0 280.5194805194805, 199.48051948051946 374.025974025974, 299.2207792207792 280.5194805194805 C 299.2207792207792 280.5194805194805, 359.064935064935 187.012987012987, 359.064935064935 37.4025974025974 C 359.064935064935 37.4025974025974, 359.064935064935 0, 398.9610389610389 0"
 						fill="url(#sheet__pattern)"
 					></path>
+				</svg>
+			
+				
+				<svg
+					x="698.1818181818181"
+					width="100"
+					height="797.9220779220778"
+					y="0"
+				>
+					<line
+						class="driver__camper__y_axis"
+						x1="10"
+						y1="0"
+						x2="10"
+						y2="797.9220779220778"
+						stroke="black"
+						stroke-dasharray="1"
+					>
+						<title>
+							driver camper y-axis
+						</title>
+					</line>
+					<line
+						class="driver__camper__top__tick"
+						x1="2"
+						y1="0"
+						x2="16"
+						y2="0"
+						stroke="black"
+						stroke-dasharray="1"
+					></line>
+					<text
+						x="20"
+						y="187.012987012987"
+					>7.5in
+					</text>
+					<line
+						class="driver__camper__body__tick"
+						x1="2"
+						y1="374.025974025974"
+						x2="16"
+						y2="374.025974025974"
+						stroke="black"
+						stroke-dasharray="1"
+					></line>
+					<text
+						x="20"
+						y="398.9610389610389"
+					>1in
+					</text>
+					<line
+						class="driver__frame__top__tick"
+						x1="2"
+						y1="423.89610389610385"
+						x2="16"
+						y2="423.89610389610385"
+						stroke="black"
+						stroke-dasharray="1"
+					></line>
+					<text
+						x="20"
+						y="517.4025974025974"
+					>3.75in
+					</text>
+					<line
+						class="driver__frame__top__tick"
+						x1="2"
+						y1="610.9090909090909"
+						x2="16"
+						y2="610.9090909090909"
+						stroke="black"
+						stroke-dasharray="1"
+					></line>
+					<line
+						class="driver__sheet__bottom__tick"
+						x1="2"
+						y1="797.9220779220778"
+						x2="16"
+						y2="797.9220779220778"
+						stroke="black"
+						stroke-dasharray="1"
+					></line>
+					<text
+						x="20"
+						y="704.4155844155844"
+					>3.75in
+					</text>
 				</svg>
 			
 			</svg>
