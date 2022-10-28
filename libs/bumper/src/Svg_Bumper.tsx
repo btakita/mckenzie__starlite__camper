@@ -4,7 +4,7 @@ import { type JSX } from 'solid-js/types'
 // 96.75
 // 8 x 7.5
 const bolt__diameter__in = .75
-const receiver__bolt__x__in = .75
+const receiver__bolt__dx__in = .75
 const receiver__end__x__in = 2
 // .75
 // 2 *
@@ -109,18 +109,20 @@ const side__bumper__x__in = 0
 const side__bumper__x = side__bumper__x__in * side__in__px
 const side__bumper__y = side__frame__top__y
 const side__receiver__height = receiver__height__in * side__in__px
-const side__frame__hole__cx = side__frame__width - 2 * .75 * side__in__px
-const side__frame__hole__cy = side__receiver__height / 2
-const side__frame__hole__r__in = .75
+const side__frame__hole__r__in = bolt__diameter__in / 2
 const side__frame__hole__r = side__frame__hole__r__in * side__in__px
+const receiver__bolt__dx = receiver__bolt__dx__in * side__in__px
+const side__frame__hole__cx = side__frame__width - receiver__bolt__dx - side__frame__hole__r
+const side__frame__hole__cy = side__receiver__height / 2
 const side__frame__hole__placement__axis__x = side__frame__hole__cx + side__frame__hole__r
 const side__frame__hole__placement__axis__y = side__frame__hole__cy - 2 * side__frame__hole__r
-const side__frame__hole__placement__axis__width = side__frame__hole__r
-const side__frame__hole__placement__axis__height = side__frame__hole__r
-const side__frame__hole__axis__x = side__frame__hole__cx
+const side__frame__hole__placement__axis__width__in = receiver__bolt__dx__in
+const side__frame__hole__placement__axis__width = side__frame__hole__placement__axis__width__in * side__in__px
+const side__frame__hole__placement__axis__height = side__frame__hole__r * 4
+const side__frame__hole__axis__x = side__frame__hole__cx - side__frame__hole__r
 const side__frame__hole__axis__y = side__frame__hole__cy + side__frame__hole__r
-const side__frame__hole__axis__width = side__frame__hole__r
-const side__frame__hole__axis__height = side__frame__hole__r
+const side__frame__hole__axis__width = side__frame__hole__r * 2
+const side__frame__hole__axis__height = side__frame__hole__r * 2
 const side__bumper__cross__width__in = receiver__width__in
 const side__bumper__cross__width = side__bumper__cross__width__in * side__in__px
 const side__bumper__cross__x__in = side__fender__width__in - side__bumper__cross__width__in
@@ -646,6 +648,7 @@ export function C__page_2($p:VoidProps<{
 			function C__side__frame__hole__placement__axis() {
 				return (
 					<svg
+						class="C__side__frame__hole__placement__axis"
 						x={side__frame__hole__placement__axis__x}
 						y={side__frame__hole__placement__axis__y}
 						width={side__frame__hole__placement__axis__width}
@@ -660,12 +663,18 @@ export function C__page_2($p:VoidProps<{
 						<C__side__frame__axis__tick
 							class="C__side__frame__hole__placement__axis__tick_0"
 							x={0}
+							y1={axis__line__position}
+							y2={axis__line__position + axis__line__position - 2}
 						/>
 						<C__side__frame__axis__tick
 							class="C__side__frame__hole__placement__axis__tick_1"
-							x={side__frame__hole__r}
-							text_x={side__frame__hole__r / 2}
-							text={`${side__frame__hole__r__in}in`}
+							x={side__frame__hole__placement__axis__width}
+							y1={axis__line__position}
+							y2={axis__line__position + axis__line__position - 2}
+							text_x={side__frame__hole__placement__axis__width / 2}
+							text_y={axis__line__position - 10}
+							text={`${side__frame__hole__placement__axis__width__in}in`}
+							dominant_baseline="hanging"
 						/>
 					</svg>
 				)
@@ -673,6 +682,7 @@ export function C__page_2($p:VoidProps<{
 			function C__side__frame__hole__axis() {
 				return (
 					<svg
+						class="C__side__frame__hole__axis"
 						x={side__frame__hole__axis__x}
 						y={side__frame__hole__axis__y}
 						width={side__frame__hole__axis__width}
@@ -690,28 +700,40 @@ export function C__page_2($p:VoidProps<{
 						/>
 						<C__side__frame__axis__tick
 							class="C__side__frame__hole__axis__tick_1"
-							x={side__frame__hole__r}
-							text_x={side__frame__hole__r / 2}
-							text={`${side__frame__hole__r__in}in`}
+							x={side__frame__hole__r * 2}
+							text_x={side__frame__hole__r}
+							text_y={axis__line__position + 10}
+							text={`${side__frame__hole__r__in * 2}in`}
 						/>
 					</svg>
 				)
 			}
-			function C__side__frame__axis__tick($p:VoidProps<{
+			function C__side__frame__axis__tick(_$p:VoidProps<{
 				class:string
 				x:number
+				y1?:number
+				y2?:number
 				text_x?:number
+				text_y?:number
 				text?:string
+				dominant_baseline?:JSX.PresentationSVGAttributes['dominant-baseline']
 			}>) {
+				const $p = mergeProps({
+					y1: 2,
+					y2: axis__line__position,
+				}, _$p)
 				return (
 					<C__x_axis__tick
 						class={$p.class}
 						x={$p.x}
+						y1={$p.y1}
+						y2={$p.y2}
 						text_x={$p.text_x}
-						text_y={axis__line__position + 10}
+						text_y={$p.text_y}
 						text={$p.text}
 						font_size="10"
 						text_anchor="middle"
+						dominant_baseline={$p.dominant_baseline}
 					/>
 				)
 			}
