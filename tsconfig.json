@@ -6,7 +6,12 @@
 		"composite": true,
 		"declaration": true,
 		"esModuleInterop": true,
-		"lib": ["ESNext", "dom"],
+		"jsxImportSource": "solid-js",
+		"jsx": "preserve",
+		"lib": [
+			"ESNext",
+			"dom"
+		],
 		"module": "esnext",
 		"moduleResolution": "node",
 		"noEmitOnError": true,
@@ -22,9 +27,6 @@
 			"node_modules/@types"
 		]
 	},
-	"exclude": [],
-	"ts-node": {
-		"extensions": [".ts", ".js"],
-		"experimentalResolver": true
-	}
+	"include": ["./src/**/*"],
+	"exclude": []
 }
