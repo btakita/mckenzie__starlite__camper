@@ -144,15 +144,15 @@ export function C__page_1() {
 	function C__back() {
 		return (
 			<svg class="C__back" height={back__svg__height} width={back__width}>
-				<Camper/>
-				<Receivers/>
-				<Bumper/>
-				<Fender/>
+				<C__back__camper/>
+				<C__back__receivers/>
+				<C__back__bumper/>
+				<C__back__fender/>
 			</svg>
 		)
-		function Camper() {
+		function C__back__camper() {
 			return (
-				<svg class="Camper" x={back__camper__x} width={back__camper__width} height={back__camper__height}>
+				<svg class="C__back__camper" x={back__camper__x} width={back__camper__width} height={back__camper__height}>
 					<rect
 						width={back__camper__width}
 						height={back__camper__height}
@@ -174,10 +174,10 @@ export function C__page_1() {
 				</svg>
 			)
 		}
-		function Receivers() {
+		function C__back__receivers() {
 			return (
 				<svg
-					class="Receivers"
+					class="C__back__receivers"
 					x={back__camper__x}
 					y={back__receivers__y}
 					width={back__camper__width}
@@ -225,10 +225,10 @@ export function C__page_1() {
 				</svg>
 			)
 		}
-		function Bumper() {
+		function C__back__bumper() {
 			return (
 				<svg
-					class="Bumper"
+					class="C__back__bumper"
 					x={back__camper__x}
 					y={back__camper__height}
 					width={back__camper__width}
@@ -245,10 +245,10 @@ export function C__page_1() {
 				</svg>
 			)
 		}
-		function Fender() {
+		function C__back__fender() {
 			return (
 				<svg
-					class="Fender"
+					class="C__back__fender"
 					x={back__camper__x}
 					width={back__fender__width}
 					height={back__fender__height}
@@ -281,28 +281,28 @@ export function C__page_2($p:VoidProps<{
 	function C__driver() {
 		return (
 			<svg class="C__driver" width={side__width} height={side__height}>
-				<Camper/>
-				<Frame/>
-				<Bumper/>
-				<Fender/>
-				<Y_Axis/>
-				<X_Axis/>
-				<Axis_side_frame/>
+				<C__driver__camper/>
+				<C__driver__frame/>
+				<C__driver__bumper/>
+				<C__driver__fender/>
+				<C__driver__y_axis/>
+				<C__driver__x_axis/>
+				<C__side__frame__axis/>
 			</svg>
 		)
-		function Camper() {
+		function C__driver__camper() {
 			return (
-				<svg class="driver__camper" width={side__camper__width} height={side__camper__height}>
+				<svg class="C__driver__camper" width={side__camper__width} height={side__camper__height}>
 					<rect width={side__camper__width} height={side__camper__height} fill="lightgray">
 						<title>driver camper</title>
 					</rect>
 				</svg>
 			)
 		}
-		function Frame() {
+		function C__driver__frame() {
 			return (
 				<svg
-					class="side__frame"
+					class="C__driver__frame"
 					y={side__frame__top__y}
 					width={side__frame__width}
 					height={side__frame__height}
@@ -322,10 +322,10 @@ export function C__page_2($p:VoidProps<{
 				</svg>
 			)
 		}
-		function Bumper() {
+		function C__driver__bumper() {
 			return (
 				<svg
-					class="driver__bumper"
+					class="C__driver__bumper"
 					x={side__bumper__x}
 					y={side__bumper__y}
 					width={side__bumper__width}
@@ -354,9 +354,9 @@ export function C__page_2($p:VoidProps<{
 				</svg>
 			)
 		}
-		function Fender() {
+		function C__driver__fender() {
 			return (
-				<svg class="driver__sheet" width={side__fender__width} height={side__fender__height}>
+				<svg class="C__driver__fender" width={side__fender__width} height={side__fender__height}>
 					<path
 						d={[
 							`M ${side__camper__width} 0`,
@@ -387,9 +387,10 @@ export function C__page_2($p:VoidProps<{
 				</svg>
 			)
 		}
-		function Y_Axis() {
+		function C__driver__y_axis() {
 			return (
 				<svg
+					class="C__driver__y_axis"
 					x={side__y_axis__x}
 					y="0"
 					width={side__axis__across}
@@ -458,10 +459,10 @@ export function C__page_2($p:VoidProps<{
 				</svg>
 			)
 		}
-		function X_Axis() {
+		function C__driver__x_axis() {
 			return (
 				<svg
-					class="driver__camper__x_axis"
+					class="C__driver__x_axis"
 					x={0}
 					y={side__x_axis__y}
 					width={side__y_axis__height}
@@ -527,10 +528,10 @@ export function C__page_2($p:VoidProps<{
 				</svg>
 			)
 		}
-		function Axis_side_frame() {
+		function C__side__frame__axis() {
 			return (
 				<svg
-					class="Axis_side_frame"
+					class="C__side__frame__axis"
 					y={side__frame__top__y}
 					width={side__frame__width}
 					height={side__frame__height}
