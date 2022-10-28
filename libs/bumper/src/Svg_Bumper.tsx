@@ -139,22 +139,22 @@ export function C__page_1() {
 				width={content__width}
 				height={content__height}
 			>
-				<Svg_Back/>
+				<Back/>
 			</svg>
 		</svg>
 	)
-	function Svg_Back() {
+	function Back() {
 		return (
-			<svg class="back__svg" height={back__svg__height}>
-				<Camper_back/>
-				<Receivers_back/>
-				<Bumper_back/>
-				<Fender_back/>
+			<svg class="Back" height={back__svg__height} width={content__width}>
+				<Camper/>
+				<Receivers/>
+				<Bumper/>
+				<Fender/>
 			</svg>
 		)
-		function Camper_back() {
+		function Camper() {
 			return (
-				<svg class="camper__back" x={back__camper__x1} width={back__camper__width} height={back__camper__height}>
+				<svg class="Camper" x={back__camper__x1} width={back__camper__width} height={back__camper__height}>
 					<rect
 						width={back__camper__width}
 						height={back__camper__height}
@@ -176,10 +176,10 @@ export function C__page_1() {
 				</svg>
 			)
 		}
-		function Receivers_back() {
+		function Receivers() {
 			return (
 				<svg
-					class="back__receivers"
+					class="Receivers"
 					x={back__camper__x1}
 					y={back__receivers__y}
 					width={back__camper__width}
@@ -210,7 +210,7 @@ export function C__page_1() {
 						</rect>
 					</svg>
 					<svg
-						class="back__receiver__dimensions"
+						class="back__receiver__x_axis"
 						y={back__receiver__x_axis__y}
 						width={back__receiver__x_axis__width}
 						height={back__receiver__x_axis__height}
@@ -227,10 +227,10 @@ export function C__page_1() {
 				</svg>
 			)
 		}
-		function Bumper_back() {
+		function Bumper() {
 			return (
 				<svg
-					class="bumper__back"
+					class="Bumper"
 					x={back__camper__x1}
 					y={back__camper__height}
 					width={back__camper__width}
@@ -247,10 +247,10 @@ export function C__page_1() {
 				</svg>
 			)
 		}
-		function Fender_back() {
+		function Fender() {
 			return (
 				<svg
-					class="bumper__sheet"
+					class="Fender"
 					x={back__camper__x1}
 					width={back__fender__width}
 					height={back__fender__height}
