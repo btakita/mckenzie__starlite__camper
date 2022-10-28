@@ -1,4 +1,5 @@
-import { type VoidProps } from 'solid-js'
+import { mergeProps, Show, type VoidProps } from 'solid-js'
+import { type JSX } from 'solid-js/types'
 //region
 // 96.75
 // 8 x 7.5
@@ -98,6 +99,10 @@ const side__receiver__height = receiver__height__in * side__in__px
 const side__frame__hole__cx = side__frame__width - 2 * .75 * side__in__px
 const side__frame__hole__cy = side__receiver__height / 2
 const side__frame__hole__r = .75 * side__in__px
+const side__frame__hole__axis__x = side__frame__hole__cx
+const side__frame__hole__axis__y = side__frame__hole__cy + side__frame__hole__r + 20
+const side__frame__hole__axis__width = 2 * side__frame__hole__r
+const side__frame__hole__axis__height = side__axis__across
 const side__bumper__cross__width__in = receiver__width__in
 const side__bumper__cross__width = side__bumper__cross__width__in * side__in__px
 const side__bumper__cross__x__in = side__fender__width__in - side__bumper__cross__width__in
@@ -109,16 +114,6 @@ const side__bumper__width = side__bumper__width__in * side__in__px
 const side__bumper__height = side__receiver__height
 const side__x_axis__y = side__fender__height
 const side__x_axis__width = side__fender__width
-console.debug('Svg_Bumper|debug|1', {
-	side__bumper__cross__x__in,
-	side__bumper__x__in,
-	side__bumper__connect__width__in,
-	side__bumper__cross__width__in,
-	side__bumper__width__in,
-	side__bumper__connect__width,
-	side__bumper__cross__width,
-	side__bumper__width,
-})
 //endregion
 export function Svg_Bumper() {
 	return (
@@ -284,15 +279,15 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 	function Svg_Driver() {
 		return (
 			<svg class="driver__svg" width={side__width} height={side__height}>
-				<Camper_driver/>
-				<Frame_driver/>
-				<Bumper_driver/>
-				<Fender_driver/>
-				<Y_Axis_driver/>
-				<X_Axis_driver/>
+				<Camper/>
+				<Frame/>
+				<Bumper/>
+				<Fender/>
+				<Y_Axis/>
+				<X_Axis/>
 			</svg>
 		)
-		function Camper_driver() {
+		function Camper() {
 			return (
 				<svg class="driver__camper" width={side__camper__width} height={side__camper__height}>
 					<rect width={side__camper__width} height={side__camper__height} fill="lightgray">
@@ -301,7 +296,7 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 				</svg>
 			)
 		}
-		function Frame_driver() {
+		function Frame() {
 			return (
 				<svg
 					class="side__frame"
@@ -321,10 +316,30 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 					>
 						<title>bolt hole</title>
 					</circle>
+					<Bumper_Connect_Hole_Axis/>
 				</svg>
 			)
+			function Bumper_Connect_Hole_Axis() {
+				return (
+					<svg
+						x={side__frame__hole__axis__x}
+						y={side__frame__hole__axis__y}
+						width={side__frame__hole__axis__width}
+						height={side__frame__hole__axis__height}
+					>
+						<line
+							x1={0}
+							x2={side__frame__hole__axis__width}
+							y1={axis__line__position}
+							y2={axis__line__position}
+							stroke="black"
+						></line>
+
+					</svg>
+				)
+			}
 		}
-		function Bumper_driver() {
+		function Bumper() {
 			return (
 				<svg
 					class="driver__bumper"
@@ -356,7 +371,7 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 				</svg>
 			)
 		}
-		function Fender_driver() {
+		function Fender() {
 			return (
 				<svg class="driver__sheet" width={side__fender__width} height={side__fender__height}>
 					<path
@@ -389,7 +404,7 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 				</svg>
 			)
 		}
-		function Y_Axis_driver() {
+		function Y_Axis() {
 			return (
 				<svg
 					x={side__y_axis__x}
@@ -410,75 +425,57 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 							driver camper y-axis
 						</title>
 					</line>
-					<line
+					<Tick
 						class="driver__y_axis__top__tick"
 						x1={2}
 						y1={0}
 						x2={axis__line__position * 2 - 4}
 						y2={0}
-						stroke="black"
-						stroke-dasharray="1"
-					></line>
-					<text
-						x={axis__line__position + 10}
-						y={side__camper__height / 2}
-					>{side__camper__height__in}in
-					</text>
-					<line
+						text_x={axis__line__position + 10}
+						text_y={side__camper__height / 2}
+						text={`${side__camper__height__in}in`}
+					/>
+					<Tick
 						class="driver__y_axis__camper__tick"
 						x1={2}
 						y1={side__camper__height}
 						x2={axis__line__position * 2 - 4}
 						y2={side__camper__height}
-						stroke="black"
-						stroke-dasharray="1"
-					></line>
-					<text
-						x={axis__line__position + 10}
-						y={side__camper__height + side__receiver__under__body__y / 2}
-					>{receiver__under__body__y__in}in
-					</text>
-					<line
+						text_x={axis__line__position + 10}
+						text_y={side__camper__height + side__receiver__under__body__y / 2}
+						text={`${receiver__under__body__y__in}in`}
+					/>
+					<Tick
 						class="driver__y_axis__frame__top__tick"
 						x1={2}
 						y1={side__frame__top__y}
 						x2={axis__line__position * 2 - 4}
 						y2={side__frame__top__y}
-						stroke="black"
-						stroke-dasharray="1"
-					></line>
-					<text
-						x={axis__line__position + 10}
-						y={side__frame__top__y + side__frame__height / 2}
-					>{receiver__height__in}in
-					</text>
-					<line
+						text_x={axis__line__position + 10}
+						text_y={side__frame__top__y + side__frame__height / 2}
+						text={`${receiver__height__in}in`}
+					/>
+					<Tick
 						class="driver__y_axis__frame__bottom__tick"
 						x1={2}
 						y1={side__frame__bottom__y}
 						x2={axis__line__position * 2 - 4}
 						y2={side__frame__bottom__y}
-						stroke="black"
-						stroke-dasharray="1"
-					></line>
-					<line
+					/>
+					<Tick
 						class="driver__y_axis__bottom__tick"
 						x1={2}
 						y1={side__fender__height}
 						x2={axis__line__position * 2 - 4}
 						y2={side__fender__height}
-						stroke="black"
-						stroke-dasharray="1"
-					></line>
-					<text
-						x={axis__line__position + 10}
-						y={side__frame__bottom__y + side__frame__height / 2}
-					>{receiver__height__in}in
-					</text>
+						text_x={axis__line__position + 10}
+						text_y={side__frame__bottom__y + side__frame__height / 2}
+						text={`${receiver__height__in}in`}
+					/>
 				</svg>
 			)
 		}
-		function X_Axis_driver() {
+		function X_Axis() {
 			return (
 				<svg
 					class="driver__camper__x_axis"
@@ -500,71 +497,89 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 							driver camper y-axis
 						</title>
 					</line>
-					<line
+					<Tick
 						class="driver__x_axis__frame__tick"
 						x1={side__frame__width}
 						y1={2}
 						x2={side__frame__width}
 						y2={axis__line__position * 2 - 4}
-						stroke="black"
-						stroke-dasharray="1"
-					>
-						<title>frame width: {side__frame__width__in}in</title>
-					</line>
-					<text
-						x={side__frame__width / 2}
-						y={axis__line__position + 20}
-						text-anchor="middle"
-					>{side__frame__width__in}in</text>
-					<line
+						text_x={side__frame__width / 2}
+						text_y={axis__line__position + 20}
+						text={`${side__frame__width__in}in`}
+						text_anchor={'middle'}
+					/>
+					<Tick
 						class="driver__x_axis__bumper__connect__exit__left__tick"
 						x1={side__camper__width}
 						y1={2}
 						x2={side__camper__width}
 						y2={axis__line__position * 2 - 4}
-						stroke="black"
-						stroke-dasharray="1"
-					></line>
-					<text
-						x={side__frame__width + (side__camper__width - side__frame__width) / 2}
-						y={axis__line__position + 20}
-						text-anchor="middle"
-					>{side__camper__width__in - side__frame__width__in}in
-					</text>
-					<line
+						text_x={side__frame__width + (side__camper__width - side__frame__width) / 2}
+						text_y={axis__line__position + 20}
+						text={`${side__camper__width__in - side__frame__width__in}in`}
+						text_anchor={'middle'}
+					/>
+					<Tick
 						class="driver__x_axis__bumper__cross__left__tick"
 						x1={side__bumper__cross__x}
 						y1={2}
 						x2={side__bumper__cross__x}
 						y2={axis__line__position * 2 - 4}
-						stroke="black"
-						stroke-dasharray="1"
-					></line>
-					<text
-						x={side__camper__width + (side__bumper__cross__x - side__camper__width) / 2}
-						y={axis__line__position + 20}
-						text-anchor="middle"
-					>{side__bumper__cross__x__in - side__camper__width__in}in
-					</text>
-					<line
+						text_x={side__camper__width + (side__bumper__cross__x - side__camper__width) / 2}
+						text_y={axis__line__position + 20}
+						text={`${side__bumper__cross__x__in - side__camper__width__in}in`}
+						text_anchor={'middle'}
+					/>
+					<Tick
 						class="driver__x_axis__bumper__cross__right__tick"
 						x1={side__fender__width}
 						y1={2}
 						x2={side__fender__width}
 						y2={axis__line__position * 2 - 4}
-						stroke="black"
-						stroke-dasharray="1"
-					></line>
-					<text
-						x={side__bumper__cross__x + (side__fender__width- side__bumper__cross__x) / 2}
-						y={axis__line__position + 20}
-						text-anchor="middle"
-					>{side__fender__width__in - side__bumper__cross__x__in}in
-					</text>
+						text_x={side__bumper__cross__x + (side__fender__width - side__bumper__cross__x) / 2}
+						text_y={axis__line__position + 20}
+						text={`${side__fender__width__in - side__bumper__cross__x__in}in`}
+						text_anchor={'middle'}
+					/>
 				</svg>
 			)
 		}
 	}
+}
+function Tick(_$p:VoidProps<{
+	class:string
+	x1:number
+	y1:number
+	x2:number
+	y2:number
+	text_x?:number
+	text_y?:number
+	text?:string
+	dominant_baseline?:JSX.PresentationSVGAttributes['dominant-baseline']
+	text_anchor?:JSX.PresentationSVGAttributes['text-anchor']
+}>) {
+	const $p = mergeProps({
+		dominant_baseline: 'middle' as JSX.PresentationSVGAttributes['dominant-baseline'],
+	}, _$p)
+	return [
+		<line
+			class={$p.class}
+			x1={$p.x1}
+			y1={$p.y1}
+			x2={$p.x2}
+			y2={$p.y2}
+			stroke="black"
+			stroke-dasharray="1"
+		>{$p.text}</line>,
+		<Show when={$p.text}>
+			<text
+				x={$p.text_x}
+				y={$p.text_y}
+				dominant-baseline={$p.dominant_baseline}
+				text-anchor={$p.text_anchor}
+			>{$p.text}</text>
+		</Show>,
+	]
 }
 function Pattern_sheet() {
 	return (
