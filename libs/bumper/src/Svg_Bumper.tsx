@@ -64,16 +64,21 @@ const back__fender__height =
 	back__camper__height
 	+ back__receiver__under__body__y
 	+ back__fender__bumper__height
-const back__receivers__axis__y = back__fender__height
+const back__receiver__axis__height = 24
+const back__receiver__axis__y = back__fender__height
+const back__receiver__axis__width__in = back__receivers__mid_distance__width__in + receiver__width__in
+const back__receiver__axis__width = back__receiver__axis__width__in * back__in__px
+const back__receiver__axis__x = (back__camper__width - back__receiver__axis__width) / 2
+const back__receivers__axis__height = 24
+const back__receivers__axis__y = back__receiver__axis__y + back__receiver__axis__height
 const back__receivers__axis__width__in = back__receivers__mid_distance__width__in
 const back__receivers__axis__width = back__receivers__axis__width__in * back__in__px
 const back__receivers__axis__x = (back__camper__width - back__receivers__axis__width) / 2
-const back__receivers__axis__height = 24
+const back__fender__axis__height = 24
 const back__fender__axis__x = 0
 const back__fender__axis__y = back__receivers__axis__y + back__receivers__axis__height
 const back__fender__axis__width__in = back__camper__width__in
 const back__fender__axis__width = back__fender__axis__width__in * back__in__px
-const back__fender__axis__height = 24
 const back__svg__height = back__fender__axis__y + back__fender__axis__height
 const side__camper__width__in = 8
 const side__camper__height__in = 7.5
@@ -158,6 +163,7 @@ export function C__page_1() {
 				<C__back__receivers/>
 				<C__back__bumper/>
 				<C__back__fender/>
+				<C__back__receiver__axis/>
 				<C__back__receivers__axis/>
 				<C__back__fender__axis/>
 			</svg>
@@ -271,6 +277,49 @@ export function C__page_1() {
 				</svg>
 			)
 		}
+		function C__back__receiver__axis() {
+			return (
+				<svg
+					class="C__back__receiver__axis"
+					x={back__receiver__axis__x}
+					y={back__receiver__axis__y}
+					width={back__receiver__axis__width}
+					height={back__receiver__axis__height}
+				>
+					<C__x_axis__line
+						class="C__back__receiver__axis__line"
+						y={axis__line__position}
+						x1={0}
+						x2={back__receiver__axis__width}
+						title="back receiver x axis"
+					/>
+					<C__x_axis__tick
+						class="C__back__receiver__axis__tick_0"
+						x={0}
+					/>
+					<C__x_axis__tick
+						class="C__back__receiver__axis__tick_1"
+						x={back__receiver__width}
+						text_x={0}
+						text_y={back__receiver__axis__height}
+						text={`${receiver__width__in}in`}
+						text_anchor="start"
+					/>
+					<C__x_axis__tick
+						class="C__back__receiver__axis__tick_2"
+						x={back__receiver__axis__width - back__receiver__width}
+					/>
+					<C__x_axis__tick
+						class="C__back__receiver__axis__tick_3"
+						x={back__receiver__axis__width}
+						text_x={back__receiver__axis__width}
+						text_y={back__receiver__axis__height}
+						text={`${receiver__width__in}in`}
+						text_anchor="end"
+					/>
+				</svg>
+			)
+		}
 		function C__back__receivers__axis() {
 			return (
 				<svg
@@ -292,7 +341,7 @@ export function C__page_1() {
 						x={0}
 					/>
 					<C__x_axis__tick
-						class="C__back__receivers__axis__tick_0"
+						class="C__back__receivers__axis__tick_1"
 						x={back__receivers__axis__width}
 						text_x={back__receivers__axis__width / 2}
 						text_y={back__receivers__axis__height}
@@ -323,7 +372,7 @@ export function C__page_1() {
 						x={0}
 					/>
 					<C__x_axis__tick
-						class="C__back__fender__axis__tick_0"
+						class="C__back__fender__axis__tick_1"
 						x={back__fender__axis__width}
 						text_x={back__fender__axis__width / 2}
 						text_y={back__fender__axis__height}
@@ -361,7 +410,7 @@ export function C__page_2($p:VoidProps<{
 				<C__driver__fender/>
 				<C__driver__y_axis/>
 				<C__driver__x_axis/>
-				<C__side__frame__axis/>
+				<C__driver__frame__axis/>
 			</svg>
 		)
 		function C__driver__camper() {
@@ -580,7 +629,7 @@ export function C__page_2($p:VoidProps<{
 				)
 			}
 		}
-		function C__side__frame__axis() {
+		function C__driver__frame__axis() {
 			return (
 				<svg
 					class="C__side__frame__axis"
