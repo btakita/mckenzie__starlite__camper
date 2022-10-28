@@ -148,6 +148,7 @@ export function C__page_1() {
 				<C__back__receivers/>
 				<C__back__bumper/>
 				<C__back__fender/>
+				<C__back__receivers__axis/>
 			</svg>
 		)
 		function C__back__camper() {
@@ -256,6 +257,18 @@ export function C__page_1() {
 					<rect fill="url(#sheet__pattern)" width="100%" height="100%">
 						<title>bumper sheet</title>
 					</rect>
+				</svg>
+			)
+		}
+		function C__back__receivers__axis() {
+			return (
+				<svg
+					class="C__back__receivers__axis"
+					x={back__camper__x}
+					y={back__receivers__y}
+					width={back__camper__width}
+					height={back__receivers__svg__height}
+				>
 				</svg>
 			)
 		}
@@ -409,55 +422,50 @@ export function C__page_2($p:VoidProps<{
 							driver camper y-axis
 						</title>
 					</line>
-					<Tick
+					<C__driver__y_axis__tick
 						class="driver__y_axis__top__tick"
-						x1={2}
-						y1={0}
-						x2={axis__line__position * 2 - 4}
-						y2={0}
-						text_x={axis__line__position + 10}
+						y={0}
 						text_y={side__camper__height / 2}
 						text={`${side__camper__height__in}in`}
 					/>
-					<Tick
+					<C__driver__y_axis__tick
 						class="driver__y_axis__camper__tick"
-						x1={2}
-						y1={side__camper__height}
-						x2={axis__line__position * 2 - 4}
-						y2={side__camper__height}
-						text_x={axis__line__position + 10}
+						y={side__camper__height}
 						text_y={side__camper__height + side__receiver__under__body__y / 2}
 						text={`${receiver__under__body__y__in}in`}
 					/>
-					<Tick
+					<C__driver__y_axis__tick
 						class="driver__y_axis__frame__top__tick"
-						x1={2}
-						y1={side__frame__top__y}
-						x2={axis__line__position * 2 - 4}
-						y2={side__frame__top__y}
-						text_x={axis__line__position + 10}
+						y={side__frame__top__y}
 						text_y={side__frame__top__y + side__frame__height / 2}
 						text={`${receiver__height__in}in`}
 					/>
-					<Tick
+					<C__driver__y_axis__tick
 						class="driver__y_axis__frame__bottom__tick"
-						x1={2}
-						y1={side__frame__bottom__y}
-						x2={axis__line__position * 2 - 4}
-						y2={side__frame__bottom__y}
+						y={side__frame__bottom__y}
 					/>
-					<Tick
+					<C__driver__y_axis__tick
 						class="driver__y_axis__bottom__tick"
-						x1={2}
-						y1={side__fender__height}
-						x2={axis__line__position * 2 - 4}
-						y2={side__fender__height}
-						text_x={axis__line__position + 10}
+						y={side__fender__height}
 						text_y={side__frame__bottom__y + side__frame__height / 2}
 						text={`${receiver__height__in}in`}
 					/>
 				</svg>
 			)
+			function C__driver__y_axis__tick($p:VoidProps<{ class:string, y:number, text_y?:number, text?:string }>) {
+				return (
+					<Tick
+						class={$p.class}
+						x1={2}
+						y1={$p.y}
+						x2={axis__line__position * 2 - 4}
+						y2={$p.y}
+						text_x={axis__line__position + 10}
+						text_y={$p.text_y}
+						text={$p.text}
+					/>
+				)
+			}
 		}
 		function C__driver__x_axis() {
 			return (
@@ -481,52 +489,47 @@ export function C__page_2($p:VoidProps<{
 							driver camper y-axis
 						</title>
 					</line>
-					<Tick
+					<C__driver__x_axis__tick
 						class="driver__x_axis__frame__tick"
-						x1={side__frame__width}
-						y1={2}
-						x2={side__frame__width}
-						y2={axis__line__position * 2 - 4}
+						x={side__frame__width}
 						text_x={side__frame__width / 2}
-						text_y={axis__line__position + 20}
 						text={`${side__frame__width__in}in`}
-						text_anchor={'middle'}
 					/>
-					<Tick
+					<C__driver__x_axis__tick
 						class="driver__x_axis__bumper__connect__exit__left__tick"
-						x1={side__camper__width}
-						y1={2}
-						x2={side__camper__width}
-						y2={axis__line__position * 2 - 4}
+						x={side__camper__width}
 						text_x={side__frame__width + (side__camper__width - side__frame__width) / 2}
-						text_y={axis__line__position + 20}
 						text={`${side__camper__width__in - side__frame__width__in}in`}
-						text_anchor={'middle'}
 					/>
-					<Tick
+					<C__driver__x_axis__tick
 						class="driver__x_axis__bumper__cross__left__tick"
-						x1={side__bumper__cross__x}
-						y1={2}
-						x2={side__bumper__cross__x}
-						y2={axis__line__position * 2 - 4}
+						x={side__bumper__cross__x}
 						text_x={side__camper__width + (side__bumper__cross__x - side__camper__width) / 2}
-						text_y={axis__line__position + 20}
 						text={`${side__bumper__cross__x__in - side__camper__width__in}in`}
-						text_anchor={'middle'}
 					/>
-					<Tick
+					<C__driver__x_axis__tick
 						class="driver__x_axis__bumper__cross__right__tick"
-						x1={side__fender__width}
-						y1={2}
-						x2={side__fender__width}
-						y2={axis__line__position * 2 - 4}
+						x={side__fender__width}
 						text_x={side__bumper__cross__x + (side__fender__width - side__bumper__cross__x) / 2}
-						text_y={axis__line__position + 20}
 						text={`${side__fender__width__in - side__bumper__cross__x__in}in`}
-						text_anchor={'middle'}
 					/>
 				</svg>
 			)
+			function C__driver__x_axis__tick($p:VoidProps<{ class:string, x:number, text_x:number, text?:string }>) {
+				return (
+					<Tick
+						class={$p.class}
+						x1={$p.x}
+						y1={2}
+						x2={$p.x}
+						y2={axis__line__position * 2 - 4}
+						text_x={$p.text_x}
+						text_y={axis__line__position + 20}
+						text={$p.text}
+						text_anchor={'middle'}
+					/>
+				)
+			}
 		}
 		function C__side__frame__axis() {
 			return (
@@ -555,26 +558,38 @@ export function C__page_2($p:VoidProps<{
 							y2={axis__line__position}
 							stroke="black"
 						></line>
-						<Tick
+						<C__side__frame__hole__placement__axis__tick
 							class="C__side__frame__hole__placement__axis__tick_0"
-							x1={0}
-							y1={2}
-							x2={0}
-							y2={axis__line__position * 2 - 4}
+							x={0}
 						/>
-						<Tick
+						<C__side__frame__hole__placement__axis__tick
 							class="C__side__frame__hole__placement__axis__tick_1"
-							x1={side__frame__hole__r}
-							y1={2}
-							x2={side__frame__hole__r}
-							y2={axis__line__position * 2 - 4}
+							x={side__frame__hole__r}
 							text_x={0}
-							text_y={axis__line__position + 10}
 							text={`${side__frame__hole__r__in}in`}
-							font_size="10"
 						/>
 					</svg>
 				)
+				function C__side__frame__hole__placement__axis__tick($p:VoidProps<{
+					class:string
+					x:number
+					text_x?:number
+					text?:string
+				}>) {
+					return (
+						<Tick
+							class={$p.class}
+							x1={$p.x}
+							y1={2}
+							x2={$p.x}
+							y2={axis__line__position * 2 - 4}
+							text_x={$p.text_x}
+							text_y={axis__line__position + 10}
+							text={$p.text}
+							font_size="10"
+						/>
+					)
+				}
 			}
 			function C__side__frame__hole__axis() {
 				return (
