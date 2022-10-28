@@ -281,16 +281,17 @@ export function C__page_1() {
 			return (
 				<svg
 					class="C__back__receiver__axis"
-					x={back__receiver__axis__x}
+					x={back__receiver__axis__x - 1}
 					y={back__receiver__axis__y}
-					width={back__receiver__axis__width}
+					width={back__receiver__axis__width + 2}
 					height={back__receiver__axis__height}
+					viewBox={`-1 0 ${back__receiver__axis__width + 1} ${back__receiver__axis__height}`}
 				>
 					<C__x_axis__line
 						class="C__back__receiver__axis__line"
 						y={axis__line__position}
 						x1={0}
-						x2={back__receiver__axis__width}
+						x2={back__receiver__axis__width - 1}
 						title="back receiver x axis"
 					/>
 					<C__x_axis__tick
@@ -299,7 +300,7 @@ export function C__page_1() {
 					/>
 					<C__x_axis__tick
 						class="C__back__receiver__axis__tick_1"
-						x={back__receiver__width}
+						x={back__receiver__width - 1}
 						text_x={0}
 						text_y={back__receiver__axis__height}
 						text={`${receiver__width__in}in`}
@@ -311,7 +312,7 @@ export function C__page_1() {
 					/>
 					<C__x_axis__tick
 						class="C__back__receiver__axis__tick_3"
-						x={back__receiver__axis__width}
+						x={back__receiver__axis__width - 1}
 						text_x={back__receiver__axis__width}
 						text_y={back__receiver__axis__height}
 						text={`${receiver__width__in}in`}
@@ -324,16 +325,17 @@ export function C__page_1() {
 			return (
 				<svg
 					class="C__back__receivers__axis"
-					x={back__receivers__axis__x}
+					x={back__receivers__axis__x - 1}
 					y={back__receivers__axis__y}
-					width={back__receivers__axis__width}
+					width={back__receivers__axis__width + 2}
 					height={back__receivers__axis__height}
+					viewBox={`-1 0 ${back__receivers__axis__width + 1} ${back__receivers__axis__height}`}
 				>
 					<C__x_axis__line
 						class="C__back__receivers__axis__line"
 						y={axis__line__position}
 						x1={0}
-						x2={back__receivers__axis__width}
+						x2={back__receivers__axis__width - 1}
 						title="back receivers x axis"
 					/>
 					<C__x_axis__tick
@@ -342,7 +344,7 @@ export function C__page_1() {
 					/>
 					<C__x_axis__tick
 						class="C__back__receivers__axis__tick_1"
-						x={back__receivers__axis__width}
+						x={back__receivers__axis__width - 1}
 						text_x={back__receivers__axis__width / 2}
 						text_y={back__receivers__axis__height}
 						text={`${back__receivers__axis__width__in}in`}
@@ -352,7 +354,7 @@ export function C__page_1() {
 			)
 		}
 		function C__back__fender__axis() {
-		  return (
+			return (
 				<svg
 					class="C__back__fender__axis"
 					x={back__fender__axis__x}
@@ -792,7 +794,7 @@ function C__x_axis__tick(_$p:VoidProps<{
 }>) {
 	const $p = mergeProps({
 		y1: 2,
-		y2: axis__line__position * 2 - 4,
+		y2: axis__line__position,
 		text_x: axis__line__position + 10
 	}, _$p)
 	return (
@@ -825,7 +827,7 @@ function C__y_axis__tick(_$p:VoidProps<{
 }>) {
 	const $p = mergeProps({
 		x1: 2,
-		x2: axis__line__position * 2 - 4,
+		x2: axis__line__position,
 		text_y: axis__line__position + 10,
 	}, _$p)
 	return (
