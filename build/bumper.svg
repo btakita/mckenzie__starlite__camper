@@ -24,7 +24,7 @@
 				height="1008"
 			>
 				
-			<svg class="view__back" height="186.05426356589146">
+			<svg class="back__svg" height="186.05426356589146">
 				<svg class="camper__back" x="5.684341886080802e-14" width="815.9999999999999" height="96.99224806201549">
 					<rect
 						width="815.9999999999999"
@@ -139,7 +139,7 @@
 				width="768"
 				height="1008"
 			>
-				<svg class="driver__view" width="798.1818181818181" height="897.9220779220778">
+				<svg class="driver__svg" width="798.1818181818181" height="897.9220779220778">
 				
 				<svg class="driver__camper" width="498.9610389610389" height="374.025974025974">
 					<rect width="398.9610389610389" height="374.025974025974" fill="lightgray">
@@ -273,6 +273,11 @@
 					</text>
 				</svg>
 			
+				
+				<svg
+					y=""
+				></svg>
+		  
 			</svg>
 			</svg>
 		</svg>
