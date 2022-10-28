@@ -5,7 +5,7 @@
 	"description": "Replacement parts for the McKenzie Starlite camper",
 	"homepage": "https://github.com/btakita/mckenzie_starlite__camper",
 	"repository": "portfoliome/censible-core",
-	"author": "Portfolio.me",
+	"author": "Brian Takita",
 	"license": "Apache-2.0",
 	"bin": {
 		"bumper": "./bin/bumper/index.sh"
