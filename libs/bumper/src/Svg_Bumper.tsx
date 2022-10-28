@@ -29,10 +29,10 @@ const receiver__width__in = 2
 const receiver__height__in = 3.75
 const back__camper__width__in = 96.75
 const back__width__in = back__camper__width__in
-const back__in__px = root__in__px / (back__width__in / page__width__in)
+const back__in__px = root__in__px / (1.1 * back__width__in / content__width__in)
+const back__width = back__width__in * back__in__px
 const back__camper__width = back__camper__width__in * back__in__px
-const back__camper__x1 = (doc__width - back__camper__width) / 2
-const back__camper__x2 = back__camper__x1 + back__camper__width
+const back__camper__x = 0
 const back__screw__y = 1.5 * back__in__px
 const back__camper__height = 11.5 * back__in__px
 const back__receiver__width = receiver__width__in * back__in__px
@@ -42,8 +42,6 @@ const back__receiver__height = receiver__height__in * back__in__px
 const back__receivers__mid_distance__width__in = 66
 const back__receivers__mid_distance__width = back__receivers__mid_distance__width__in * back__in__px
 const back__receivers__y = back__camper__height
-const back__receivers__x1 = back__camper__x1
-const back__receivers__x2 = back__camper__x2
 const back__receivers__width = back__receivers__mid_distance__width + back__receiver__width
 const back__receivers__height = back__receiver__height
 const back__receivers__offset__x = (back__camper__width - back__receivers__width) / 2
@@ -145,7 +143,7 @@ export function C__page_1() {
 	)
 	function Back() {
 		return (
-			<svg class="Back" height={back__svg__height} width={content__width}>
+			<svg class="Back" height={back__svg__height} width={back__width}>
 				<Camper/>
 				<Receivers/>
 				<Bumper/>
@@ -154,7 +152,7 @@ export function C__page_1() {
 		)
 		function Camper() {
 			return (
-				<svg class="Camper" x={back__camper__x1} width={back__camper__width} height={back__camper__height}>
+				<svg class="Camper" x={back__camper__x} width={back__camper__width} height={back__camper__height}>
 					<rect
 						width={back__camper__width}
 						height={back__camper__height}
@@ -180,7 +178,7 @@ export function C__page_1() {
 			return (
 				<svg
 					class="Receivers"
-					x={back__camper__x1}
+					x={back__camper__x}
 					y={back__receivers__y}
 					width={back__camper__width}
 					height={back__receivers__svg__height}
@@ -231,7 +229,7 @@ export function C__page_1() {
 			return (
 				<svg
 					class="Bumper"
-					x={back__camper__x1}
+					x={back__camper__x}
 					y={back__camper__height}
 					width={back__camper__width}
 					height={back__receivers__svg__height}
@@ -251,7 +249,7 @@ export function C__page_1() {
 			return (
 				<svg
 					class="Fender"
-					x={back__camper__x1}
+					x={back__camper__x}
 					width={back__fender__width}
 					height={back__fender__height}
 				>
@@ -572,7 +570,7 @@ export function C__page_2($p:VoidProps<{
 							text_x={0}
 							text_y={axis__line__position + 10}
 							text={`${side__frame__hole__r__in}in`}
-							font_size={10}
+							font_size="10"
 						/>
 					</svg>
 				)
@@ -608,7 +606,7 @@ export function C__page_2($p:VoidProps<{
 							text_x={0}
 							text_y={axis__line__position + 10}
 							text={`${side__frame__hole__r__in}in`}
-							font_size={10}
+							font_size="10"
 						/>
 					</svg>
 				)
@@ -627,7 +625,7 @@ function Tick(_$p:VoidProps<{
 	text?:string
 	dominant_baseline?:JSX.PresentationSVGAttributes['dominant-baseline']
 	text_anchor?:JSX.PresentationSVGAttributes['text-anchor']
-	font_size?:number
+	font_size?:string
 }>) {
 	const $p = mergeProps({
 		dominant_baseline: 'middle' as JSX.PresentationSVGAttributes['dominant-baseline'],
