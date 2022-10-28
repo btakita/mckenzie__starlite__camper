@@ -7,18 +7,18 @@ const receiver__bolt__x__in = .75
 const receiver__end__x__in = 2
 // .75
 // 2 *
-const in__px = 96
+const root__in__px = 96
 const page__width__in = 8.5
 const page__height__in = 11
 const page__margin_x__in = .25
 const page__margin_y__in = .25
 const content__width__in = page__width__in - (2 * page__margin_x__in)
-const page__width = page__width__in * in__px
-const page__height = page__height__in * in__px
+const page__width = page__width__in * root__in__px
+const page__height = page__height__in * root__in__px
 const doc__width = page__width
 const doc__height = page__height * 2
-const page__margin_x = page__margin_x__in * in__px
-const page__margin_y = page__margin_y__in * in__px
+const page__margin_x = page__margin_x__in * root__in__px
+const page__margin_y = page__margin_y__in * root__in__px
 const content__height__in = page__height__in - (2 * page__margin_y__in)
 const content__width = page__width - 2 * page__margin_x
 const content__height = page__height - 2 * page__margin_y
@@ -28,7 +28,7 @@ const receiver__width__in = 2
 const receiver__height__in = 3.75
 const back__camper__width__in = 96.75
 const back__width__in = back__camper__width__in
-const back__in__px = in__px / (back__width__in / page__width__in)
+const back__in__px = root__in__px / (back__width__in / page__width__in)
 const back__camper__width = back__camper__width__in * back__in__px
 const back__camper__x1 = (doc__width - back__camper__width) / 2
 const back__camper__x2 = back__camper__x1 + back__camper__width
@@ -74,8 +74,8 @@ const side__fender__height__in =
 	+ fender__bumper__height__in
 const side__svg__y = back__svg__height + 50
 const side__fender__width__in = side__camper__width__in + 6
-const side__frame__width__in = side__fender__width__in - receiver__width__in
-const side__in__px = in__px / (1.1 * side__fender__width__in / content__width__in)
+const side__frame__width__in = side__camper__width__in - 2
+const side__in__px = root__in__px / (1.1 * side__fender__width__in / content__width__in)
 const side__axis__across = 100
 const side__receiver__under__body__y = receiver__under__body__y__in * side__in__px
 const side__fender__height = side__fender__height__in * side__in__px
@@ -87,20 +87,38 @@ const axis__line__position = 10
 const side__camper__width = side__camper__width__in * side__in__px
 const side__camper__height = side__camper__height__in * side__in__px
 const side__y_axis__height = side__fender__height
-const side__camper__svg__width = side__camper__width + side__axis__across
-const side__camper__svg__height = side__camper__height
 const side__frame__top__y = side__camper__height + receiver__under__body__y__in * side__in__px
 const side__frame__width = side__frame__width__in * side__in__px
 const side__frame__height = receiver__height__in * side__in__px
 const side__frame__bottom__y = side__frame__top__y + side__frame__height
-const side__bumper__x = side__frame__width
+const side__bumper__x__in = 0
+const side__bumper__x = side__bumper__x__in * side__in__px
 const side__bumper__y = side__frame__top__y
 const side__receiver__height = receiver__height__in * side__in__px
-const side__receiver__width = receiver__width__in * side__in__px
+const side__frame__hole__cx = side__frame__width - 2 * .75 * side__in__px
+const side__frame__hole__cy = side__receiver__height / 2
+const side__frame__hole__r = .75 * side__in__px
+const side__bumper__cross__width__in = receiver__width__in
+const side__bumper__cross__width = side__bumper__cross__width__in * side__in__px
+const side__bumper__cross__x__in = side__fender__width__in - side__bumper__cross__width__in
+const side__bumper__cross__x = side__bumper__cross__x__in * side__in__px
+const side__bumper__connect__width__in = side__bumper__cross__x__in - side__bumper__x__in
+const side__bumper__connect__width = side__bumper__connect__width__in * side__in__px
+const side__bumper__width__in = side__bumper__connect__width__in + side__bumper__cross__width__in
+const side__bumper__width = side__bumper__width__in * side__in__px
 const side__bumper__height = side__receiver__height
-const side__bumper__width = side__receiver__width
 const side__x_axis__y = side__fender__height
 const side__x_axis__width = side__fender__width
+console.debug('Svg_Bumper|debug|1', {
+	side__bumper__cross__x__in,
+	side__bumper__x__in,
+	side__bumper__connect__width__in,
+	side__bumper__cross__width__in,
+	side__bumper__width__in,
+	side__bumper__connect__width,
+	side__bumper__cross__width,
+	side__bumper__width,
+})
 //endregion
 export function Svg_Bumper() {
 	return (
@@ -276,7 +294,7 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 		)
 		function Camper_driver() {
 			return (
-				<svg class="driver__camper" width={side__camper__svg__width} height={side__camper__svg__height}>
+				<svg class="driver__camper" width={side__camper__width} height={side__camper__height}>
 					<rect width={side__camper__width} height={side__camper__height} fill="lightgray">
 						<title>driver camper</title>
 					</rect>
@@ -294,6 +312,15 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 					<rect width={side__frame__width} height={side__frame__height} fill="gray" fill-opacity="0.8">
 						<title>driver frame</title>
 					</rect>
+					<circle
+						class="side__frame__hole"
+						cx={side__frame__hole__cx}
+						cy={side__frame__hole__cy}
+						r={side__frame__hole__r}
+						fill="black"
+					>
+						<title>bolt hole</title>
+					</circle>
 				</svg>
 			)
 		}
@@ -307,13 +334,24 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 					height={side__bumper__height}
 				>
 					<rect
-						width={side__bumper__width}
+						x={side__bumper__x}
+						width={side__bumper__connect__width}
 						height={side__bumper__height}
 						stroke="black"
 						fill="gray"
 						fill-opacity="0.8"
 					>
-						<title>driver bumper</title>
+						<title>driver bumper connect piece</title>
+					</rect>
+					<rect
+						x={side__bumper__cross__x}
+						width={side__bumper__cross__width}
+						height={side__bumper__height}
+						stroke="black"
+						fill="gray"
+						fill-opacity="0.8"
+					>
+						<title>driver bumper cross piece</title>
 					</rect>
 				</svg>
 			)
@@ -450,7 +488,7 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 					height={side__axis__across}
 				>
 					<line
-						class="driver__camper__x_axis"
+						class="driver__x_axis"
 						x1={0}
 						y1={axis__line__position}
 						x2={side__x_axis__width}
@@ -463,7 +501,23 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 						</title>
 					</line>
 					<line
-						class="driver__x_axis__left__tick"
+						class="driver__x_axis__frame__tick"
+						x1={side__frame__width}
+						y1={2}
+						x2={side__frame__width}
+						y2={axis__line__position * 2 - 4}
+						stroke="black"
+						stroke-dasharray="1"
+					>
+						<title>frame width: {side__frame__width__in}in</title>
+					</line>
+					<text
+						x={side__frame__width / 2}
+						y={axis__line__position + 20}
+						text-anchor="middle"
+					>{side__frame__width__in}in</text>
+					<line
+						class="driver__x_axis__bumper__connect__exit__left__tick"
 						x1={side__camper__width}
 						y1={2}
 						x2={side__camper__width}
@@ -472,24 +526,40 @@ export function Svg_Bumper_page_2($p:VoidProps<{
 						stroke-dasharray="1"
 					></line>
 					<text
-						x={side__camper__width / 2}
+						x={side__frame__width + (side__camper__width - side__frame__width) / 2}
 						y={axis__line__position + 20}
 						text-anchor="middle"
-					>{side__camper__width__in}in</text>
+					>{side__camper__width__in - side__frame__width__in}in
+					</text>
 					<line
-						class="driver__x_axis__bumper__left__tick"
-						x1={side__frame__width}
+						class="driver__x_axis__bumper__cross__left__tick"
+						x1={side__bumper__cross__x}
 						y1={2}
-						x2={side__frame__width}
+						x2={side__bumper__cross__x}
 						y2={axis__line__position * 2 - 4}
 						stroke="black"
 						stroke-dasharray="1"
 					></line>
 					<text
-						x={side__camper__width + (side__bumper__x - side__camper__width) / 2}
+						x={side__camper__width + (side__bumper__cross__x - side__camper__width) / 2}
 						y={axis__line__position + 20}
 						text-anchor="middle"
-					>{side__frame__width__in - side__camper__width__in}in
+					>{side__bumper__cross__x__in - side__camper__width__in}in
+					</text>
+					<line
+						class="driver__x_axis__bumper__cross__right__tick"
+						x1={side__fender__width}
+						y1={2}
+						x2={side__fender__width}
+						y2={axis__line__position * 2 - 4}
+						stroke="black"
+						stroke-dasharray="1"
+					></line>
+					<text
+						x={side__bumper__cross__x + (side__fender__width- side__bumper__cross__x) / 2}
+						y={axis__line__position + 20}
+						text-anchor="middle"
+					>{side__fender__width__in - side__bumper__cross__x__in}in
 					</text>
 				</svg>
 			)
