@@ -448,27 +448,27 @@ export function C__page_2($p:VoidProps<{
 									in__px_(side__camper__height__in * .75)
 								].join(' '),
 								[
-									in__px_(side__camper__width__in * .5),
+									in__px_(side__camper__width__in * .375),
 									in__px_(side__camper__height__in * .75),
 								].join(' '),
 								[
-									in__px_(side__camper__width__in * .75),
+									in__px_(side__camper__width__in * .5),
 									in__px_(side__camper__height__in * .75)
 								].join(' ')
 							].join(', ')}`,
 							`C ${[
 								[
-									in__px_(side__camper__width__in * .75),
-									in__px_(side__camper__height__in * .75),
+									in__px_(side__camper__width__in * .5),
+									in__px_(side__camper__height__in * .75)
 								].join(' '),
 								[
-									in__px_(side__camper__width__in * .9),
-									in__px_(side__camper__height__in * .5),
+									in__px_(side__camper__width__in * .85),
+									in__px_(side__camper__height__in * .8),
 								].join(' '),
 								[
-									in__px_(side__camper__width__in * .9),
-									in__px_(side__camper__height__in * .1),
-								].join(' '),
+									in__px_(side__camper__width__in * .85),
+									in__px_(side__camper__height__in * .5)
+								].join(' ')
 							].join(', ')}`,
 							`C ${[
 								[
