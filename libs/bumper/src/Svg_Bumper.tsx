@@ -11,7 +11,6 @@ import {
 // 8 x 7.5
 const bolt__diameter__in = .75
 const receiver__bolt__dx__in = .75
-const receiver__end__x__in = 2
 // .75
 // 2 *
 const in__px = 96
@@ -21,19 +20,11 @@ const page__height__in = 11
 const page__margin_x__in = .25
 const page__margin_y__in = .25
 const content__width__in = page__width__in - (2 * page__margin_x__in)
-const page__width = page__width__in * in__px
-const page__height = page__height__in * in__px
-const doc__width = page__width
-const doc__height = page__height * 2
-const page__margin_x = page__margin_x__in * in__px
-const page__margin_y = page__margin_y__in * in__px
+const doc__width__in = page__width__in
+const doc__height__in = page__height__in * 2
 const content__height__in = page__height__in - (2 * page__margin_y__in)
-const content__width = page__width - 2 * page__margin_x
-const content__height = page__height - 2 * page__margin_y
 const content__x__in = page__margin_x__in
-const content__x = content__x__in * in__px
 const content__y__in = page__margin_y__in
-const content__y = content__y__in * in__px
 const back__width__in = camper__back__width__in
 const back__scale = content__width__in / back__width__in
 const back__in__px = in__px * back__scale
@@ -49,21 +40,9 @@ const receivers__back__height__in = receiver__height__in
 const back__receivers__offset__x__in = (camper__back__width__in - receivers__back__width__in) / 2
 const back__receiver__y1__in = receiver__under__body__y__in
 const back__receiver__y2__in = back__receiver__y1__in + receiver__height__in
-const back__receiver__x_axis__width__in = receivers__back__mid_distance__width__in
-const back__receiver__x_axis__x1__in = (camper__back__width__in - receivers__back__mid_distance__width__in) / 2
-const back__receiver__x_axis__x2__in = back__receiver__x_axis__x1__in + back__receiver__x_axis__width__in
-const back__receiver__x_axis__y__in = back__receiver__y2__in + .25
-const back__receiver__x_axis__y = back__receiver__x_axis__y__in * back__in__px
-const back__receiver__x_axis__line__stroke_width = 1
-const back__receiver__x_axis__line__stroke_width__in = back__receiver__x_axis__line__stroke_width * back__px__in
-const back__receiver__x_axis__text__height = 24
-const back__receiver__x_axis__text__height__in = back__receiver__x_axis__text__height * back__px__in
+const back__receiver__x_axis__y__in = back__receiver__y2__in
 const fender__bumper__height__in = 2 * receiver__height__in
-const back__receiver__x_axis__height__in =
-	back__receiver__x_axis__line__stroke_width__in
-	+ back__receiver__x_axis__text__height__in
-const back__receiver__x_axis__height = back__receiver__x_axis__height__in * back__in__px
-const C__back__receivers__height__in = back__receiver__x_axis__y + back__receiver__x_axis__height
+const C__back__receivers__height__in = back__receiver__x_axis__y__in
 const fender__back__width__in = camper__back__width__in
 const fender__back__height__in = back__camper__height__in + receiver__under__body__y__in + fender__bumper__height__in
 const back__receivers__axis__height = 24
@@ -84,61 +63,49 @@ const side__fender__height__in =
 	side__camper__height__in
 	+ receiver__under__body__y__in
 	+ fender__bumper__height__in
-const side__fender__width__in = side__camper__width__in + 6
-const side__frame__width__in = side__camper__width__in - 2
-const side__scale = content__width__in / side__fender__width__in
-const side__in__px = in__px * side__scale / 1.1
+const side__frame__extension__in = 4
+const side__fender__width__in = side__camper__width__in + side__frame__extension__in + receiver__width__in
+const side__frame__width__in = side__camper__width__in
+const side__scale = content__width__in / (side__fender__width__in * 1.1)
+const side__in__px = in__px * side__scale
 const side__px__in = 1. / side__in__px
-const axis__across = 100
-const side__receiver__under__body__y = receiver__under__body__y__in * side__in__px
-const side__fender__height = side__fender__height__in * side__in__px
-const side__fender__width = side__fender__width__in * side__in__px
-const side__height = side__fender__height + axis__across
-const side__width = side__fender__width + axis__across
-const side__y_axis__x = side__fender__width
+const axis__across__in = 1
+const side__receiver__under__body__y__in = receiver__under__body__y__in
+const side__height__in = side__fender__height__in + axis__across__in
+const side__width__in = side__fender__width__in + axis__across__in
+const side__y_axis__x__in = side__fender__width__in
 const axis__line__position__in = .1
-const side__camper__width = side__camper__width__in * side__in__px
-const side__camper__height = side__camper__height__in * side__in__px
-const side__y_axis__height = side__fender__height
-const side__frame__top__y = side__camper__height + receiver__under__body__y__in * side__in__px
-const side__frame__width = side__frame__width__in * side__in__px
-const side__frame__height = receiver__height__in * side__in__px
-const side__frame__bottom__y = side__frame__top__y + side__frame__height
+const side__y_axis__height__in = side__fender__height__in
+const side__frame__top__y__in = side__camper__height__in + receiver__under__body__y__in
+const side__frame__height__in = receiver__height__in
+const side__frame__bottom__y__in = side__frame__top__y__in + side__frame__height__in
 const side__bumper__x__in = 0
-const side__bumper__x = side__bumper__x__in * side__in__px
-const side__bumper__y = side__frame__top__y
-const side__receiver__height = receiver__height__in * side__in__px
+const side__bumper__y__in = side__frame__top__y__in
+const side__receiver__height__in = receiver__height__in
 const side__frame__hole__r__in = bolt__diameter__in / 2
-const side__frame__hole__r = side__frame__hole__r__in * side__in__px
-const receiver__bolt__dx = receiver__bolt__dx__in * side__in__px
-const side__frame__hole__cx = side__frame__width - receiver__bolt__dx - side__frame__hole__r
-const side__frame__hole__cy = side__receiver__height / 2
-const side__frame__hole__placement__axis__x = side__frame__hole__cx + side__frame__hole__r
-const side__frame__hole__placement__axis__y = side__frame__hole__cy - 2 * side__frame__hole__r
+const side__frame__hole__cx__in = side__frame__width__in - receiver__bolt__dx__in - side__frame__hole__r__in
+const side__frame__hole__cy__in = side__receiver__height__in / 2
+const side__frame__hole__placement__axis__x__in = side__frame__hole__cx__in + side__frame__hole__r__in
+const side__frame__hole__placement__axis__y__in = side__frame__hole__cy__in - 2 * side__frame__hole__r__in
 const side__frame__hole__placement__axis__width__in = receiver__bolt__dx__in
-const side__frame__hole__placement__axis__width = side__frame__hole__placement__axis__width__in * side__in__px
-const side__frame__hole__placement__axis__height = side__frame__hole__r * 4
-const side__frame__hole__axis__x = side__frame__hole__cx - side__frame__hole__r
-const side__frame__hole__axis__y = side__frame__hole__cy + side__frame__hole__r
-const side__frame__hole__axis__width = side__frame__hole__r * 2
-const side__frame__hole__axis__height = side__frame__hole__r * 2
+const side__frame__hole__placement__axis__height__in = side__frame__hole__r__in * 4
+const side__frame__hole__axis__x__in = side__frame__hole__cx__in - side__frame__hole__r__in
+const side__frame__hole__axis__y__in = side__frame__hole__cy__in + side__frame__hole__r__in
+const side__frame__hole__axis__width__in = side__frame__hole__r__in * 2
+const side__frame__hole__axis__height__in = side__frame__hole__r__in * 2
 const side__bumper__cross__width__in = receiver__width__in
-const side__bumper__cross__width = side__bumper__cross__width__in * side__in__px
 const side__bumper__cross__x__in = side__fender__width__in - side__bumper__cross__width__in
-const side__bumper__cross__x = side__bumper__cross__x__in * side__in__px
 const side__bumper__connect__width__in = side__bumper__cross__x__in - side__bumper__x__in
-const side__bumper__connect__width = side__bumper__connect__width__in * side__in__px
 const side__bumper__width__in = side__bumper__connect__width__in + side__bumper__cross__width__in
-const side__bumper__width = side__bumper__width__in * side__in__px
-const side__bumper__height = side__receiver__height
-const side__x_axis__y = side__fender__height
-const side__x_axis__width = side__fender__width
+const side__bumper__height__in = side__receiver__height__in
+const side__x_axis__y__in = side__fender__height__in
+const side__x_axis__width__in = side__fender__width__in
 //endregion
 export function Svg_Bumper() {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" class="doc" width={doc__width} height={doc__height}>
+		<svg xmlns="http://www.w3.org/2000/svg" class="doc" width={in_s_(doc__width__in)} height={in_s_(doc__height__in)}>
 			<C__page_1/>
-			<C__page_2 y={page__height}/>
+			<C__page_2 y={in_s_(page__height__in)}/>
 		</svg>
 	)
 }
@@ -230,21 +197,6 @@ export function C__page_1() {
 						>
 							<title>passenger receiver</title>
 						</rect>
-					</svg>
-					<svg
-						class="back__receiver__x_axis"
-						y={in_s_(back__receiver__x_axis__y__in)}
-						width={in_s_(back__receiver__x_axis__width__in)}
-						height={in_s_(back__receiver__x_axis__height__in)}
-					>
-						<line
-							x1={in_s_(back__receiver__x_axis__x1__in)}
-							y1={in_s_(back__receiver__x_axis__y__in)}
-							x2={in_s_(back__receiver__x_axis__x2__in)}
-							y2={in_s_(back__receiver__x_axis__y__in)}
-						>
-							<title>back receiver dimensions</title>
-						</line>
 					</svg>
 				</svg>
 			)
@@ -380,17 +332,18 @@ export function C__page_1() {
 	}
 }
 export function C__page_2($p:VoidProps<{
-	y?:number
+	y?:number|string
 }>) {
 	return (
-		<svg class="C__page_2" y={$p.y} width={page__width} height={page__height}>
+		<svg class="C__page_2" y={$p.y} width={in_s_(page__width__in)} height={in_s_(page__height__in)}>
 			<Pattern_sheet/>
 			<svg
 				class="page_2__content"
-				x={content__x}
-				y={content__y}
-				width={content__width}
-				height={content__height}
+				x={in_s_(content__x__in)}
+				y={in_s_(content__y__in)}
+				width={in_s_(content__width__in)}
+				height={in_s_(content__height__in)}
+				viewBox={`0 0 ${in__px_(side__width__in)} ${in__px_(side__height__in)}`}
 			>
 				<C__driver/>
 			</svg>
@@ -398,7 +351,7 @@ export function C__page_2($p:VoidProps<{
 	)
 	function C__driver() {
 		return (
-			<svg class="C__driver" width={side__width} height={side__height}>
+			<svg class="C__driver" width={in_s_(side__width__in)} height={in_s_(side__height__in)}>
 				<C__driver__camper/>
 				<C__driver__frame/>
 				<C__driver__bumper/>
@@ -410,8 +363,8 @@ export function C__page_2($p:VoidProps<{
 		)
 		function C__driver__camper() {
 			return (
-				<svg class="C__driver__camper" width={side__camper__width} height={side__camper__height}>
-					<rect width={side__camper__width} height={side__camper__height} fill="lightgray">
+				<svg class="C__driver__camper" width={in_s_(side__camper__width__in)} height={in_s_(side__camper__height__in)}>
+					<rect width={in_s_(side__camper__width__in)} height={in_s_(side__camper__height__in)} fill="lightgray">
 						<title>driver camper</title>
 					</rect>
 				</svg>
@@ -421,18 +374,23 @@ export function C__page_2($p:VoidProps<{
 			return (
 				<svg
 					class="C__driver__frame"
-					y={side__frame__top__y}
-					width={side__frame__width}
-					height={side__frame__height}
+					y={in_s_(side__frame__top__y__in)}
+					width={in_s_(side__frame__width__in)}
+					height={in_s_(side__frame__height__in)}
 				>
-					<rect width={side__frame__width} height={side__frame__height} fill="gray" fill-opacity="0.8">
+					<rect
+						width={in_s_(side__frame__width__in)}
+						height={in_s_(side__frame__height__in)}
+						fill="gray"
+						fill-opacity="0.8"
+					>
 						<title>driver frame</title>
 					</rect>
 					<circle
 						class="side__frame__hole"
-						cx={side__frame__hole__cx}
-						cy={side__frame__hole__cy}
-						r={side__frame__hole__r}
+						cx={in_s_(side__frame__hole__cx__in)}
+						cy={in_s_(side__frame__hole__cy__in)}
+						r={in_s_(side__frame__hole__r__in)}
 						fill="black"
 					>
 						<title>bolt hole</title>
@@ -444,15 +402,15 @@ export function C__page_2($p:VoidProps<{
 			return (
 				<svg
 					class="C__driver__bumper"
-					x={side__bumper__x}
-					y={side__bumper__y}
-					width={side__bumper__width}
-					height={side__bumper__height}
+					x={in_s_(side__bumper__x__in)}
+					y={in_s_(side__bumper__y__in)}
+					width={in_s_(side__bumper__width__in)}
+					height={in_s_(side__bumper__height__in)}
 				>
 					<rect
-						x={side__bumper__x}
-						width={side__bumper__connect__width}
-						height={side__bumper__height}
+						x={in_s_(side__bumper__x__in)}
+						width={in_s_(side__bumper__connect__width__in)}
+						height={in_s_(side__bumper__height__in)}
 						stroke="black"
 						fill="gray"
 						fill-opacity="0.8"
@@ -460,9 +418,9 @@ export function C__page_2($p:VoidProps<{
 						<title>driver bumper connect piece</title>
 					</rect>
 					<rect
-						x={side__bumper__cross__x}
-						width={side__bumper__cross__width}
-						height={side__bumper__height}
+						x={in_s_(side__bumper__cross__x__in)}
+						width={in_s_(side__bumper__cross__width__in)}
+						height={in_s_(side__bumper__height__in)}
 						stroke="black"
 						fill="gray"
 						fill-opacity="0.8"
@@ -474,30 +432,57 @@ export function C__page_2($p:VoidProps<{
 		}
 		function C__driver__fender() {
 			return (
-				<svg class="C__driver__fender" width={side__fender__width} height={side__fender__height}>
+				<svg class="C__driver__fender" width={in_s_(side__fender__width__in)} height={in_s_(side__fender__height__in)}>
 					<path
 						d={[
-							`M ${side__camper__width} 0`,
-							`V ${side__frame__top__y}`,
-							`H ${side__fender__width}`,
-							`V ${side__fender__height}`,
+							`M ${in__px_(side__camper__width__in)} 0`,
+							`V ${in__px_(side__frame__top__y__in)}`,
+							`H ${in__px_(side__fender__width__in)}`,
+							`V ${in__px_(side__fender__height__in)}`,
 							`H ${0}`,
-							`V ${side__camper__height}`,
+							`V ${in__px_(side__camper__height__in)}`,
 							// `H 0`,
 							`C ${[
-								`${side__camper__width * 0} ${side__camper__height * .75}`,
-								`${side__camper__width * .5} ${side__camper__height * 1}`,
-								`${side__camper__width * .75} ${side__camper__height * .75}`
+								[
+									in__px_(side__camper__width__in * 0),
+									in__px_(side__camper__height__in * .75)
+								].join(' '),
+								[
+									in__px_(side__camper__width__in * .5),
+									in__px_(side__camper__height__in * .75),
+								].join(' '),
+								[
+									in__px_(side__camper__width__in * .75),
+									in__px_(side__camper__height__in * .75)
+								].join(' ')
 							].join(', ')}`,
 							`C ${[
-								`${side__camper__width * .75} ${side__camper__height * .75}`,
-								`${side__camper__width * .9} ${side__camper__height * .5}`,
-								`${side__camper__width * .9} ${side__camper__height * .1}`
+								[
+									in__px_(side__camper__width__in * .75),
+									in__px_(side__camper__height__in * .75),
+								].join(' '),
+								[
+									in__px_(side__camper__width__in * .9),
+									in__px_(side__camper__height__in * .5),
+								].join(' '),
+								[
+									in__px_(side__camper__width__in * .9),
+									in__px_(side__camper__height__in * .1),
+								].join(' '),
 							].join(', ')}`,
 							`C ${[
-								`${side__camper__width * .9} ${side__camper__height * .1}`,
-								`${side__camper__width * .9} ${side__camper__height * 0}`,
-								`${side__camper__width * 1} ${side__camper__height * 0}`
+								[
+									in__px_(side__camper__width__in * .9),
+									in__px_(side__camper__height__in * .1),
+								].join(' '),
+								[
+									in__px_(side__camper__width__in * .9),
+									in__px_(side__camper__height__in * 0),
+								].join(' '),
+								[
+									in__px_(side__camper__width__in * 1),
+									in__px_(side__camper__height__in * 0),
+								].join(' ')
 							].join(', ')}`,
 						].join(' ')}
 						fill="url(#sheet__pattern)"
@@ -509,49 +494,54 @@ export function C__page_2($p:VoidProps<{
 			return (
 				<svg
 					class="C__driver__y_axis"
-					x={side__y_axis__x}
+					x={in_s_(side__y_axis__x__in)}
 					y={0}
-					width={axis__across}
-					height={side__y_axis__height}
+					width={in_s_(axis__across__in)}
+					height={in_s_(side__y_axis__height__in)}
 				>
 					<C__side__y_axis__line
 						class="driver__camper__y_axis"
 						x={in_s_(axis__line__position__in / side__scale)}
 						y1={0}
-						y2={side__y_axis__height}
+						y2={in_s_(side__y_axis__height__in)}
 						title="driver camper y-axis"
 					/>
 					<C__driver__y_axis__tick
 						class="driver__y_axis__top__tick"
 						y={0}
-						text_y={side__camper__height / 2}
+						text_y={in_s_(side__camper__height__in / 2)}
 						text={in_s_(side__camper__height__in)}
 					/>
 					<C__driver__y_axis__tick
 						class="driver__y_axis__camper__tick"
-						y={side__camper__height}
-						text_y={side__camper__height + side__receiver__under__body__y / 2}
+						y={in_s_(side__camper__height__in)}
+						text_y={in_s_(side__camper__height__in + side__receiver__under__body__y__in / 2)}
 						text={in_s_(receiver__under__body__y__in)}
 					/>
 					<C__driver__y_axis__tick
 						class="driver__y_axis__frame__top__tick"
-						y={side__frame__top__y}
-						text_y={side__frame__top__y + side__frame__height / 2}
+						y={in_s_(side__frame__top__y__in)}
+						text_y={in_s_(side__frame__top__y__in + side__frame__height__in / 2)}
 						text={in_s_(receiver__height__in)}
 					/>
 					<C__driver__y_axis__tick
 						class="driver__y_axis__frame__bottom__tick"
-						y={side__frame__bottom__y}
+						y={in_s_(side__frame__bottom__y__in)}
 					/>
 					<C__driver__y_axis__tick
 						class="driver__y_axis__bottom__tick"
-						y={side__fender__height}
-						text_y={side__frame__bottom__y + side__frame__height / 2}
+						y={in_s_(side__fender__height__in)}
+						text_y={in_s_(side__frame__bottom__y__in + side__frame__height__in / 2)}
 						text={in_s_(receiver__height__in)}
 					/>
 				</svg>
 			)
-			function C__driver__y_axis__tick($p:VoidProps<{ class:string, y:number, text_y?:number, text?:string }>) {
+			function C__driver__y_axis__tick($p:VoidProps<{
+				class:string
+				y:number|string
+				text_y?:number|string
+				text?:string
+			}>) {
 				return (
 					<C__tick
 						class={$p.class}
@@ -572,45 +562,45 @@ export function C__page_2($p:VoidProps<{
 				<svg
 					class="C__driver__x_axis"
 					x={0}
-					y={side__x_axis__y}
-					width={side__y_axis__height}
-					height={axis__across}
+					y={in_s_(side__x_axis__y__in)}
+					width={in_s_(side__y_axis__height__in)}
+					height={in_s_(axis__across__in)}
 				>
 					<C__side__x_axis__line
 						class="C__driver__x_axis__line"
 						x1={0}
-						x2={side__x_axis__width}
+						x2={in_s_(side__x_axis__width__in)}
 						y={in_s_(axis__line__position__in / side__scale)}
 						title="driver camper y-axis"
 					/>
 					<C__driver__x_axis__tick class="C__driver__x_axis__tick_0" x={0}/>
 					<C__driver__x_axis__tick
 						class="C__driver__x_axis__tick_1"
-						x={side__frame__width}
-						text_x={side__frame__width / 2}
-						text={`${side__frame__width__in}in`}
+						x={in_s_(side__frame__width__in)}
+						text_x={in_s_(side__frame__width__in / 2)}
+						text={in_s_(side__frame__width__in)}
 					/>
 					<C__driver__x_axis__tick
 						class="C__driver__x_axis__tick_2"
-						x={side__camper__width}
-						text_x={side__frame__width + (side__camper__width - side__frame__width) / 2}
-						text={`${side__camper__width__in - side__frame__width__in}in`}
+						x={in_s_(side__camper__width__in)}
 					/>
 					<C__driver__x_axis__tick
 						class="C__driver__x_axis__tick_3"
-						x={side__bumper__cross__x}
-						text_x={side__camper__width + (side__bumper__cross__x - side__camper__width) / 2}
-						text={`${side__bumper__cross__x__in - side__camper__width__in}in`}
+						x={in_s_(side__bumper__cross__x__in)}
+						text_x={in_s_(side__camper__width__in + (side__bumper__cross__x__in - side__camper__width__in) / 2)}
+						text={in_s_(side__bumper__cross__x__in - side__camper__width__in)}
 					/>
 					<C__driver__x_axis__tick
 						class="driver__x_axis__tick_4"
-						x={side__fender__width}
-						text_x={side__bumper__cross__x + (side__fender__width - side__bumper__cross__x) / 2}
-						text={`${side__fender__width__in - side__bumper__cross__x__in}in`}
+						x={in_s_(side__fender__width__in)}
+						text_x={
+							in_s_(side__bumper__cross__x__in + (side__fender__width__in - side__bumper__cross__x__in) / 2)
+						}
+						text={in_s_(side__fender__width__in - side__bumper__cross__x__in)}
 					/>
 				</svg>
 			)
-			function C__driver__x_axis__tick($p:VoidProps<{ class:string, x:number, text_x?:number, text?:string }>) {
+			function C__driver__x_axis__tick($p:VoidProps<{ class:string, x:number|string, text_x?:number|string, text?:string }>) {
 				return (
 					<C__side__x_axis__tick
 						{...$p}
@@ -627,9 +617,9 @@ export function C__page_2($p:VoidProps<{
 			return (
 				<svg
 					class="C__side__frame__axis"
-					y={side__frame__top__y}
-					width={side__frame__width}
-					height={side__frame__height}
+					y={in_s_(side__frame__top__y__in)}
+					width={in_s_(side__frame__width__in)}
+					height={in_s_(side__frame__height__in)}
 				>
 					<C__side__frame__hole__placement__axis/>
 					<C__side__frame__hole__axis/>
@@ -639,15 +629,15 @@ export function C__page_2($p:VoidProps<{
 				return (
 					<svg
 						class="C__side__frame__hole__placement__axis"
-						x={side__frame__hole__placement__axis__x}
-						y={side__frame__hole__placement__axis__y}
-						width={side__frame__hole__placement__axis__width}
-						height={side__frame__hole__placement__axis__height}
+						x={in_s_(side__frame__hole__placement__axis__x__in)}
+						y={in_s_(side__frame__hole__placement__axis__y__in)}
+						width={in_s_(side__frame__hole__placement__axis__width__in)}
+						height={in_s_(side__frame__hole__placement__axis__height__in)}
 					>
 						<C__side__x_axis__line
 							class="C__side__frame__hole__placement__axis__line"
 							x1={0}
-							x2={side__frame__hole__placement__axis__width}
+							x2={in_s_(side__frame__hole__placement__axis__width__in)}
 							y={in_s_(axis__line__position__in / side__scale)}
 						/>
 						<C__side__frame__axis__tick
@@ -658,12 +648,12 @@ export function C__page_2($p:VoidProps<{
 						/>
 						<C__side__frame__axis__tick
 							class="C__side__frame__hole__placement__axis__tick_1"
-							x={side__frame__hole__placement__axis__width}
+							x={in_s_(side__frame__hole__placement__axis__width__in)}
 							y1={in_s_(axis__line__position__in / side__scale)}
 							y2={in_s_((axis__line__position__in + axis__line__position__in - .02) / side__scale)}
-							text_x={side__frame__hole__placement__axis__width / 2}
+							text_x={in_s_(side__frame__hole__placement__axis__width__in / 2)}
 							text_y={in_s_((axis__line__position__in - .1) / side__scale)}
-							text={`${side__frame__hole__placement__axis__width__in}in`}
+							text={in_s_(side__frame__hole__placement__axis__width__in)}
 							dominant_baseline="hanging"
 						/>
 					</svg>
@@ -673,15 +663,15 @@ export function C__page_2($p:VoidProps<{
 				return (
 					<svg
 						class="C__side__frame__hole__axis"
-						x={side__frame__hole__axis__x}
-						y={side__frame__hole__axis__y}
-						width={side__frame__hole__axis__width}
-						height={side__frame__hole__axis__height}
+						x={in_s_(side__frame__hole__axis__x__in)}
+						y={in_s_(side__frame__hole__axis__y__in)}
+						width={in_s_(side__frame__hole__axis__width__in)}
+						height={in_s_(side__frame__hole__axis__height__in)}
 					>
 						<C__side__x_axis__line
 							class="C__side__frame__hole__axis__line"
 							x1={0}
-							x2={side__frame__hole__axis__width}
+							x2={in_s_(side__frame__hole__axis__width__in)}
 							y={in_s_(axis__line__position__in / side__scale)}
 							stroke_width={in_s_(side__px__in)}
 						/>
@@ -691,8 +681,8 @@ export function C__page_2($p:VoidProps<{
 						/>
 						<C__side__frame__axis__tick
 							class="C__side__frame__hole__axis__tick_1"
-							x={side__frame__hole__r * 2}
-							text_x={side__frame__hole__r}
+							x={in_s_(side__frame__hole__r__in * 2)}
+							text_x={in_s_(side__frame__hole__r__in)}
 							text_y={in_s_((axis__line__position__in + .1) / side__scale)}
 							text={in_s_(side__frame__hole__r__in * 2)}
 						/>
@@ -950,6 +940,7 @@ function C__tick(_$p:VoidProps<C__tick__props_T&{
 		>{$p.text}</line>,
 		<Show when={$p.text}>
 			<text
+				class={`${$p.class} text`}
 				x={$p.text_x}
 				y={$p.text_y}
 				font-size={$p.font_size}
