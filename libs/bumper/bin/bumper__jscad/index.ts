@@ -1,2 +1,2 @@
-import { bumper__jscad__run } from '../../lib/index.js'
-bumper__jscad__run().then()
+import { Svg__jscad__bumper__run } from '../../lib/index.js'
+Svg__jscad__bumper__run().then()
