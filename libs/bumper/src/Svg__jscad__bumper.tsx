@@ -4,7 +4,7 @@ import svg_serializer from '@jscad/svg-serializer'
 import { XMLParser } from 'fast-xml-parser'
 import { type VoidProps } from 'solid-js'
 import {
-	back__height__in,
+	back__height__in, back__receivers__offset__x__in,
 	back__width__in,
 	camper__back__height__in,
 	camper__depth__in,
@@ -14,15 +14,12 @@ import {
 	content__x__in,
 	content__y__in,
 	doc__height__in,
-	doc__width__in,
+	doc__width__in, frame__ground__in,
 	in__px_,
 	in_s_,
 	page__height__in,
-	page__width__in
+	page__width__in, receiver__height__in, receiver__width__in
 } from './_lib.js'
-export function bumper__jscad_() {
-	return [back__bumper__jscad_()]
-}
 export function Svg__jscad__bumper($p:VoidProps) {
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" class="doc" width={in_s_(doc__width__in)} height={in_s_(doc__height__in)}>
@@ -32,7 +29,7 @@ export function Svg__jscad__bumper($p:VoidProps) {
 	)
 }
 export function C__page($p:VoidProps<{ y?:number|string }>) {
-	const back__bumper__svg_a = back__bumper__svg_().split('\n').slice(3)
+	const back__bumper__svg_a = back__bumper__assembly__svg_().split('\n').slice(3)
 	const parser = new XMLParser({ ignoreAttributes: false })
 	const scene_o = parser.parse(`${back__bumper__svg_a[0]}</svg>`).svg
 	const scene__width__in = parseFloat(scene_o['@_width'])
@@ -53,15 +50,15 @@ export function C__page($p:VoidProps<{ y?:number|string }>) {
 				data-back__width__in={back__width__in}
 				data-back__height__in={back__height__in}
 				viewBox={`0 0 ${in__px_(scene__width__in)} ${in__px_(scene__height__in)}`}
-				innerHTML={back__bumper__svg_().split('\n').slice(3)}
+				innerHTML={back__bumper__assembly__svg_().split('\n').slice(3)}
 			/>
 		</svg>
 	)
 }
-export function back__bumper__svg_() {
+export function back__bumper__assembly__svg_() {
 	const { colorize } = modeling.colors
 	const { project } = modeling.extrusions
-	const back__bumper__jscad = back__bumper__jscad_()
+	const back__bumper__jscad = bumper__assembly__jscad_()
 	const svg_a = svg_serializer.serialize(
 		{ unit: 'in' },
 		_p_(
@@ -74,14 +71,43 @@ export function back__bumper__svg_() {
 		))
 	return svg_a[0]
 }
-export function back__bumper__jscad_() {
+export function bumper__assembly__jscad_() {
+	const { union } = modeling.booleans
 	const { colorize, cssColors } = modeling.colors
+	const { gray } = cssColors
 	const { cuboid } = modeling.primitives
-	return _p_(
-		cuboid({
-			center: [camper__width__in / 2, camper__depth__in / 2, camper__back__height__in / 2],
-			size: [camper__width__in, camper__depth__in, camper__back__height__in]
-		}),
-		$=>colorize(cssColors.gray, $)
+	return union(
+		frame__jscad_(),
+		// camper__jscad_(),
 	)
+	function camper__jscad_() {
+		return _p_(
+			cuboid({
+				center: [camper__width__in / 2, camper__depth__in / 2, camper__back__height__in / 2],
+				size: [camper__width__in, camper__depth__in, camper__back__height__in]
+			}),
+			$=>colorize(gray, $))
+	}
+	function frame__jscad_() {
+		return union(
+			frame__driver__jscad_(),
+			frame__passenger__jscad_()
+		)
+		function frame__driver__jscad_() {
+			return _p_(
+				cuboid({
+					center: [
+						back__receivers__offset__x__in + receiver__width__in / 2,
+						0,
+						frame__ground__in + receiver__height__in / 2]
+				})
+			)
+		}
+		function frame__passenger__jscad_() {
+			return _p_(
+				cuboid({
+				})
+			)
+		}
+	}
 }

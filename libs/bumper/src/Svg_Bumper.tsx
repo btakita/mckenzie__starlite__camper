@@ -484,36 +484,36 @@ export function C__page_2($p:VoidProps<{
 					height={in_s_(side__y_axis__height__in)}
 				>
 					<C__side__y_axis__line
-						class="driver__camper__y_axis"
+						class="C__driver__y_axis__line"
 						x={in_s_(axis__line__position__in / side__scale)}
 						y1={0}
 						y2={in_s_(side__y_axis__height__in)}
 						title="driver camper y-axis"
 					/>
 					<C__driver__y_axis__tick
-						class="driver__y_axis__top__tick"
+						class="C__driver__y_axis__tick_0"
 						y={0}
 						text_y={in_s_(side__camper__height__in / 2)}
 						text={in_s_(side__camper__height__in)}
 					/>
 					<C__driver__y_axis__tick
-						class="driver__y_axis__camper__tick"
+						class="C__driver__y_axis__tick_1"
 						y={in_s_(side__camper__height__in)}
 						text_y={in_s_(side__camper__height__in + side__receiver__under__body__y__in / 2)}
 						text={in_s_(receiver__under__body__y__in)}
 					/>
 					<C__driver__y_axis__tick
-						class="driver__y_axis__frame__top__tick"
+						class="C__driver__y_axis__tick_2"
 						y={in_s_(side__frame__top__y__in)}
 						text_y={in_s_(side__frame__top__y__in + side__frame__height__in / 2)}
 						text={in_s_(receiver__height__in)}
 					/>
 					<C__driver__y_axis__tick
-						class="driver__y_axis__frame__bottom__tick"
+						class="C__driver__y_axis__tick_3"
 						y={in_s_(side__frame__bottom__y__in)}
 					/>
 					<C__driver__y_axis__tick
-						class="driver__y_axis__bottom__tick"
+						class="C__driver__y_axis__tick_4"
 						y={in_s_(side__fender__height__in)}
 						text_y={in_s_(side__frame__bottom__y__in + side__frame__height__in / 2)}
 						text={in_s_(receiver__height__in)}
@@ -567,6 +567,8 @@ export function C__page_2($p:VoidProps<{
 					<C__driver__x_axis__tick
 						class="C__driver__x_axis__tick_2"
 						x={in_s_(camper__depth__in)}
+						text_x={in_s_(side__frame__width__in + (camper__depth__in - side__frame__width__in) / 2)}
+						text={in_s_(camper__depth__in - side__frame__width__in)}
 					/>
 					<C__driver__x_axis__tick
 						class="C__driver__x_axis__tick_3"
