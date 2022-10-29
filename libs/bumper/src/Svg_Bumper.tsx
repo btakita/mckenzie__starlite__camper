@@ -563,7 +563,7 @@ export function C__page_2($p:VoidProps<{
 					class="C__driver__x_axis"
 					x={0}
 					y={in_s_(side__x_axis__y__in)}
-					width={in_s_(side__y_axis__height__in)}
+					width={in_s_(side__x_axis__width__in)}
 					height={in_s_(axis__across__in)}
 				>
 					<C__side__x_axis__line
