@@ -1,5 +1,6 @@
 import { mergeProps, Show, type VoidProps } from 'solid-js'
 import { type JSX } from 'solid-js/types'
+import { camper__back__height__in, camper__back__width__in, receiver__height__in, receiver__width__in } from './_const'
 //region
 // 96.75
 // 8 x 7.5
@@ -8,33 +9,34 @@ const receiver__bolt__dx__in = .75
 const receiver__end__x__in = 2
 // .75
 // 2 *
-const root__in__px = 96
+const in__px = 96
+const px__in = 1. / 96
 const page__width__in = 8.5
 const page__height__in = 11
 const page__margin_x__in = .25
 const page__margin_y__in = .25
 const content__width__in = page__width__in - (2 * page__margin_x__in)
-const page__width = page__width__in * root__in__px
-const page__height = page__height__in * root__in__px
+const page__width = page__width__in * in__px
+const page__height = page__height__in * in__px
 const doc__width = page__width
 const doc__height = page__height * 2
-const page__margin_x = page__margin_x__in * root__in__px
-const page__margin_y = page__margin_y__in * root__in__px
+const page__margin_x = page__margin_x__in * in__px
+const page__margin_y = page__margin_y__in * in__px
 const content__height__in = page__height__in - (2 * page__margin_y__in)
 const content__width = page__width - 2 * page__margin_x
 const content__height = page__height - 2 * page__margin_y
 const content__x = page__margin_x
 const content__y = page__margin_y
-const receiver__width__in = 2
-const receiver__height__in = 3.75
-const back__camper__width__in = 96.75
-const back__width__in = back__camper__width__in
-const back__in__px = root__in__px / (1.1 * back__width__in / content__width__in)
+const back__width__in = camper__back__width__in
+const back__scale = content__width__in / back__width__in
+const back__in__px = in__px * back__scale
+const back__px__in = 1. / back__in__px
 const back__width = back__width__in * back__in__px
-const back__camper__width = back__camper__width__in * back__in__px
+const back__camper__width = camper__back__width__in * back__in__px
 const back__camper__x = 0
 const back__screw__y = 1.5 * back__in__px
-const back__camper__height = 11.5 * back__in__px
+const back__camper__height__in = camper__back__height__in
+const back__camper__height = back__camper__height__in * back__in__px
 const back__receiver__width = receiver__width__in * back__in__px
 const receiver__under__body__y__in = 1
 const back__receiver__under__body__y = receiver__under__body__y__in * back__in__px
@@ -60,25 +62,33 @@ const back__receiver__x_axis__height =
 const back__receivers__svg__height = back__receiver__x_axis__y + back__receiver__x_axis__height
 const back__fender__width = back__camper__width
 const back__fender__bumper__height = fender__bumper__height__in * back__in__px
-const back__fender__height =
-	back__camper__height
-	+ back__receiver__under__body__y
-	+ back__fender__bumper__height
+const back__fender__height__in =
+	back__camper__height__in
+	+ receiver__under__body__y__in
+	+ fender__bumper__height__in
+const back__fender__height = back__fender__height__in * back__in__px
 const back__receiver__axis__height = 24
+const back__receiver__axis__height__in = back__receiver__axis__height * back__px__in
+const back__receiver__axis__y__in = back__fender__height__in
 const back__receiver__axis__y = back__fender__height
 const back__receiver__axis__width__in = back__receivers__mid_distance__width__in + receiver__width__in
 const back__receiver__axis__width = back__receiver__axis__width__in * back__in__px
 const back__receiver__axis__x = (back__camper__width - back__receiver__axis__width) / 2
 const back__receivers__axis__height = 24
-const back__receivers__axis__y = back__receiver__axis__y + back__receiver__axis__height
+const back__receivers__axis__height__in = back__receivers__axis__height * px__in
+const back__receivers__axis__y__in = back__receiver__axis__y__in + back__receiver__axis__height__in
+const back__receivers__axis__y = back__receivers__axis__y__in * back__in__px
 const back__receivers__axis__width__in = back__receivers__mid_distance__width__in
 const back__receivers__axis__width = back__receivers__axis__width__in * back__in__px
 const back__receivers__axis__x = (back__camper__width - back__receivers__axis__width) / 2
 const back__fender__axis__height = 24
+const back__fender__axis__height__in = back__fender__axis__height * px__in
 const back__fender__axis__x = 0
+const back__fender__axis__y__in = back__receivers__axis__y__in + back__receivers__axis__height__in
 const back__fender__axis__y = back__receivers__axis__y + back__receivers__axis__height
-const back__fender__axis__width__in = back__camper__width__in
+const back__fender__axis__width__in = camper__back__width__in
 const back__fender__axis__width = back__fender__axis__width__in * back__in__px
+const back__svg__height__in = back__fender__axis__y__in + back__fender__axis__height__in
 const back__svg__height = back__fender__axis__y + back__fender__axis__height
 const side__camper__width__in = 8
 const side__camper__height__in = 7.5
@@ -89,7 +99,7 @@ const side__fender__height__in =
 const side__svg__y = back__svg__height + 50
 const side__fender__width__in = side__camper__width__in + 6
 const side__frame__width__in = side__camper__width__in - 2
-const side__in__px = root__in__px / (1.1 * side__fender__width__in / content__width__in)
+const side__in__px = in__px / (1.1 * side__fender__width__in / content__width__in)
 const axis__across = 100
 const side__receiver__under__body__y = receiver__under__body__y__in * side__in__px
 const side__fender__height = side__fender__height__in * side__in__px
