@@ -194,8 +194,8 @@ export function C__page_1() {
 					class="C__back__bumper"
 					x={in_s_(back__body__x__in)}
 					y={in_s_(back__body__height__in)}
-					width={in_s_(body__back__width__in)}
-					height={in_s_(back__receivers__height__in)}
+					width={in_s_(body__back__width__in + 2 * fender__thickness__in)}
+					height={in_s_(back__receivers__height__in + fender__thickness__in)}
 				>
 					<rect
 						width={in_s_(body__back__width__in)}

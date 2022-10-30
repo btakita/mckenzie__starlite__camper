@@ -128,8 +128,17 @@ function body__jscad_():Geom3&Colored {
 		}),
 		$=>colorize(gray, $))
 }
-// function fender__jscad_():Geom3&Colored {
+// function bumper__jscad_():Geom3&Colored {
 //
+// }
+// function fender__jscad_():Geom3&Colored {
+// 	return _p_(
+// 		union(camper__back__fender__jscad_()),
+// 		$=>colorize([...gray, .6], $)
+// 	)
+// 	function camper__back__fender__jscad_():Geom3 {
+//
+// 	}
 // }
 function project_colorize(
 	options:ProjectOptions, $:Geom3, color:RGB|RGBA = $.color
