@@ -4,7 +4,8 @@ import svg_serializer from '@jscad/svg-serializer'
 import { XMLParser } from 'fast-xml-parser'
 import { type VoidProps } from 'solid-js'
 import {
-	back__height__in, back__receivers__offset__x__in,
+	back__height__in,
+	back__receivers__offset__x__in,
 	back__width__in,
 	camper__back__height__in,
 	camper__depth__in,
@@ -14,11 +15,17 @@ import {
 	content__x__in,
 	content__y__in,
 	doc__height__in,
-	doc__width__in, frame__ground__in,
+	doc__width__in,
+	frame__depth__in,
+	frame__ground__in,
+	frame__z__in,
 	in__px_,
 	in_s_,
 	page__height__in,
-	page__width__in, receiver__height__in, receiver__width__in
+	page__width__in,
+	receiver__height__in,
+	receiver__width__in,
+	receivers__back__width__in
 } from './_lib.js'
 export function Svg__jscad__bumper($p:VoidProps) {
 	return (
@@ -89,25 +96,30 @@ export function bumper__assembly__jscad_() {
 			$=>colorize(gray, $))
 	}
 	function frame__jscad_() {
-		return union(
-			frame__driver__jscad_(),
-			frame__passenger__jscad_()
+		return _p_(
+			union(
+				frame__driver__jscad_(),
+				frame__passenger__jscad_(),
+			),
+			$=>colorize(gray, $),
 		)
 		function frame__driver__jscad_() {
-			return _p_(
-				cuboid({
-					center: [
-						back__receivers__offset__x__in + receiver__width__in / 2,
-						0,
-						frame__ground__in + receiver__height__in / 2]
-				})
-			)
+			return cuboid({
+				center: [
+					back__receivers__offset__x__in + receiver__width__in / 2,
+					frame__z__in + frame__depth__in / 2,
+					frame__ground__in + receiver__height__in / 2],
+				size: [receiver__width__in, frame__depth__in, receiver__height__in]
+			})
 		}
 		function frame__passenger__jscad_() {
-			return _p_(
-				cuboid({
-				})
-			)
+			return cuboid({
+				center: [
+					back__receivers__offset__x__in + receivers__back__width__in - receiver__width__in / 2,
+					frame__z__in + frame__depth__in / 2,
+					frame__ground__in + receiver__height__in / 2],
+				size: [receiver__width__in, frame__depth__in, receiver__height__in]
+			})
 		}
 	}
 }
