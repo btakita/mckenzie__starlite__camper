@@ -128,6 +128,9 @@ function body__jscad_():Geom3&Colored {
 		}),
 		$=>colorize(gray, $))
 }
+// function fender__jscad_():Geom3&Colored {
+//
+// }
 function project_colorize(
 	options:ProjectOptions, $:Geom3, color:RGB|RGBA = $.color
 ):Geom2&Colored {

@@ -10,6 +10,7 @@ import {
 	back__fender__axis__x__in,
 	back__fender__axis__y__in,
 	back__height__in,
+	back__in__px,
 	back__px__in,
 	back__receiver__y1__in,
 	back__receivers__axis__height__in,
@@ -23,6 +24,7 @@ import {
 	back__screw__y__in,
 	back__width__in,
 	body__back__width__in,
+	body__depth__in,
 	content__height__in,
 	content__width__in,
 	content__x__in,
@@ -31,17 +33,19 @@ import {
 	doc__width__in,
 	fender__back__height__in,
 	fender__back__width__in,
+	fender__thickness__in,
+	frame__body__gap__in,
 	in__px_,
 	in_s_,
 	page__height__in,
 	page__width__in,
 	px__in,
 	receiver__height__in,
-	frame__body__gap__in,
 	receiver__width__in,
 	receivers__back__height__in,
 	receivers__back__mid_distance__width__in,
 	receivers__back__width__in,
+	side__body__height__in,
 	side__bumper__connect__width__in,
 	side__bumper__cross__width__in,
 	side__bumper__cross__x__in,
@@ -49,8 +53,6 @@ import {
 	side__bumper__width__in,
 	side__bumper__x__in,
 	side__bumper__y__in,
-	side__body__height__in,
-	body__depth__in,
 	side__fender__height__in,
 	side__fender__width__in,
 	side__frame__bottom__y__in,
@@ -69,6 +71,7 @@ import {
 	side__frame__top__y__in,
 	side__frame__width__in,
 	side__height__in,
+	side__in__px,
 	side__px__in,
 	side__receiver__under__body__y__in,
 	side__scale,
@@ -217,6 +220,8 @@ export function C__page_1() {
 						fill="url(#sheet__pattern)"
 						width={in_s_(fender__back__width__in)}
 						height={in_s_(fender__back__height__in)}
+						stroke="darkgray"
+						stroke-width={fender__thickness__in * back__in__px}
 					>
 						<title>bumper sheet</title>
 					</rect>
@@ -470,6 +475,8 @@ export function C__page_2($p:VoidProps<{
 							].join(', ')}`,
 						].join(' ')}
 						fill="url(#sheet__pattern)"
+						stroke="darkgray"
+						stroke-width={fender__thickness__in * side__in__px}
 					></path>
 				</svg>
 			)
