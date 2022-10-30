@@ -442,7 +442,7 @@ export function C__page_2($p:VoidProps<{
 					<path
 						d={[
 							`M ${in__px_(body__depth__in)} 0`,
-							`V ${in__px_(side__frame__top__y__in)}`,
+							`V ${in__px_(side__frame__top__y__in + receiver__thickness__in)}`,
 							`H ${in__px_(fender__depth__in)}`,
 							`V ${in__px_(side__fender__height__in)}`,
 							`H ${0}`,
