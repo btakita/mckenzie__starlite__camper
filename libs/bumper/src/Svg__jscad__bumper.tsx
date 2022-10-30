@@ -7,15 +7,15 @@ import {
 	back__height__in,
 	back__receivers__offset__x__in,
 	back__width__in,
-	camper__back__height__in,
-	camper__depth__in,
-	camper__width__in,
+	body__back__height__in,
+	body__depth__in,
+	body__width__in,
 	content__height__in,
 	content__width__in,
 	content__x__in,
 	content__y__in,
 	doc__height__in,
-	doc__width__in,
+	doc__width__in, frame__body__gap__in,
 	frame__depth__in,
 	frame__ground__in,
 	frame__z__in,
@@ -85,16 +85,8 @@ export function bumper__assembly__jscad_() {
 	const { cuboid } = modeling.primitives
 	return union(
 		frame__jscad_(),
-		// camper__jscad_(),
+		// body__jscad_(),
 	)
-	function camper__jscad_() {
-		return _p_(
-			cuboid({
-				center: [camper__width__in / 2, camper__depth__in / 2, camper__back__height__in / 2],
-				size: [camper__width__in, camper__depth__in, camper__back__height__in]
-			}),
-			$=>colorize(gray, $))
-	}
 	function frame__jscad_() {
 		return _p_(
 			union(
@@ -121,5 +113,16 @@ export function bumper__assembly__jscad_() {
 				size: [receiver__width__in, frame__depth__in, receiver__height__in]
 			})
 		}
+	}
+	function body__jscad_() {
+		return _p_(
+			cuboid({
+				center: [
+					body__width__in / 2,
+					body__depth__in / 2,
+					frame__ground__in + receiver__height__in + frame__body__gap__in + body__back__height__in / 2],
+				size: [body__width__in, body__depth__in, body__back__height__in]
+			}),
+			$=>colorize(gray, $))
 	}
 }

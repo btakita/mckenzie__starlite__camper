@@ -3,8 +3,8 @@ import { type JSX } from 'solid-js/types'
 import {
 	axis__across__in,
 	axis__line__position__in,
-	back__camper__height__in,
-	back__camper__x__in,
+	back__body__height__in,
+	back__body__x__in,
 	back__fender__axis__height__in,
 	back__fender__axis__width__in,
 	back__fender__axis__x__in,
@@ -22,7 +22,7 @@ import {
 	back__scale,
 	back__screw__y__in,
 	back__width__in,
-	camper__back__width__in,
+	body__back__width__in,
 	content__height__in,
 	content__width__in,
 	content__x__in,
@@ -37,7 +37,7 @@ import {
 	page__width__in,
 	px__in,
 	receiver__height__in,
-	receiver__under__body__y__in,
+	frame__body__gap__in,
 	receiver__width__in,
 	receivers__back__height__in,
 	receivers__back__mid_distance__width__in,
@@ -49,8 +49,8 @@ import {
 	side__bumper__width__in,
 	side__bumper__x__in,
 	side__bumper__y__in,
-	side__camper__height__in,
-	camper__depth__in,
+	side__body__height__in,
+	body__depth__in,
 	side__fender__height__in,
 	side__fender__width__in,
 	side__frame__bottom__y__in,
@@ -112,7 +112,7 @@ export function C__page_1() {
 	function C__back() {
 		return (
 			<svg class="C__back" height={in_s_(back__height__in)} width={in_s_(back__width__in)}>
-				<C__back__camper/>
+				<C__back__body/>
 				<C__back__receivers/>
 				<C__back__bumper/>
 				<C__back__fender/>
@@ -120,26 +120,26 @@ export function C__page_1() {
 				<C__back__fender__axis/>
 			</svg>
 		)
-		function C__back__camper() {
+		function C__back__body() {
 			return (
 				<svg
-					class="C__back__camper"
-					x={in_s_(back__camper__x__in)}
-					width={in_s_(camper__back__width__in)}
-					height={in_s_(back__camper__height__in)}
+					class="C__back__body"
+					x={in_s_(back__body__x__in)}
+					width={in_s_(body__back__width__in)}
+					height={in_s_(back__body__height__in)}
 				>
 					<rect
-						width={in_s_(camper__back__width__in)}
-						height={in_s_(back__camper__height__in)}
+						width={in_s_(body__back__width__in)}
+						height={in_s_(back__body__height__in)}
 						fill="lightgray"
 					>
-						<title>camper back</title>
+						<title>body back</title>
 					</rect>
 					<line
 						class="screw__row"
 						x1="0"
 						y1={in_s_(back__screw__y__in)}
-						x2={in_s_(camper__back__width__in)}
+						x2={in_s_(body__back__width__in)}
 						y2={in_s_(back__screw__y__in)}
 						stroke="black"
 						stroke-dasharray="3 1"
@@ -153,9 +153,9 @@ export function C__page_1() {
 			return (
 				<svg
 					class="C__back__receivers"
-					x={in_s_(back__camper__x__in)}
+					x={in_s_(back__body__x__in)}
 					y={in_s_(back__receivers__y__in)}
-					width={in_s_(camper__back__width__in)}
+					width={in_s_(body__back__width__in)}
 					height={in_s_(back__receivers__height__in)}
 				>
 					<svg
@@ -189,13 +189,13 @@ export function C__page_1() {
 			return (
 				<svg
 					class="C__back__bumper"
-					x={in_s_(back__camper__x__in)}
-					y={in_s_(back__camper__height__in)}
-					width={in_s_(camper__back__width__in)}
+					x={in_s_(back__body__x__in)}
+					y={in_s_(back__body__height__in)}
+					width={in_s_(body__back__width__in)}
 					height={in_s_(back__receivers__height__in)}
 				>
 					<rect
-						width={in_s_(camper__back__width__in)}
+						width={in_s_(body__back__width__in)}
 						height={in_s_(receiver__height__in)}
 						y={in_s_(back__receiver__y1__in)}
 						stroke="black"
@@ -209,7 +209,7 @@ export function C__page_1() {
 			return (
 				<svg
 					class="C__back__fender"
-					x={in_s_(back__camper__x__in)}
+					x={in_s_(back__body__x__in)}
 					width={in_s_(fender__back__width__in)}
 					height={in_s_(fender__back__height__in)}
 				>
@@ -336,7 +336,7 @@ export function C__page_2($p:VoidProps<{
 	function C__driver() {
 		return (
 			<svg class="C__driver" width={in_s_(side__width__in)} height={in_s_(side__height__in)}>
-				<C__driver__camper/>
+				<C__driver__body/>
 				<C__driver__frame/>
 				<C__driver__bumper/>
 				<C__driver__fender/>
@@ -345,11 +345,11 @@ export function C__page_2($p:VoidProps<{
 				<C__driver__frame__axis/>
 			</svg>
 		)
-		function C__driver__camper() {
+		function C__driver__body() {
 			return (
-				<svg class="C__driver__camper" width={in_s_(camper__depth__in)} height={in_s_(side__camper__height__in)}>
-					<rect width={in_s_(camper__depth__in)} height={in_s_(side__camper__height__in)} fill="lightgray">
-						<title>driver camper</title>
+				<svg class="C__driver__body" width={in_s_(body__depth__in)} height={in_s_(side__body__height__in)}>
+					<rect width={in_s_(body__depth__in)} height={in_s_(side__body__height__in)} fill="lightgray">
+						<title>driver body</title>
 					</rect>
 				</svg>
 			)
@@ -419,53 +419,53 @@ export function C__page_2($p:VoidProps<{
 				<svg class="C__driver__fender" width={in_s_(side__fender__width__in)} height={in_s_(side__fender__height__in)}>
 					<path
 						d={[
-							`M ${in__px_(camper__depth__in)} 0`,
+							`M ${in__px_(body__depth__in)} 0`,
 							`V ${in__px_(side__frame__top__y__in)}`,
 							`H ${in__px_(side__fender__width__in)}`,
 							`V ${in__px_(side__fender__height__in)}`,
 							`H ${0}`,
-							`V ${in__px_(side__camper__height__in)}`,
+							`V ${in__px_(side__body__height__in)}`,
 							// `H 0`,
 							`C ${[
 								[
-									in__px_(camper__depth__in * 0),
-									in__px_(side__camper__height__in * .75)
+									in__px_(body__depth__in * 0),
+									in__px_(side__body__height__in * .75)
 								].join(' '),
 								[
-									in__px_(camper__depth__in * .375),
-									in__px_(side__camper__height__in * .75),
+									in__px_(body__depth__in * .375),
+									in__px_(side__body__height__in * .75),
 								].join(' '),
 								[
-									in__px_(camper__depth__in * .5),
-									in__px_(side__camper__height__in * .75)
+									in__px_(body__depth__in * .5),
+									in__px_(side__body__height__in * .75)
 								].join(' ')
 							].join(', ')}`,
 							`C ${[
 								[
-									in__px_(camper__depth__in * .5),
-									in__px_(side__camper__height__in * .75)
+									in__px_(body__depth__in * .5),
+									in__px_(side__body__height__in * .75)
 								].join(' '),
 								[
-									in__px_(camper__depth__in * .85),
-									in__px_(side__camper__height__in * .8),
+									in__px_(body__depth__in * .85),
+									in__px_(side__body__height__in * .8),
 								].join(' '),
 								[
-									in__px_(camper__depth__in * .85),
-									in__px_(side__camper__height__in * .5)
+									in__px_(body__depth__in * .85),
+									in__px_(side__body__height__in * .5)
 								].join(' ')
 							].join(', ')}`,
 							`C ${[
 								[
-									in__px_(camper__depth__in * .9),
-									in__px_(side__camper__height__in * .1),
+									in__px_(body__depth__in * .9),
+									in__px_(side__body__height__in * .1),
 								].join(' '),
 								[
-									in__px_(camper__depth__in * .9),
-									in__px_(side__camper__height__in * 0),
+									in__px_(body__depth__in * .9),
+									in__px_(side__body__height__in * 0),
 								].join(' '),
 								[
-									in__px_(camper__depth__in * 1),
-									in__px_(side__camper__height__in * 0),
+									in__px_(body__depth__in * 1),
+									in__px_(side__body__height__in * 0),
 								].join(' ')
 							].join(', ')}`,
 						].join(' ')}
@@ -488,19 +488,19 @@ export function C__page_2($p:VoidProps<{
 						x={in_s_(axis__line__position__in / side__scale)}
 						y1={0}
 						y2={in_s_(side__y_axis__height__in)}
-						title="driver camper y-axis"
+						title="driver body y-axis"
 					/>
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_0"
 						y={0}
-						text_y={in_s_(side__camper__height__in / 2)}
-						text={in_s_(side__camper__height__in)}
+						text_y={in_s_(side__body__height__in / 2)}
+						text={in_s_(side__body__height__in)}
 					/>
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_1"
-						y={in_s_(side__camper__height__in)}
-						text_y={in_s_(side__camper__height__in + side__receiver__under__body__y__in / 2)}
-						text={in_s_(receiver__under__body__y__in)}
+						y={in_s_(side__body__height__in)}
+						text_y={in_s_(side__body__height__in + side__receiver__under__body__y__in / 2)}
+						text={in_s_(frame__body__gap__in)}
 					/>
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_2"
@@ -555,7 +555,7 @@ export function C__page_2($p:VoidProps<{
 						x1={0}
 						x2={in_s_(side__x_axis__width__in)}
 						y={in_s_(axis__line__position__in / side__scale)}
-						title="driver camper y-axis"
+						title="driver body y-axis"
 					/>
 					<C__driver__x_axis__tick class="C__driver__x_axis__tick_0" x={0}/>
 					<C__driver__x_axis__tick
@@ -566,15 +566,15 @@ export function C__page_2($p:VoidProps<{
 					/>
 					<C__driver__x_axis__tick
 						class="C__driver__x_axis__tick_2"
-						x={in_s_(camper__depth__in)}
-						text_x={in_s_(side__frame__width__in + (camper__depth__in - side__frame__width__in) / 2)}
-						text={in_s_(camper__depth__in - side__frame__width__in)}
+						x={in_s_(body__depth__in)}
+						text_x={in_s_(side__frame__width__in + (body__depth__in - side__frame__width__in) / 2)}
+						text={in_s_(body__depth__in - side__frame__width__in)}
 					/>
 					<C__driver__x_axis__tick
 						class="C__driver__x_axis__tick_3"
 						x={in_s_(side__bumper__cross__x__in)}
-						text_x={in_s_(camper__depth__in + (side__bumper__cross__x__in - camper__depth__in) / 2)}
-						text={in_s_(side__bumper__cross__x__in - camper__depth__in)}
+						text_x={in_s_(body__depth__in + (side__bumper__cross__x__in - body__depth__in) / 2)}
+						text={in_s_(side__bumper__cross__x__in - body__depth__in)}
 					/>
 					<C__driver__x_axis__tick
 						class="driver__x_axis__tick_4"
