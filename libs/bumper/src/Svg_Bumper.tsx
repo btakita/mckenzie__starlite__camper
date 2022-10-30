@@ -11,7 +11,8 @@ import {
 	back__px__in,
 	back__receivers__axis__height__in,
 	back__receivers__axis__width__in,
-	back__receivers__axis__x__in,
+	back__receivers__axis__x1__in,
+	back__receivers__axis__x2__in,
 	back__scale,
 	back__screw__y__in,
 	back__width__in,
@@ -20,10 +21,10 @@ import {
 	body__width__in,
 	body__x__in,
 	bumper__depth__in,
-	bumper__height__in, bumper__width__in,
+	bumper__height__in,
+	bumper__width__in,
 	bumper__x__in,
 	bumper__y__in,
-	bumper__z__in,
 	content__height__in,
 	content__width__in,
 	content__x__in,
@@ -246,42 +247,45 @@ export function C__page_1() {
 			return (
 				<svg
 					class="C__back__receivers__axis"
-					x={in_s_(back__receivers__axis__x__in)}
+					x={0}
 					y={in_s_(fender__height__in)}
-					width={in_s_(back__receivers__axis__width__in)}
+					width={in_s_(body__width__in)}
 					height={in_s_(back__receivers__axis__height__in)}
 				>
 					<C__back__x_axis__line
 						class="C__back__receivers__axis__line"
 						y={in_s_(axis__line__position__in / back__scale)}
-						x1={0}
-						x2={in_s_(back__receivers__axis__width__in)}
+						x1={in_s_(back__receivers__axis__x1__in)}
+						x2={in_s_(back__receivers__axis__x2__in)}
 						title="back receiver x axis"
 					/>
-					<C__back__receivers__axis__tick class="C__back__receivers__axis__tick_0" x={0}/>
+					<C__back__receivers__axis__tick
+						class="C__back__receivers__axis__tick_0"
+						x={in_s_(back__receivers__axis__x1__in)}
+					/>
 					<C__back__receivers__axis__tick
 						class="C__back__receivers__axis__tick_1"
-						x={in_s_(receiver__inner__width__in)}
-						text_x={0}
+						x={in_s_(back__receivers__axis__x1__in + receiver__inner__width__in)}
+						text_x={in_s_(back__receivers__axis__x1__in + receiver__inner__width__in / 2)}
 						text={in_s_(receiver__inner__width__in)}
-						text_anchor="start"
+						text_anchor="middle"
 					/>
 					<C__back__receivers__axis__tick
 						class="C__back__receivers__axis__tick_2"
-						x={in_s_(back__receivers__axis__width__in - receiver__inner__width__in)}
+						x={in_s_(back__receivers__axis__x2__in - receiver__inner__width__in)}
 						text_x={in_s_(
-							receiver__inner__width__in
-							+ (back__receivers__axis__width__in - 2 * receiver__inner__width__in) / 2)
-						}
+							back__receivers__axis__x1__in
+							+ (back__receivers__axis__x2__in - back__receivers__axis__x1__in) / 2
+						)}
 						text={in_s_(back__receivers__axis__width__in - 2 * receiver__inner__width__in)}
 						text_anchor="middle"
 					/>
 					<C__back__receivers__axis__tick
 						class="C__back__receivers__axis__tick_3"
-						x={in_s_(back__receivers__axis__width__in - back__px__in + receiver__thickness__in)}
-						text_x={in_s_(back__receivers__axis__width__in)}
+						x={in_s_(back__receivers__axis__x2__in)}
+						text_x={in_s_(back__receivers__axis__x2__in - receiver__inner__width__in / 2)}
 						text={in_s_(receiver__inner__width__in)}
-						text_anchor="end"
+						text_anchor="middle"
 					/>
 				</svg>
 			)
