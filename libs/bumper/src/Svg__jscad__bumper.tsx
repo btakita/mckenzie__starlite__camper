@@ -9,8 +9,8 @@ import svg_serializer from '@jscad/svg-serializer'
 import { XMLParser } from 'fast-xml-parser'
 import { type VoidProps } from 'solid-js'
 import {
-	back__height__in,
-	back__receivers__offset__x__in,
+	view__height__in,
+	receivers__x__in,
 	back__width__in,
 	body__depth__in,
 	body__height__in,
@@ -29,9 +29,9 @@ import {
 	in_s_,
 	page__height__in,
 	page__width__in,
-	receiver__height__in,
-	receiver__width__in,
-	receivers__back__width__in
+	receiver__inner__height__in,
+	receiver__inner__width__in,
+	receivers__width__in
 } from './_lib.js'
 const { project } = modeling.extrusions
 const { union } = modeling.booleans
@@ -70,7 +70,7 @@ export function C__page($p:VoidProps<{ y?:number|string }>) {
 				x={in_s_(content__x__in)}
 				y={in_s_(content__y__in)}
 				data-back__width__in={back__width__in}
-				data-back__height__in={back__height__in}
+				data-back__height__in={view__height__in}
 				viewBox={`0 0 ${in__px_(scene__width__in)} ${in__px_(scene__height__in)}`}
 				innerHTML={back__bumper__svg_a.join('\n')}
 			/>
@@ -88,6 +88,7 @@ export function bumper__assembly__jscad_a_():(Geom3&Colored)[] {
 	return [
 		frame__jscad_(),
 		body__jscad_(),
+		// bumper__jscad_()
 	]
 }
 function frame__jscad_():Geom3&Colored {
@@ -101,19 +102,19 @@ function frame__jscad_():Geom3&Colored {
 	function frame__driver__jscad_():Geom3 {
 		return cuboid({
 			center: [
-				back__receivers__offset__x__in + receiver__width__in / 2,
+				receivers__x__in + receiver__inner__width__in / 2,
 				frame__z__in + frame__depth__in / 2,
-				frame__ground__in + receiver__height__in / 2],
-			size: [receiver__width__in, frame__depth__in, receiver__height__in]
+				frame__ground__in + receiver__inner__height__in / 2],
+			size: [receiver__inner__width__in, frame__depth__in, receiver__inner__height__in]
 		})
 	}
 	function frame__passenger__jscad_():Geom3 {
 		return cuboid({
 			center: [
-				back__receivers__offset__x__in + receivers__back__width__in - receiver__width__in / 2,
+				receivers__x__in + receivers__width__in - receiver__inner__width__in / 2,
 				frame__z__in + frame__depth__in / 2,
-				frame__ground__in + receiver__height__in / 2],
-			size: [receiver__width__in, frame__depth__in, receiver__height__in]
+				frame__ground__in + receiver__inner__height__in / 2],
+			size: [receiver__inner__width__in, frame__depth__in, receiver__inner__height__in]
 		})
 	}
 }
@@ -123,13 +124,18 @@ function body__jscad_():Geom3&Colored {
 			center: [
 				body__width__in / 2,
 				body__depth__in / 2,
-				frame__ground__in + receiver__height__in + frame__body__gap__in + body__height__in / 2],
+				frame__ground__in + receiver__inner__height__in + frame__body__gap__in + body__height__in / 2],
 			size: [body__width__in, body__depth__in, body__height__in]
 		}),
 		$=>colorize(gray, $))
 }
 // function bumper__jscad_():Geom3&Colored {
-//
+// 	return _p_(cuboid({
+// 		center: [
+// 			body__width__in / 2,
+// 			frame__z__in + receiver__inner__width__in,
+// 		],
+// 	}), $=>colorize([...gray, .8], $))
 // }
 // function fender__jscad_():Geom3&Colored {
 // 	return _p_(

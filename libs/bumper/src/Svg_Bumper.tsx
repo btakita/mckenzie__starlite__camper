@@ -3,83 +3,82 @@ import { type JSX } from 'solid-js/types'
 import {
 	axis__across__in,
 	axis__line__position__in,
-	back__body__height__in,
-	back__body__x__in,
 	back__fender__axis__height__in,
 	back__fender__axis__width__in,
 	back__fender__axis__x__in,
 	back__fender__axis__y__in,
-	back__height__in,
 	back__in__px,
 	back__px__in,
-	back__receiver__y1__in,
 	back__receivers__axis__height__in,
 	back__receivers__axis__width__in,
 	back__receivers__axis__x__in,
-	back__receivers__axis__y__in,
-	back__receivers__height__in,
-	back__receivers__offset__x__in,
-	back__receivers__y__in,
 	back__scale,
 	back__screw__y__in,
 	back__width__in,
-	body__back__width__in,
 	body__depth__in,
+	body__height__in,
+	body__width__in,
+	body__x__in,
+	bumper__depth__in,
+	bumper__height__in, bumper__width__in,
+	bumper__x__in,
+	bumper__y__in,
+	bumper__z__in,
 	content__height__in,
 	content__width__in,
 	content__x__in,
 	content__y__in,
 	doc__height__in,
 	doc__width__in,
-	fender__back__height__in,
 	fender__back__width__in,
+	fender__depth__in,
+	fender__height__in,
 	fender__thickness__in,
 	frame__body__gap__in,
+	frame__depth__in,
+	frame__hole__cy__in,
+	frame__hole__cz__in,
+	frame__hole__r__in,
 	in__px_,
 	in_s_,
 	page__height__in,
 	page__width__in,
 	px__in,
-	receiver__height__in,
-	receiver__width__in,
-	receivers__back__height__in,
-	receivers__back__mid_distance__width__in,
-	receivers__back__width__in,
+	receiver__inner__height__in,
+	receiver__inner__width__in,
+	receiver__outer__height__in,
+	receiver__outer__width__in,
+	receiver__thickness__in,
+	receivers__height__in,
+	receivers__mid__width__in,
+	receivers__width__in,
+	receivers__x__in,
+	receivers__y__in,
 	side__body__height__in,
-	side__bumper__connect__width__in,
-	side__bumper__cross__width__in,
-	side__bumper__cross__x__in,
-	side__bumper__height__in,
-	side__bumper__width__in,
+	side__bumper__frame__join__x__in,
 	side__bumper__x__in,
 	side__bumper__y__in,
 	side__fender__height__in,
-	side__fender__width__in,
 	side__frame__bottom__y__in,
-	side__frame__height__in,
 	side__frame__hole__axis__height__in,
 	side__frame__hole__axis__width__in,
 	side__frame__hole__axis__x__in,
 	side__frame__hole__axis__y__in,
-	side__frame__hole__cx__in,
-	side__frame__hole__cy__in,
 	side__frame__hole__placement__axis__height__in,
 	side__frame__hole__placement__axis__width__in,
 	side__frame__hole__placement__axis__x__in,
 	side__frame__hole__placement__axis__y__in,
-	side__frame__hole__r__in,
 	side__frame__top__y__in,
-	side__frame__width__in,
 	side__height__in,
 	side__in__px,
 	side__px__in,
-	side__receiver__under__body__y__in,
 	side__scale,
 	side__width__in,
 	side__x_axis__width__in,
 	side__x_axis__y__in,
 	side__y_axis__height__in,
-	side__y_axis__x__in
+	side__y_axis__x__in,
+	view__height__in
 } from './_lib.js'
 //region
 // 96.75
@@ -106,7 +105,7 @@ export function C__page_1() {
 				y={in_s_(content__y__in)}
 				width={in_s_(content__width__in)}
 				height={in_s_(content__height__in)}
-				viewBox={`0 0 ${in__px_(back__width__in)} ${in__px_(back__height__in)}`}
+				viewBox={`0 0 ${in__px_(back__width__in)} ${in__px_(view__height__in)}`}
 			>
 				<C__back/>
 			</svg>
@@ -114,7 +113,7 @@ export function C__page_1() {
 	)
 	function C__back() {
 		return (
-			<svg class="C__back" height={in_s_(back__height__in)} width={in_s_(back__width__in)}>
+			<svg class="C__back" height={in_s_(view__height__in)} width={in_s_(back__width__in)}>
 				<C__back__body/>
 				<C__back__receivers/>
 				<C__back__bumper/>
@@ -127,13 +126,13 @@ export function C__page_1() {
 			return (
 				<svg
 					class="C__back__body"
-					x={in_s_(back__body__x__in)}
-					width={in_s_(body__back__width__in)}
-					height={in_s_(back__body__height__in)}
+					x={in_s_(body__x__in)}
+					width={in_s_(body__width__in)}
+					height={in_s_(body__height__in)}
 				>
 					<rect
-						width={in_s_(body__back__width__in)}
-						height={in_s_(back__body__height__in)}
+						width={in_s_(body__width__in)}
+						height={in_s_(body__height__in)}
 						fill="lightgray"
 					>
 						<title>body back</title>
@@ -142,7 +141,7 @@ export function C__page_1() {
 						class="screw__row"
 						x1="0"
 						y1={in_s_(back__screw__y__in)}
-						x2={in_s_(body__back__width__in)}
+						x2={in_s_(body__width__in)}
 						y2={in_s_(back__screw__y__in)}
 						stroke="black"
 						stroke-dasharray="3 1"
@@ -156,35 +155,51 @@ export function C__page_1() {
 			return (
 				<svg
 					class="C__back__receivers"
-					x={in_s_(back__body__x__in)}
-					y={in_s_(back__receivers__y__in)}
-					width={in_s_(body__back__width__in)}
-					height={in_s_(back__receivers__height__in)}
+					x={in_s_(receivers__x__in)}
+					y={in_s_(receivers__y__in)}
+					width={in_s_(receivers__width__in)}
+					height={in_s_(receivers__height__in)}
 				>
-					<svg
-						x={in_s_(back__receivers__offset__x__in)}
-						y={in_s_(back__receiver__y1__in)}
-						width={in_s_(receivers__back__width__in)}
-						height={in_s_(receivers__back__height__in)}
+					<rect
+						class="back__driver__receiver__outer"
+						width={in_s_(receiver__outer__width__in)}
+						height={in_s_(receiver__outer__height__in)}
+						x={0}
+						y={0}
+						fill="darkgray"
 					>
-						<rect
-							class="back__driver__receiver"
-							width={in_s_(receiver__width__in)}
-							height={in_s_(receiver__height__in)}
-							fill="gray"
-						>
-							<title>driver receiver</title>
-						</rect>
-						<rect
-							class="back__passenger__receiver"
-							x={in_s_(receivers__back__mid_distance__width__in)}
-							width={in_s_(receiver__width__in)}
-							height={in_s_(receiver__height__in)}
-							fill="gray"
-						>
-							<title>passenger receiver</title>
-						</rect>
-					</svg>
+						<title>back driver receiver outer</title>
+					</rect>
+					<rect
+						class="back__driver__receiver__inner"
+						width={in_s_(receiver__inner__width__in)}
+						height={in_s_(receiver__inner__height__in)}
+						x={in_s_(receiver__thickness__in)}
+						y={in_s_(receiver__thickness__in)}
+						fill="gray"
+					>
+						<title>back driver receiver inner</title>
+					</rect>
+					<rect
+						class="back__passenger__receiver__outer"
+						x={in_s_(receivers__mid__width__in)}
+						y={0}
+						width={in_s_(receiver__outer__width__in)}
+						height={in_s_(receiver__outer__height__in)}
+						fill="darkgray"
+					>
+						<title>back passenger receiver inner</title>
+					</rect>
+					<rect
+						class="back__passenger__receiver__inner"
+						x={in_s_(receiver__thickness__in + receivers__mid__width__in)}
+						y={in_s_(receiver__thickness__in)}
+						width={in_s_(receiver__inner__width__in)}
+						height={in_s_(receiver__inner__height__in)}
+						fill="gray"
+					>
+						<title>back passenger receiver inner</title>
+					</rect>
 				</svg>
 			)
 		}
@@ -192,15 +207,14 @@ export function C__page_1() {
 			return (
 				<svg
 					class="C__back__bumper"
-					x={in_s_(back__body__x__in)}
-					y={in_s_(back__body__height__in)}
-					width={in_s_(body__back__width__in + 2 * fender__thickness__in)}
-					height={in_s_(back__receivers__height__in + fender__thickness__in)}
+					x={in_s_(bumper__x__in)}
+					y={in_s_(bumper__y__in)}
+					width={in_s_(bumper__width__in)}
+					height={in_s_(bumper__height__in)}
 				>
 					<rect
-						width={in_s_(body__back__width__in)}
-						height={in_s_(receiver__height__in)}
-						y={in_s_(back__receiver__y1__in)}
+						width={in_s_(body__width__in)}
+						height={in_s_(bumper__height__in)}
 						stroke="black"
 						fill="gray"
 						fill-opacity="0.8"
@@ -212,14 +226,14 @@ export function C__page_1() {
 			return (
 				<svg
 					class="C__back__fender"
-					x={in_s_(back__body__x__in)}
+					x={in_s_(body__x__in)}
 					width={in_s_(fender__back__width__in)}
-					height={in_s_(fender__back__height__in)}
+					height={in_s_(fender__height__in)}
 				>
 					<rect
 						fill="url(#sheet__pattern)"
 						width={in_s_(fender__back__width__in)}
-						height={in_s_(fender__back__height__in)}
+						height={in_s_(fender__height__in)}
 						stroke="darkgray"
 						stroke-width={fender__thickness__in * back__in__px}
 					>
@@ -233,7 +247,7 @@ export function C__page_1() {
 				<svg
 					class="C__back__receivers__axis"
 					x={in_s_(back__receivers__axis__x__in)}
-					y={in_s_(back__receivers__axis__y__in)}
+					y={in_s_(fender__height__in)}
 					width={in_s_(back__receivers__axis__width__in)}
 					height={in_s_(back__receivers__axis__height__in)}
 				>
@@ -247,23 +261,26 @@ export function C__page_1() {
 					<C__back__receivers__axis__tick class="C__back__receivers__axis__tick_0" x={0}/>
 					<C__back__receivers__axis__tick
 						class="C__back__receivers__axis__tick_1"
-						x={in_s_(receiver__width__in)}
+						x={in_s_(receiver__inner__width__in)}
 						text_x={0}
-						text={in_s_(receiver__width__in)}
+						text={in_s_(receiver__inner__width__in)}
 						text_anchor="start"
 					/>
 					<C__back__receivers__axis__tick
 						class="C__back__receivers__axis__tick_2"
-						x={in_s_(back__receivers__axis__width__in - receiver__width__in)}
-						text_x={in_s_(receiver__width__in + (back__receivers__axis__width__in - receiver__width__in) / 2)}
-						text={in_s_(back__receivers__axis__width__in - 2 * receiver__width__in)}
+						x={in_s_(back__receivers__axis__width__in - receiver__inner__width__in)}
+						text_x={in_s_(
+							receiver__inner__width__in
+							+ (back__receivers__axis__width__in - 2 * receiver__inner__width__in) / 2)
+						}
+						text={in_s_(back__receivers__axis__width__in - 2 * receiver__inner__width__in)}
 						text_anchor="middle"
 					/>
 					<C__back__receivers__axis__tick
 						class="C__back__receivers__axis__tick_3"
-						x={in_s_(back__receivers__axis__width__in - back__px__in)}
+						x={in_s_(back__receivers__axis__width__in - back__px__in + receiver__thickness__in)}
 						text_x={in_s_(back__receivers__axis__width__in)}
-						text={in_s_(receiver__width__in)}
+						text={in_s_(receiver__inner__width__in)}
 						text_anchor="end"
 					/>
 				</svg>
@@ -364,12 +381,12 @@ export function C__page_2($p:VoidProps<{
 				<svg
 					class="C__driver__frame"
 					y={in_s_(side__frame__top__y__in)}
-					width={in_s_(side__frame__width__in)}
-					height={in_s_(side__frame__height__in)}
+					width={in_s_(frame__depth__in)}
+					height={in_s_(receiver__outer__height__in)}
 				>
 					<rect
-						width={in_s_(side__frame__width__in)}
-						height={in_s_(side__frame__height__in)}
+						width={in_s_(frame__depth__in)}
+						height={in_s_(receiver__outer__height__in)}
 						fill="gray"
 						fill-opacity="0.8"
 					>
@@ -377,9 +394,9 @@ export function C__page_2($p:VoidProps<{
 					</rect>
 					<circle
 						class="side__frame__hole"
-						cx={in_s_(side__frame__hole__cx__in)}
-						cy={in_s_(side__frame__hole__cy__in)}
-						r={in_s_(side__frame__hole__r__in)}
+						cx={in_s_(frame__hole__cz__in)}
+						cy={in_s_(frame__hole__cy__in)}
+						r={in_s_(frame__hole__r__in)}
 						fill="black"
 					>
 						<title>bolt hole</title>
@@ -393,13 +410,13 @@ export function C__page_2($p:VoidProps<{
 					class="C__driver__bumper"
 					x={in_s_(side__bumper__x__in)}
 					y={in_s_(side__bumper__y__in)}
-					width={in_s_(side__bumper__width__in)}
-					height={in_s_(side__bumper__height__in)}
+					width={in_s_(bumper__depth__in)}
+					height={in_s_(bumper__height__in)}
 				>
 					<rect
-						x={in_s_(side__bumper__x__in)}
-						width={in_s_(side__bumper__connect__width__in)}
-						height={in_s_(side__bumper__height__in)}
+						x={0}
+						width={in_s_(side__bumper__frame__join__x__in)}
+						height={in_s_(bumper__height__in)}
 						stroke="black"
 						fill="gray"
 						fill-opacity="0.8"
@@ -407,9 +424,9 @@ export function C__page_2($p:VoidProps<{
 						<title>driver bumper connect piece</title>
 					</rect>
 					<rect
-						x={in_s_(side__bumper__cross__x__in)}
-						width={in_s_(side__bumper__cross__width__in)}
-						height={in_s_(side__bumper__height__in)}
+						x={in_s_(side__bumper__frame__join__x__in)}
+						width={in_s_(receiver__outer__width__in)}
+						height={in_s_(bumper__height__in)}
 						stroke="black"
 						fill="gray"
 						fill-opacity="0.8"
@@ -421,12 +438,12 @@ export function C__page_2($p:VoidProps<{
 		}
 		function C__driver__fender() {
 			return (
-				<svg class="C__driver__fender" width={in_s_(side__fender__width__in)} height={in_s_(side__fender__height__in)}>
+				<svg class="C__driver__fender" width={in_s_(fender__depth__in)} height={in_s_(side__fender__height__in)}>
 					<path
 						d={[
 							`M ${in__px_(body__depth__in)} 0`,
 							`V ${in__px_(side__frame__top__y__in)}`,
-							`H ${in__px_(side__fender__width__in)}`,
+							`H ${in__px_(fender__depth__in)}`,
 							`V ${in__px_(side__fender__height__in)}`,
 							`H ${0}`,
 							`V ${in__px_(side__body__height__in)}`,
@@ -506,14 +523,14 @@ export function C__page_2($p:VoidProps<{
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_1"
 						y={in_s_(side__body__height__in)}
-						text_y={in_s_(side__body__height__in + side__receiver__under__body__y__in / 2)}
+						text_y={in_s_(side__body__height__in + frame__body__gap__in / 2)}
 						text={in_s_(frame__body__gap__in)}
 					/>
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_2"
 						y={in_s_(side__frame__top__y__in)}
-						text_y={in_s_(side__frame__top__y__in + side__frame__height__in / 2)}
-						text={in_s_(receiver__height__in)}
+						text_y={in_s_(side__frame__top__y__in + receiver__outer__height__in / 2)}
+						text={in_s_(receiver__inner__height__in)}
 					/>
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_3"
@@ -522,8 +539,8 @@ export function C__page_2($p:VoidProps<{
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_4"
 						y={in_s_(side__fender__height__in)}
-						text_y={in_s_(side__frame__bottom__y__in + side__frame__height__in / 2)}
-						text={in_s_(receiver__height__in)}
+						text_y={in_s_(side__frame__bottom__y__in + receiver__outer__height__in / 2)}
+						text={in_s_(receiver__inner__height__in)}
 					/>
 				</svg>
 			)
@@ -567,29 +584,29 @@ export function C__page_2($p:VoidProps<{
 					<C__driver__x_axis__tick class="C__driver__x_axis__tick_0" x={0}/>
 					<C__driver__x_axis__tick
 						class="C__driver__x_axis__tick_1"
-						x={in_s_(side__frame__width__in)}
-						text_x={in_s_(side__frame__width__in / 2)}
-						text={in_s_(side__frame__width__in)}
+						x={in_s_(frame__depth__in)}
+						text_x={in_s_(frame__depth__in / 2)}
+						text={in_s_(frame__depth__in)}
 					/>
 					<C__driver__x_axis__tick
 						class="C__driver__x_axis__tick_2"
 						x={in_s_(body__depth__in)}
-						text_x={in_s_(side__frame__width__in + (body__depth__in - side__frame__width__in) / 2)}
-						text={in_s_(body__depth__in - side__frame__width__in)}
+						text_x={in_s_(frame__depth__in + (body__depth__in - frame__depth__in) / 2)}
+						text={in_s_(body__depth__in - frame__depth__in)}
 					/>
 					<C__driver__x_axis__tick
 						class="C__driver__x_axis__tick_3"
-						x={in_s_(side__bumper__cross__x__in)}
-						text_x={in_s_(body__depth__in + (side__bumper__cross__x__in - body__depth__in) / 2)}
-						text={in_s_(side__bumper__cross__x__in - body__depth__in)}
+						x={in_s_(side__bumper__frame__join__x__in)}
+						text_x={in_s_(body__depth__in + (side__bumper__frame__join__x__in - body__depth__in) / 2)}
+						text={in_s_(side__bumper__frame__join__x__in - body__depth__in)}
 					/>
 					<C__driver__x_axis__tick
 						class="driver__x_axis__tick_4"
-						x={in_s_(side__fender__width__in)}
+						x={in_s_(fender__depth__in)}
 						text_x={
-							in_s_(side__bumper__cross__x__in + (side__fender__width__in - side__bumper__cross__x__in) / 2)
+							in_s_(side__bumper__frame__join__x__in + (fender__depth__in - side__bumper__frame__join__x__in) / 2)
 						}
-						text={in_s_(side__fender__width__in - side__bumper__cross__x__in)}
+						text={in_s_(fender__depth__in - side__bumper__frame__join__x__in)}
 					/>
 				</svg>
 			)
@@ -611,8 +628,8 @@ export function C__page_2($p:VoidProps<{
 				<svg
 					class="C__side__frame__axis"
 					y={in_s_(side__frame__top__y__in)}
-					width={in_s_(side__frame__width__in)}
-					height={in_s_(side__frame__height__in)}
+					width={in_s_(frame__depth__in)}
+					height={in_s_(receiver__outer__height__in)}
 				>
 					<C__side__frame__hole__placement__axis/>
 					<C__side__frame__hole__axis/>
@@ -674,10 +691,10 @@ export function C__page_2($p:VoidProps<{
 						/>
 						<C__side__frame__axis__tick
 							class="C__side__frame__hole__axis__tick_1"
-							x={in_s_(side__frame__hole__r__in * 2)}
-							text_x={in_s_(side__frame__hole__r__in)}
+							x={in_s_(frame__hole__r__in * 2)}
+							text_x={in_s_(frame__hole__r__in)}
 							text_y={in_s_((axis__line__position__in + .1) / side__scale)}
-							text={in_s_(side__frame__hole__r__in * 2)}
+							text={in_s_(frame__hole__r__in * 2)}
 						/>
 					</svg>
 				)
