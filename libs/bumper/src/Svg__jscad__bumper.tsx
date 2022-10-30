@@ -7,15 +7,16 @@ import {
 	back__height__in,
 	back__receivers__offset__x__in,
 	back__width__in,
-	body__back__height__in,
 	body__depth__in,
+	body__height__in,
 	body__width__in,
 	content__height__in,
 	content__width__in,
 	content__x__in,
 	content__y__in,
 	doc__height__in,
-	doc__width__in, frame__body__gap__in,
+	doc__width__in,
+	frame__body__gap__in,
 	frame__depth__in,
 	frame__ground__in,
 	frame__z__in,
@@ -71,7 +72,7 @@ export function back__bumper__assembly__svg_() {
 		_p_(
 			back__bumper__jscad,
 			$=>project({
-				axis: [0, 1, 0],
+				axis: [0, -1, 0],
 				origin: [0, -1, 0]
 			}, $),
 			$=>colorize(back__bumper__jscad.color, $),
@@ -83,9 +84,12 @@ export function bumper__assembly__jscad_() {
 	const { colorize, cssColors } = modeling.colors
 	const { gray } = cssColors
 	const { cuboid } = modeling.primitives
-	return union(
-		frame__jscad_(),
-		// body__jscad_(),
+	return _p_(
+		union(
+			frame__jscad_(),
+			body__jscad_(),
+		),
+		$=>colorize(gray, $)
 	)
 	function frame__jscad_() {
 		return _p_(
@@ -120,8 +124,8 @@ export function bumper__assembly__jscad_() {
 				center: [
 					body__width__in / 2,
 					body__depth__in / 2,
-					frame__ground__in + receiver__height__in + frame__body__gap__in + body__back__height__in / 2],
-				size: [body__width__in, body__depth__in, body__back__height__in]
+					frame__ground__in + receiver__height__in + frame__body__gap__in + body__height__in / 2],
+				size: [body__width__in, body__depth__in, body__height__in]
 			}),
 			$=>colorize(gray, $))
 	}
