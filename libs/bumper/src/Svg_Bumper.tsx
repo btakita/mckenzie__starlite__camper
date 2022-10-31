@@ -3,10 +3,11 @@ import { type JSX } from 'solid-js/types'
 import {
 	axis__across__in,
 	axis__line__position__in,
-	back__fender__axis__height__in,
-	back__fender__axis__width__in,
-	back__fender__axis__x__in,
-	back__fender__axis__y__in,
+	back__fender__x_axis__height__in,
+	back__fender__x_axis__width__in,
+	back__fender__x_axis__x__in,
+	back__fender__x_axis__y__in,
+	back__height__in,
 	back__in__px,
 	back__px__in,
 	back__receivers__axis__height__in,
@@ -15,6 +16,8 @@ import {
 	back__receivers__axis__x2__in,
 	back__scale,
 	back__screw__y__in,
+	back__title__height__in,
+	C__back__height__in,
 	back__width__in,
 	body__depth__in,
 	body__height__in,
@@ -28,7 +31,8 @@ import {
 	C__back__receiver__height__in,
 	C__back__receiver__width__in,
 	C__back__receiver__x_axis__x1__in,
-	C__back__receiver__x_axis__x2__in, C__back__receiver__x_axis__y__in,
+	C__back__receiver__x_axis__x2__in,
+	C__back__receiver__x_axis__y__in,
 	C__back__receiver__y_axis__x__in,
 	C__back__receiver__y_axis__y1__in,
 	C__back__receiver__y_axis__y2__in,
@@ -38,10 +42,10 @@ import {
 	content__y__in,
 	doc__height__in,
 	doc__width__in,
-	fender__back__width__in,
 	fender__depth__in,
 	fender__height__in,
 	fender__thickness__in,
+	fender__width__in,
 	frame__body__gap__in,
 	frame__depth__in,
 	frame__hole__cy__in,
@@ -85,8 +89,7 @@ import {
 	side__x_axis__width__in,
 	side__x_axis__y__in,
 	side__y_axis__height__in,
-	side__y_axis__x__in,
-	view__height__in
+	side__y_axis__x__in
 } from './_lib.js'
 //region
 // 96.75
@@ -114,7 +117,7 @@ export function C__page_1() {
 				y={in_s_(content__y__in)}
 				width={in_s_(content__width__in)}
 				height={in_s_(content__height__in)}
-				viewBox={`0 0 ${in__px_(back__width__in)} ${in__px_(view__height__in)}`}
+				viewBox={`0 0 ${in__px_(back__width__in)} ${in__px_(C__back__height__in)}`}
 			>
 				<C__back/>
 			</svg>
@@ -122,13 +125,28 @@ export function C__page_1() {
 	)
 	function C__back() {
 		return (
-			<svg class="C__back" height={in_s_(view__height__in)} width={in_s_(back__width__in)}>
-				<C__back__body/>
-				<C__back__receivers/>
-				<C__back__bumper/>
-				<C__back__fender/>
-				<C__back__receivers__axis/>
-				<C__back__fender__axis/>
+			<svg class="C__back" width={in_s_(back__width__in)} height={in_s_(C__back__height__in)}>
+				<svg x={0} y={0} width={in_s_(back__width__in)} height={in_s_(back__title__height__in)}>
+					<text
+						x={in_s_(back__width__in / 2)}
+						font-size={`${30 / back__scale}`}
+						dominant-baseline={'hanging'}
+						text-anchor={'middle'}
+					>Back Assembly</text>
+				</svg>
+				<svg
+					x={0}
+					y={36 / back__scale}
+					width={in_s_(back__width__in)}
+					height={in_s_(back__height__in)}
+				>
+					<C__back__body/>
+					<C__back__receivers/>
+					<C__back__bumper/>
+					<C__back__fender/>
+					<C__back__receivers__x_axis/>
+					<C__back__fender__x_axis/>
+				</svg>
 			</svg>
 		)
 		function C__back__body() {
@@ -236,12 +254,12 @@ export function C__page_1() {
 				<svg
 					class="C__back__fender"
 					x={in_s_(body__x__in)}
-					width={in_s_(fender__back__width__in)}
+					width={in_s_(fender__width__in)}
 					height={in_s_(fender__height__in)}
 				>
 					<rect
 						fill="url(#sheet__pattern)"
-						width={in_s_(fender__back__width__in)}
+						width={in_s_(fender__width__in)}
 						height={in_s_(fender__height__in)}
 						stroke="darkgray"
 						stroke-width={fender__thickness__in * back__in__px}
@@ -251,53 +269,53 @@ export function C__page_1() {
 				</svg>
 			)
 		}
-		function C__back__receivers__axis() {
+		function C__back__receivers__x_axis() {
 			return (
 				<svg
-					class="C__back__receivers__axis"
+					class="C__back__receivers__x_axis"
 					x={0}
 					y={in_s_(fender__height__in)}
 					width={in_s_(body__width__in)}
 					height={in_s_(back__receivers__axis__height__in)}
 				>
 					<C__back__x_axis__line
-						class="C__back__receivers__axis__line"
+						class="C__back__receivers__x_axis__line"
 						y={in_s_(axis__line__position__in / back__scale)}
 						x1={in_s_(back__receivers__axis__x1__in)}
 						x2={in_s_(back__receivers__axis__x2__in)}
 						title="back receiver x axis"
 					/>
-					<C__back__receivers__axis__tick
-						class="C__back__receivers__axis__tick_0"
+					<C__back__receivers__x_axis__tick
+						class="C__back__receivers__x_axis__tick_0"
 						x={in_s_(back__receivers__axis__x1__in)}
 					/>
-					<C__back__receivers__axis__tick
-						class="C__back__receivers__axis__tick_1"
+					<C__back__receivers__x_axis__tick
+						class="C__back__receivers__x_axis__tick_1"
 						x={in_s_(back__receivers__axis__x1__in + receiver__inner__width__in)}
 						text_x={in_s_(back__receivers__axis__x1__in + receiver__inner__width__in / 2)}
 						text={in_s_(receiver__inner__width__in)}
-						text_anchor="middle"
+						text_anchor={'middle'}
 					/>
-					<C__back__receivers__axis__tick
-						class="C__back__receivers__axis__tick_2"
+					<C__back__receivers__x_axis__tick
+						class="C__back__receivers__x_axis__tick_2"
 						x={in_s_(back__receivers__axis__x2__in - receiver__inner__width__in)}
 						text_x={in_s_(
 							back__receivers__axis__x1__in
 							+ (back__receivers__axis__x2__in - back__receivers__axis__x1__in) / 2
 						)}
 						text={in_s_(back__receivers__axis__width__in - 2 * receiver__inner__width__in)}
-						text_anchor="middle"
+						text_anchor={'middle'}
 					/>
-					<C__back__receivers__axis__tick
-						class="C__back__receivers__axis__tick_3"
+					<C__back__receivers__x_axis__tick
+						class="C__back__receivers__x_axis__tick_3"
 						x={in_s_(back__receivers__axis__x2__in)}
 						text_x={in_s_(back__receivers__axis__x2__in - receiver__inner__width__in / 2)}
 						text={in_s_(receiver__inner__width__in)}
-						text_anchor="middle"
+						text_anchor={'middle'}
 					/>
 				</svg>
 			)
-			function C__back__receivers__axis__tick($p:VoidProps<{
+			function C__back__receivers__x_axis__tick($p:VoidProps<{
 				class:string
 				x:number|string
 				text_x?:number|string
@@ -316,33 +334,33 @@ export function C__page_1() {
 				)
 			}
 		}
-		function C__back__fender__axis() {
+		function C__back__fender__x_axis() {
 			return (
 				<svg
-					class="C__back__fender__axis"
-					x={in_s_(back__fender__axis__x__in)}
-					y={in_s_(back__fender__axis__y__in)}
-					width={in_s_(back__fender__axis__width__in)}
-					height={in_s_(back__fender__axis__height__in)}
+					class="C__back__fender__x_axis"
+					x={in_s_(back__fender__x_axis__x__in)}
+					y={in_s_(back__fender__x_axis__y__in)}
+					width={in_s_(back__fender__x_axis__width__in)}
+					height={in_s_(back__fender__x_axis__height__in)}
 				>
 					<C__back__x_axis__line
-						class="C__back__fender__axis__line"
+						class="C__back__fender__x_axis__line"
 						y={in_s_(axis__line__position__in / back__scale)}
 						x1={0}
-						x2={in_s_(back__fender__axis__width__in)}
+						x2={in_s_(back__fender__x_axis__width__in)}
 						title="back fender x axis"
 					/>
 					<C__back__x_axis__tick
-						class="C__back__fender__axis__tick_0"
+						class="C__back__fender__x_axis__tick_0"
 						x={0}
 					/>
 					<C__back__x_axis__tick
-						class="C__back__fender__axis__tick_1"
-						x={in_s_(back__fender__axis__width__in)}
-						text_x={in_s_(back__fender__axis__width__in / 2)}
-						text_y={in_s_(back__fender__axis__height__in)}
-						text={in_s_(back__fender__axis__width__in)}
-						text_anchor="middle"
+						class="C__back__fender__x_axis__tick_1"
+						x={in_s_(back__fender__x_axis__width__in)}
+						text_x={in_s_(back__fender__x_axis__width__in / 2)}
+						text_y={in_s_(back__fender__x_axis__height__in)}
+						text={in_s_(back__fender__x_axis__width__in)}
+						text_anchor={'middle'}
 					/>
 				</svg>
 			)
@@ -578,12 +596,13 @@ export function C__page_2($p:VoidProps<{
 						class={$p.class}
 						x1={2}
 						y1={$p.y}
-						x2={in_s_((axis__line__position__in / side__scale) * 2 - .04)}
+						x2={in_s_(axis__line__position__in / side__scale)}
 						y2={$p.y}
 						font_size={in_s_(12 * px__in)}
-						text_x={in_s_(axis__line__position__in / side__scale + axis__line__position__in)}
+						text_x={in_s_((axis__line__position__in + .04) / side__scale)}
 						text_y={$p.text_y}
 						text={$p.text}
+						text_anchor={'start'}
 					/>
 				)
 			}
@@ -687,7 +706,7 @@ export function C__page_2($p:VoidProps<{
 							text_x={in_s_(side__frame__hole__placement__axis__width__in / 2)}
 							text_y={in_s_((axis__line__position__in - .1) / side__scale)}
 							text={in_s_(side__frame__hole__placement__axis__width__in)}
-							dominant_baseline="hanging"
+							dominant_baseline={'hanging'}
 						/>
 					</svg>
 				)
@@ -747,7 +766,7 @@ export function C__page_2($p:VoidProps<{
 						text={$p.text}
 						stroke_width={in_s_(side__px__in)}
 						font_size="10"
-						text_anchor="middle"
+						text_anchor={'middle'}
 						dominant_baseline={$p.dominant_baseline}
 					/>
 				)
@@ -849,12 +868,13 @@ export function C__page_3($p:VoidProps<{
 					class={$p.class}
 					x1={0}
 					y1={$p.y}
-					x2={in_s_(axis__line__position__in + .04)}
+					x2={in_s_(axis__line__position__in)}
 					y2={$p.y}
 					font_size={in_s_(12 * px__in)}
 					text_x={in_s_(axis__line__position__in / side__scale + axis__line__position__in)}
 					text_y={$p.text_y}
 					text={$p.text}
+					text_anchor={'start'}
 				/>
 			)
 		}
@@ -884,7 +904,7 @@ export function C__page_3($p:VoidProps<{
 					x={in_s_(receiver__thickness__in)}
 					text_x={0}
 					text={in_s_(receiver__thickness__in)}
-					text_anchor="start"
+					text_anchor={'start'}
 				/>
 				<C__back__receiver__y_axis__tick
 					class="C__back__receiver__y_axis__tick_2"
@@ -897,7 +917,7 @@ export function C__page_3($p:VoidProps<{
 					x={in_s_(receiver__outer__width__in)}
 					text_x={in_s_(receiver__outer__width__in)}
 					text={in_s_(receiver__thickness__in)}
-					text_anchor="end"
+					text_anchor={'end'}
 				/>
 			</svg>
 		)

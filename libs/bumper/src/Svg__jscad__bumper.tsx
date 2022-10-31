@@ -9,7 +9,7 @@ import svg_serializer from '@jscad/svg-serializer'
 import { XMLParser } from 'fast-xml-parser'
 import { type VoidProps } from 'solid-js'
 import {
-	view__height__in,
+	C__back__height__in,
 	receivers__x__in,
 	back__width__in,
 	body__depth__in,
@@ -70,7 +70,7 @@ export function C__page($p:VoidProps<{ y?:number|string }>) {
 				x={in_s_(content__x__in)}
 				y={in_s_(content__y__in)}
 				data-back__width__in={back__width__in}
-				data-back__height__in={view__height__in}
+				data-back__height__in={C__back__height__in}
 				viewBox={`0 0 ${in__px_(scene__width__in)} ${in__px_(scene__height__in)}`}
 				innerHTML={back__bumper__svg_a.join('\n')}
 			/>
