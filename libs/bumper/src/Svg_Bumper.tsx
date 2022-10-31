@@ -25,6 +25,13 @@ import {
 	bumper__width__in,
 	bumper__x__in,
 	bumper__y__in,
+	C__back__receiver__height__in,
+	C__back__receiver__width__in,
+	C__back__receiver__x_axis__x1__in,
+	C__back__receiver__x_axis__x2__in, C__back__receiver__x_axis__y__in,
+	C__back__receiver__y_axis__x__in,
+	C__back__receiver__y_axis__y1__in,
+	C__back__receiver__y_axis__y2__in,
 	content__height__in,
 	content__width__in,
 	content__x__in,
@@ -93,6 +100,7 @@ export function Svg_Bumper() {
 		<svg xmlns="http://www.w3.org/2000/svg" class="doc" width={in_s_(doc__width__in)} height={in_s_(doc__height__in)}>
 			<C__page_1/>
 			<C__page_2 y={in_s_(page__height__in)}/>
+			<C__page_3 y={in_s_(2 * page__height__in)}/>
 		</svg>
 	)
 }
@@ -374,7 +382,12 @@ export function C__page_2($p:VoidProps<{
 		function C__driver__body() {
 			return (
 				<svg class="C__driver__body" width={in_s_(body__depth__in)} height={in_s_(side__body__height__in)}>
-					<rect width={in_s_(body__depth__in)} height={in_s_(side__body__height__in)} fill="lightgray">
+					<rect
+						class="driver__body"
+						width={in_s_(body__depth__in)}
+						height={in_s_(side__body__height__in)}
+						fill="lightgray"
+					>
 						<title>driver body</title>
 					</rect>
 				</svg>
@@ -568,7 +581,7 @@ export function C__page_2($p:VoidProps<{
 						x2={in_s_((axis__line__position__in / side__scale) * 2 - .04)}
 						y2={$p.y}
 						font_size={in_s_(12 * px__in)}
-						text_x={in_s_(axis__line__position__in / side__scale + .1)}
+						text_x={in_s_(axis__line__position__in / side__scale + axis__line__position__in)}
 						text_y={$p.text_y}
 						text={$p.text}
 					/>
@@ -703,7 +716,7 @@ export function C__page_2($p:VoidProps<{
 							class="C__side__frame__hole__axis__tick_1"
 							x={in_s_(frame__hole__r__in * 2)}
 							text_x={in_s_(frame__hole__r__in)}
-							text_y={in_s_((axis__line__position__in + .1) / side__scale)}
+							text_y={in_s_((axis__line__position__in + axis__line__position__in) / side__scale)}
 							text={in_s_(frame__hole__r__in * 2)}
 						/>
 					</svg>
@@ -739,6 +752,179 @@ export function C__page_2($p:VoidProps<{
 					/>
 				)
 			}
+		}
+	}
+}
+export function C__page_3($p:VoidProps<{
+	y?:number|string
+}>) {
+	return (
+		<svg class="C__page_3" y={$p.y} width={in_s_(page__width__in)} height={in_s_(page__height__in)}>
+			<svg
+				class="page_3__content"
+				x={in_s_(content__x__in)}
+				y={in_s_(content__y__in)}
+				width={in_s_(content__width__in)}
+				height={in_s_(content__height__in)}
+				viewBox={`0 0 ${in__px_(C__back__receiver__width__in)} ${in__px_(C__back__receiver__height__in)}`}
+			>
+				<C__back__receiver/>
+				<C__back__receiver__y_axis/>
+				<C__back__receiver__x_axis/>
+			</svg>
+		</svg>
+	)
+	function C__back__receiver() {
+		return (
+			<svg
+				class="C__back__receiver"
+				width={in_s_(receiver__outer__width__in)}
+				height={in_s_(receiver__outer__height__in)}
+			>
+				<rect
+					class="back__receiver"
+					width={in_s_(receiver__outer__width__in)}
+					height={in_s_(receiver__outer__height__in)}
+					fill="gray"
+				></rect>
+				<rect
+					class="back__receiver"
+					x={in_s_(receiver__thickness__in)}
+					y={in_s_(receiver__thickness__in)}
+					width={in_s_(receiver__inner__width__in)}
+					height={in_s_(receiver__inner__height__in)}
+					fill="lightgray"
+				></rect>
+			</svg>
+		)
+	}
+	function C__back__receiver__y_axis() {
+		return (
+			<svg
+				class="C__back__receiver__y_axis"
+				x={in_s_(C__back__receiver__y_axis__x__in)}
+				y={0}
+				width={in_s_(axis__across__in)}
+				height={in_s_(C__back__receiver__height__in)}
+			>
+				<C__y_axis__line
+					class="C__back__receiver__y_axis__line"
+					x={in_s_(axis__line__position__in)}
+					y1={in_s_(C__back__receiver__y_axis__y1__in)}
+					y2={in_s_(C__back__receiver__y_axis__y2__in)}
+					title="back receiver y-axis"
+				/>
+				<C__back__receiver__y_axis__tick
+					class="C__back__receiver__y_axis__tick_0"
+					y={0}
+				/>
+				<C__back__receiver__y_axis__tick
+					class="C__back__receiver__y_axis__tick_1"
+					y={in_s_(receiver__thickness__in)}
+					text_y={in_s_(receiver__thickness__in / 2)}
+					text={in_s_(receiver__thickness__in)}
+				/>
+				<C__back__receiver__y_axis__tick
+					class="C__back__receiver__y_axis__tick_2"
+					y={in_s_(receiver__thickness__in + receiver__inner__height__in)}
+					text_y={in_s_(receiver__thickness__in + receiver__inner__height__in / 2)}
+					text={in_s_(receiver__inner__height__in)}
+				/>
+				<C__back__receiver__y_axis__tick
+					class="C__back__receiver__y_axis__tick_3"
+					y={in_s_(receiver__outer__height__in)}
+					text_y={in_s_(receiver__outer__height__in - receiver__thickness__in / 2)}
+					text={in_s_(receiver__thickness__in)}
+				/>
+			</svg>
+		)
+		function C__back__receiver__y_axis__tick($p:VoidProps<{
+			class:string
+			y:number|string
+			text_y?:number|string
+			text?:string
+		}>) {
+			return (
+				<C__tick
+					class={$p.class}
+					x1={0}
+					y1={$p.y}
+					x2={in_s_(axis__line__position__in + .04)}
+					y2={$p.y}
+					font_size={in_s_(12 * px__in)}
+					text_x={in_s_(axis__line__position__in / side__scale + axis__line__position__in)}
+					text_y={$p.text_y}
+					text={$p.text}
+				/>
+			)
+		}
+	}
+	function C__back__receiver__x_axis() {
+		return (
+			<svg
+				class="C__back__receiver__x_axis"
+				x={0}
+				y={in_s_(C__back__receiver__x_axis__y__in)}
+				width={in_s_(C__back__receiver__width__in)}
+				height={in_s_(C__back__receiver__height__in)}
+			>
+				<C__x_axis__line
+					class="C__back__receiver__y_axis__line"
+					x1={in_s_(C__back__receiver__x_axis__x1__in)}
+					x2={in_s_(C__back__receiver__x_axis__x2__in)}
+					y={in_s_(axis__line__position__in)}
+					title="back receiver x-axis"
+				/>
+				<C__back__receiver__y_axis__tick
+					class="C__back__receiver__y_axis__tick_0"
+					x={0}
+				/>
+				<C__back__receiver__y_axis__tick
+					class="C__back__receiver__y_axis__tick_1"
+					x={in_s_(receiver__thickness__in)}
+					text_x={0}
+					text={in_s_(receiver__thickness__in)}
+					text_anchor="start"
+				/>
+				<C__back__receiver__y_axis__tick
+					class="C__back__receiver__y_axis__tick_2"
+					x={in_s_(receiver__thickness__in + receiver__inner__width__in)}
+					text_x={in_s_(receiver__thickness__in + receiver__inner__width__in / 2)}
+					text={in_s_(receiver__inner__width__in)}
+				/>
+				<C__back__receiver__y_axis__tick
+					class="C__back__receiver__y_axis__tick_3"
+					x={in_s_(receiver__outer__width__in)}
+					text_x={in_s_(receiver__outer__width__in)}
+					text={in_s_(receiver__thickness__in)}
+					text_anchor="end"
+				/>
+			</svg>
+		)
+		function C__back__receiver__y_axis__tick(_$p:VoidProps<{
+			class:string
+			x:number|string
+			text_x?:number|string
+			text?:string
+			text_anchor?:JSX.PresentationSVGAttributes['text-anchor']
+		}>) {
+			const $p = mergeProps({
+				text_anchor: 'middle' as JSX.PresentationSVGAttributes['text-anchor']
+			}, _$p)
+			return (
+				<C__tick
+					class={$p.class}
+					x1={$p.x}
+					y1={0}
+					x2={$p.x}
+					y2={in_s_(axis__line__position__in + .04)}
+					font_size={in_s_(12 * px__in)}
+					text_x={$p.text_x}
+					text_y={in_s_(axis__line__position__in / side__scale + axis__line__position__in)}
+					text={$p.text}
+					text_anchor={$p.text_anchor}
+				/>
+			)
 		}
 	}
 }
@@ -944,9 +1130,12 @@ function C__tick(_$p:VoidProps<C__tick__props_T&{
 	x2:number|string
 	y2:number|string
 	font_size:number|string
+	dominant_baseline?:JSX.PresentationSVGAttributes['dominant-baseline']
+	text_anchor?:JSX.PresentationSVGAttributes['text-anchor']
 }>) {
 	const $p = mergeProps({
 		dominant_baseline: 'middle' as JSX.PresentationSVGAttributes['dominant-baseline'],
+		text_anchor: 'middle' as JSX.PresentationSVGAttributes['text-anchor']
 	}, _$p)
 	return [
 		<line
