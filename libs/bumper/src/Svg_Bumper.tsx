@@ -533,18 +533,24 @@ export function C__page_2($p:VoidProps<{
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_2"
 						y={in_s_(side__frame__top__y__in)}
-						text_y={in_s_(side__frame__top__y__in + receiver__outer__height__in / 2)}
-						text={in_s_(receiver__inner__height__in)}
+						text_y={in_s_(side__frame__top__y__in + .5 * receiver__thickness__in)}
+						text={in_s_(receiver__thickness__in)}
 					/>
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_3"
-						y={in_s_(side__frame__bottom__y__in)}
+						y={in_s_(side__frame__top__y__in + receiver__thickness__in)}
+						text_y={in_s_(side__frame__top__y__in + receiver__thickness__in + receiver__inner__height__in / 2)}
+						text={in_s_(receiver__inner__height__in)}
 					/>
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_4"
-						y={in_s_(side__fender__height__in)}
-						text_y={in_s_(side__frame__bottom__y__in + receiver__outer__height__in / 2)}
-						text={in_s_(receiver__inner__height__in)}
+						y={in_s_(side__frame__top__y__in + receiver__thickness__in + receiver__inner__height__in)}
+					/>
+					<C__driver__y_axis__tick
+						class="C__driver__y_axis__tick_5"
+						y={in_s_(side__frame__bottom__y__in)}
+						text_y={in_s_(side__frame__bottom__y__in - receiver__thickness__in / 2)}
+						text={in_s_(receiver__thickness__in)}
 					/>
 				</svg>
 			)
