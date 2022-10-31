@@ -7,7 +7,7 @@ import {
 	back__fender__x_axis__width__in,
 	back__fender__x_axis__x__in,
 	back__fender__x_axis__y__in,
-	back__height__in,
+	back__content__height__in,
 	back__in__px,
 	back__px__in,
 	back__receivers__axis__height__in,
@@ -17,7 +17,7 @@ import {
 	back__scale,
 	back__screw__y__in,
 	back__title__height__in,
-	C__back__height__in,
+	back__height__in,
 	back__width__in,
 	body__depth__in,
 	body__height__in,
@@ -89,7 +89,7 @@ import {
 	side__x_axis__width__in,
 	side__x_axis__y__in,
 	side__y_axis__height__in,
-	side__y_axis__x__in
+	side__y_axis__x__in, side__title__height__in, title__font_size, side__content__height__in
 } from './_lib.js'
 //region
 // 96.75
@@ -117,7 +117,7 @@ export function C__page_1() {
 				y={in_s_(content__y__in)}
 				width={in_s_(content__width__in)}
 				height={in_s_(content__height__in)}
-				viewBox={`0 0 ${in__px_(back__width__in)} ${in__px_(C__back__height__in)}`}
+				viewBox={`0 0 ${in__px_(back__width__in)} ${in__px_(back__height__in)}`}
 			>
 				<C__back/>
 			</svg>
@@ -125,20 +125,21 @@ export function C__page_1() {
 	)
 	function C__back() {
 		return (
-			<svg class="C__back" width={in_s_(back__width__in)} height={in_s_(C__back__height__in)}>
+			<svg class="C__back" width={in_s_(back__width__in)} height={in_s_(back__height__in)}>
 				<svg x={0} y={0} width={in_s_(back__width__in)} height={in_s_(back__title__height__in)}>
 					<text
 						x={in_s_(back__width__in / 2)}
-						font-size={`${30 / back__scale}`}
+						font-size={`${title__font_size / back__scale}`}
 						dominant-baseline={'hanging'}
 						text-anchor={'middle'}
 					>Back Assembly</text>
 				</svg>
 				<svg
+					class="C__back__content"
 					x={0}
-					y={36 / back__scale}
+					y={in_s_(back__title__height__in)}
 					width={in_s_(back__width__in)}
-					height={in_s_(back__height__in)}
+					height={in_s_(back__content__height__in)}
 				>
 					<C__back__body/>
 					<C__back__receivers/>
@@ -388,13 +389,29 @@ export function C__page_2($p:VoidProps<{
 	function C__driver() {
 		return (
 			<svg class="C__driver" width={in_s_(side__width__in)} height={in_s_(side__height__in)}>
-				<C__driver__body/>
-				<C__driver__frame/>
-				<C__driver__bumper/>
-				<C__driver__fender/>
-				<C__driver__y_axis/>
-				<C__driver__x_axis/>
-				<C__driver__frame__axis/>
+				<svg x={0} y={0} width={in_s_(side__width__in)} height={in_s_(side__title__height__in)}>
+					<text
+						x={in_s_(side__width__in / 2)}
+						font-size={`${title__font_size / side__scale}`}
+						dominant-baseline={'hanging'}
+						text-anchor={'middle'}
+					>Driver Side Assembly</text>
+				</svg>
+				<svg
+					class="C__driver__content"
+					x={0}
+					y={in_s_(side__title__height__in)}
+					width={in_s_(side__width__in)}
+					height={in_s_(side__content__height__in)}
+				>
+					<C__driver__body/>
+					<C__driver__frame/>
+					<C__driver__bumper/>
+					<C__driver__fender/>
+					<C__driver__y_axis/>
+					<C__driver__x_axis/>
+					<C__driver__frame__axis/>
+				</svg>
 			</svg>
 		)
 		function C__driver__body() {
