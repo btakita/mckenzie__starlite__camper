@@ -106,7 +106,7 @@ import {
 // 2 *
 // const back__width__in = back__fender__axis__y__in + back__fender__axis__height__in
 //endregion
-export function Svg_Bumper() {
+export function Svg_bumper_assembly() {
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" class="doc" width={in_s_(doc__width__in)} height={in_s_(doc__height__in)}>
 			<C__page_1/>

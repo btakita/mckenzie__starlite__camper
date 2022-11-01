@@ -1,7 +1,7 @@
 import babel_ from '@rollup/plugin-babel'
 import run_ from '@rollup/plugin-run'
 export default {
-	input: './src/Svg_Bumper__run.tsx',
+	input: './src/Svg_bumper_assembly__run.tsx',
 	output: {
 		dir: './dist'
 	},

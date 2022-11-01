@@ -8,8 +8,8 @@
 	"author": "Brian Takita",
 	"license": "Apache-2.0",
 	"bin": {
-		"bumper": "./bin/bumper/index.sh",
-		"bumper__jscad": "./bin/bumper__jscad/index.sh"
+		"bumper_assembly": "./bin/bumper_assembly/index.sh",
+		"jscad__bumper_assembly": "./bin/jscad__bumper_assembly/index.sh"
 	},
 	"main": "./src/index.ts",
 	"module": "./src/index.ts",

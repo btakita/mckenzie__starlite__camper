@@ -9,8 +9,6 @@ import svg_serializer from '@jscad/svg-serializer'
 import { XMLParser } from 'fast-xml-parser'
 import { type VoidProps } from 'solid-js'
 import {
-	back__drawing__width__in,
-	back__height__in,
 	body__depth__in,
 	body__height__in,
 	body__width__in,
@@ -35,7 +33,7 @@ import {
 	receivers__width__in,
 	receivers__x__in
 } from './_lib.js'
-const { extrudeRectangular, project } = modeling.extrusions
+const { project } = modeling.extrusions
 const { subtract, union } = modeling.booleans
 const { colorize, cssColors } = modeling.colors
 const { gray } = cssColors
@@ -44,18 +42,22 @@ const back__project__options:ProjectOptions = {
 	axis: [0, -1, 0],
 	origin: [0, -1, 0]
 }
-export function Svg__jscad__bumper() {
+const driver__project__options:ProjectOptions = {
+	axis: [-1, 0, 0],
+	origin: [-1, 0, 0]
+}
+export function Svg__jscad__bumper_assembly() {
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" class="doc" width={in_s_(doc__width__in)} height={in_s_(doc__height__in)}>
-			<C__page/>
-			<C__page y={in_s_(page__height__in)}/>
+			<C__jscad__page_1/>
+			<C__jscad__page_2 y={in_s_(page__height__in)}/>
 		</svg>
 	)
 }
-export function C__page($p:VoidProps<{ y?:number|string }>) {
-	const back__bumper__svg_a = back__bumper__assembly__svg_().split('\n').slice(3)
+export function C__jscad__page_1($p:VoidProps<{ y?:number|string }>) {
+	const back__assembly__svg_a = back__bumper_assembly__svg_().split('\n').slice(3)
 	const parser = new XMLParser({ ignoreAttributes: false })
-	const scene_o = parser.parse(`${back__bumper__svg_a[0]}</svg>`).svg
+	const scene_o = parser.parse(`${back__assembly__svg_a[0]}</svg>`).svg
 	const scene__width__in = parseFloat(scene_o['@_width'])
 	const scene__height__in = parseFloat(scene_o['@_height'])
 	return (
@@ -71,22 +73,52 @@ export function C__page($p:VoidProps<{ y?:number|string }>) {
 				height={in_s_(content__height__in)}
 				x={in_s_(content__x__in)}
 				y={in_s_(content__y__in)}
-				data-back__width__in={back__drawing__width__in}
-				data-back__height__in={back__height__in}
 				viewBox={`0 0 ${in__px_(scene__width__in)} ${in__px_(scene__height__in)}`}
-				innerHTML={back__bumper__svg_a.join('\n')}
+				innerHTML={back__assembly__svg_a.join('\n')}
 			/>
 		</svg>
 	)
 }
-export function back__bumper__assembly__svg_():string {
+export function C__jscad__page_2($p:VoidProps<{ y?:number|string }>) {
+	const driver__assembly__svg_a = driver__bumper_assembly__svg_().split('\n').slice(3)
+	const parser = new XMLParser({ ignoreAttributes: false })
+	const scene_o = parser.parse(`${driver__assembly__svg_a[0]}</svg>`).svg
+	const scene__width__in = parseFloat(scene_o['@_width'])
+	const scene__height__in = parseFloat(scene_o['@_height'])
+	return (
+		<svg
+			class="C__page"
+			width={in_s_(page__width__in)}
+			height={in_s_(page__height__in)}
+			y={$p.y}
+		>
+			<svg
+				class="C__page__content"
+				width={in_s_(content__width__in)}
+				height={in_s_(content__height__in)}
+				x={in_s_(content__x__in)}
+				y={in_s_(content__y__in)}
+				viewBox={`0 0 ${in__px_(scene__width__in)} ${in__px_(scene__height__in)}`}
+				innerHTML={driver__assembly__svg_a.join('\n')}
+			/>
+		</svg>
+	)
+}
+export function back__bumper_assembly__svg_():string {
 	return svg_serializer.serialize(
 		{ unit: 'in' },
-		bumper__assembly__jscad_a_().map($=>
+		bumper_assembly__jscad_a_().map($=>
 			project_colorize(back__project__options, $))
 	)[0]
 }
-export function bumper__assembly__jscad_a_():(Geom3&Colored)[] {
+export function driver__bumper_assembly__svg_():string {
+	return svg_serializer.serialize(
+		{ unit: 'in' },
+		bumper_assembly__jscad_a_().map($=>
+			project_colorize(driver__project__options, $))
+	)[0]
+}
+export function bumper_assembly__jscad_a_():(Geom3&Colored)[] {
 	return [
 		frame__jscad_(),
 		body__jscad_(),
