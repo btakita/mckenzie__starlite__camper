@@ -1,4 +1,5 @@
 import { _p_ } from '@ctx-core/function'
+import { isNumber_ } from '@ctx-core/number'
 import modeling from '@jscad/modeling'
 import type { RGB, RGBA } from '@jscad/modeling/src/colors'
 import type { Colored, Geom2, Geom3 } from '@jscad/modeling/src/geometries/types'
@@ -125,7 +126,7 @@ function bumper__jscad_():Geom3&Colored {
 			bumper__passenger__extension__jscad_(),
 			bumper__cross__jscad_(),
 		),
-		$=>colorize([...gray, .1], $)
+		$=>colorize([...gray, .8], $)
 	)
 }
 function bumper__driver__extension__jscad_() {
@@ -138,7 +139,7 @@ function bumper__driver__extension__jscad_() {
 			],
 			size: [receiver__inner__width__in, bumper__extension__in, receiver__inner__height__in]
 		}),
-		$=>colorize([...gray, .1], $)
+		$=>colorize([...gray, .8], $)
 	)
 }
 function bumper__passenger__extension__jscad_() {
@@ -151,7 +152,7 @@ function bumper__passenger__extension__jscad_() {
 			],
 			size: [receiver__inner__width__in, bumper__extension__in, receiver__inner__height__in]
 		}),
-		$=>colorize([...gray, .1], $)
+		$=>colorize([...gray, .8], $)
 	)
 }
 function bumper__cross__jscad_() {
@@ -164,7 +165,7 @@ function bumper__cross__jscad_() {
 			],
 			size: [bumper__width__in, receiver__outer__width__in, bumper__height__in]
 		}),
-		$=>colorize([...gray, .1], $)
+		$=>colorize([...gray, .8], $)
 	)
 }
 // function fender__jscad_():Geom3&Colored {
@@ -177,8 +178,13 @@ function bumper__cross__jscad_() {
 // 	}
 // }
 function project_colorize(
-	options:ProjectOptions, $:Geom3, color:RGB|RGBA = $.color
+	options:ProjectOptions, $:Geom3, _color:RGB|RGBA = $.color
 ):Geom2&Colored {
+	// TODO: remove conversion when https://github.com/jscad/OpenJSCAD.org/issues/1159 is fixed
+	const color = [
+		..._color.slice(0, 3),
+		...(isNumber_(_color[3]) ? [_color[3] / 255] : [])
+	] as RGB|RGBA
 	return _p_($,
 		$=>project(options, $),
 		$=>colorize(color, $))
