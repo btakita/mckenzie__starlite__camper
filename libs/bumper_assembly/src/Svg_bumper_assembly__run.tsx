@@ -1,4 +1,4 @@
-import { C__page_1, C__page_2, C__page_3, Svg_bumper_assembly } from '@mckenzie_starlite__camper/bumper'
+import { C__page_1, C__page_2, C__page_3, Svg_bumper_assembly } from '@mckenzie_starlite__camper/bumper_assembly'
 import { writeFile } from 'fs/promises'
 import { join, resolve } from 'path'
 import PDFDocument from 'pdfkit'

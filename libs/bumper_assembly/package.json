@@ -1,5 +1,5 @@
 {
-	"name": "@mckenzie_starlite__camper/bumper",
+	"name": "@mckenzie_starlite__camper/bumper_assembly",
 	"version": "1.0.0",
 	"type": "module",
 	"description": "Replacement parts for the McKenzie Starlite camper",
@@ -9,7 +9,7 @@
 	"license": "Apache-2.0",
 	"bin": {
 		"bumper_assembly": "./bin/bumper_assembly/index.sh",
-		"jscad__bumper_assembly": "./bin/jscad__bumper_assembly/index.sh"
+		"bumper_assembly__jscad": "./bin/bumper_assembly__jscad/index.sh"
 	},
 	"main": "./src/index.ts",
 	"module": "./src/index.ts",

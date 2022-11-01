@@ -1,5 +1,5 @@
 export * from './_lib.js'
-export * from './Svg__jscad__bumper_assembly.jsx'
-export * from './Svg__jscad__bumper_assembly__run.jsx'
+export * from './Svg__bumper_assembly__jscad.jsx'
+export * from './Svg__bumper_assembly__jscad__run.jsx'
 export * from './Svg_bumper_assembly'
 export * from './Svg_bumper_assembly__run'

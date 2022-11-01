@@ -38,6 +38,7 @@ const { subtract, union } = modeling.booleans
 const { colorize, cssColors } = modeling.colors
 const { gray } = cssColors
 const { cuboid } = modeling.primitives
+const { rotate } = modeling.transforms
 const back__project__options:ProjectOptions = {
 	axis: [0, -1, 0],
 	origin: [0, -1, 0]
@@ -46,7 +47,7 @@ const driver__project__options:ProjectOptions = {
 	axis: [-1, 0, 0],
 	origin: [-1, 0, 0]
 }
-export function Svg__jscad__bumper_assembly() {
+export function Svg__bumper_assembly__jscad() {
 	return (
 		<svg xmlns="http://www.w3.org/2000/svg" class="doc" width={in_s_(doc__width__in)} height={in_s_(doc__height__in)}>
 			<C__jscad__page_1/>
