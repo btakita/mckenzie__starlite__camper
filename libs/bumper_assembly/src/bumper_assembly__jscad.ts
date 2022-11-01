@@ -8,6 +8,12 @@ import {
 	body__depth__in,
 	body__height__in,
 	body__width__in,
+	body__z__in,
+	bumper__extension__in,
+	bumper__height__in,
+	bumper__width__in,
+	bumper__x__in,
+	bumper__z__in,
 	frame__body__gap__in,
 	frame__depth__in,
 	frame__ground__in,
@@ -51,7 +57,9 @@ export function bumper_assembly__jscad_a_():(Geom3&Colored)[] {
 	return [
 		frame__jscad_(),
 		body__jscad_(),
-		// bumper__jscad_()
+		bumper__driver__extension__jscad_(),
+		bumper__passenger__extension__jscad_(),
+		bumper__cross__jscad_(),
 	]
 }
 function frame__jscad_():Geom3&Colored {
@@ -104,20 +112,61 @@ function body__jscad_():Geom3&Colored {
 		cuboid({
 			center: [
 				body__width__in / 2,
-				body__depth__in / 2,
+				body__z__in + body__depth__in / 2,
 				frame__ground__in + receiver__outer__height__in + frame__body__gap__in + body__height__in / 2],
 			size: [body__width__in, body__depth__in, body__height__in]
 		}),
 		$=>colorize(gray, $))
 }
-// function bumper__jscad_():Geom3&Colored {
-// 	return _p_(cuboid({
-// 		center: [
-// 			body__width__in / 2,
-// 			frame__z__in + receiver__inner__width__in,
-// 		],
-// 	}), $=>colorize([...gray, .8], $))
-// }
+function bumper__jscad_():Geom3&Colored {
+	return _p_(
+		union(
+			bumper__driver__extension__jscad_(),
+			bumper__passenger__extension__jscad_(),
+			bumper__cross__jscad_(),
+		),
+		$=>colorize([...gray, .1], $)
+	)
+}
+function bumper__driver__extension__jscad_() {
+	return _p_(
+		cuboid({
+			center: [
+				receivers__x__in + receiver__outer__width__in / 2,
+				bumper__z__in + receiver__outer__width__in + bumper__extension__in / 2,
+				frame__ground__in + receiver__outer__height__in / 2,
+			],
+			size: [receiver__inner__width__in, bumper__extension__in, receiver__inner__height__in]
+		}),
+		$=>colorize([...gray, .1], $)
+	)
+}
+function bumper__passenger__extension__jscad_() {
+	return _p_(
+		cuboid({
+			center: [
+				receivers__x__in + receivers__width__in - receiver__outer__width__in / 2,
+				bumper__z__in + receiver__outer__width__in + bumper__extension__in / 2,
+				frame__ground__in + receiver__outer__height__in / 2,
+			],
+			size: [receiver__inner__width__in, bumper__extension__in, receiver__inner__height__in]
+		}),
+		$=>colorize([...gray, .1], $)
+	)
+}
+function bumper__cross__jscad_() {
+	return _p_(
+		cuboid({
+			center: [
+				bumper__x__in + bumper__width__in / 2,
+				bumper__z__in + receiver__outer__width__in / 2,
+				frame__ground__in + receiver__outer__height__in / 2,
+			],
+			size: [bumper__width__in, receiver__outer__width__in, bumper__height__in]
+		}),
+		$=>colorize([...gray, .1], $)
+	)
+}
 // function fender__jscad_():Geom3&Colored {
 // 	return _p_(
 // 		union(camper__back__fender__jscad_()),
