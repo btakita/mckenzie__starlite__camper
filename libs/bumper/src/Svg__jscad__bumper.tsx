@@ -9,9 +9,8 @@ import svg_serializer from '@jscad/svg-serializer'
 import { XMLParser } from 'fast-xml-parser'
 import { type VoidProps } from 'solid-js'
 import {
-	back__height__in,
-	receivers__x__in,
 	back__drawing__width__in,
+	back__height__in,
 	body__depth__in,
 	body__height__in,
 	body__width__in,
@@ -31,10 +30,13 @@ import {
 	page__width__in,
 	receiver__inner__height__in,
 	receiver__inner__width__in,
-	receivers__width__in
+	receiver__outer__height__in,
+	receiver__outer__width__in,
+	receivers__width__in,
+	receivers__x__in
 } from './_lib.js'
-const { project } = modeling.extrusions
-const { union } = modeling.booleans
+const { extrudeRectangular, project } = modeling.extrusions
+const { subtract, union } = modeling.booleans
 const { colorize, cssColors } = modeling.colors
 const { gray } = cssColors
 const { cuboid } = modeling.primitives
@@ -100,22 +102,40 @@ function frame__jscad_():Geom3&Colored {
 		$=>colorize(gray, $),
 	)
 	function frame__driver__jscad_():Geom3 {
-		return cuboid({
-			center: [
-				receivers__x__in + receiver__inner__width__in / 2,
-				frame__z__in + frame__depth__in / 2,
-				frame__ground__in + receiver__inner__height__in / 2],
-			size: [receiver__inner__width__in, frame__depth__in, receiver__inner__height__in]
-		})
+		return subtract(
+			cuboid({
+				center: [
+					receivers__x__in + receiver__outer__width__in / 2,
+					frame__z__in + frame__depth__in / 2,
+					frame__ground__in + receiver__outer__height__in / 2],
+				size: [receiver__outer__width__in, frame__depth__in, receiver__outer__height__in]
+			}),
+			cuboid({
+				center: [
+					receivers__x__in + receiver__outer__width__in / 2,
+					frame__z__in + frame__depth__in / 2,
+					frame__ground__in + receiver__outer__height__in / 2],
+				size: [receiver__inner__width__in, frame__depth__in, receiver__inner__height__in]
+			})
+		)
 	}
 	function frame__passenger__jscad_():Geom3 {
-		return cuboid({
-			center: [
-				receivers__x__in + receivers__width__in - receiver__inner__width__in / 2,
-				frame__z__in + frame__depth__in / 2,
-				frame__ground__in + receiver__inner__height__in / 2],
-			size: [receiver__inner__width__in, frame__depth__in, receiver__inner__height__in]
-		})
+		return subtract(
+			cuboid({
+				center: [
+					receivers__x__in + receivers__width__in - receiver__outer__width__in / 2,
+					frame__z__in + frame__depth__in / 2,
+					frame__ground__in + receiver__outer__height__in / 2],
+				size: [receiver__outer__width__in, frame__depth__in, receiver__outer__height__in]
+			}),
+			cuboid({
+				center: [
+					receivers__x__in + receivers__width__in - receiver__outer__width__in / 2,
+					frame__z__in + frame__depth__in / 2,
+					frame__ground__in + receiver__outer__height__in / 2],
+				size: [receiver__inner__width__in, frame__depth__in, receiver__inner__height__in]
+			})
+		)
 	}
 }
 function body__jscad_():Geom3&Colored {
@@ -124,7 +144,7 @@ function body__jscad_():Geom3&Colored {
 			center: [
 				body__width__in / 2,
 				body__depth__in / 2,
-				frame__ground__in + receiver__inner__height__in + frame__body__gap__in + body__height__in / 2],
+				frame__ground__in + receiver__outer__height__in + frame__body__gap__in + body__height__in / 2],
 			size: [body__width__in, body__depth__in, body__height__in]
 		}),
 		$=>colorize(gray, $))
