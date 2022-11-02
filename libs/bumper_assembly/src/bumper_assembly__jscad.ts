@@ -7,6 +7,7 @@ import type { ProjectOptions } from '@jscad/modeling/src/operations/extrusions'
 import svg_serializer from '@jscad/svg-serializer'
 import {
 	body__depth__in,
+	body__frame__dy__in,
 	body__height__in,
 	body__width__in,
 	body__z__in,
@@ -15,6 +16,11 @@ import {
 	bumper__width__in,
 	bumper__x__in,
 	bumper__z__in,
+	fender__inner__height__in,
+	fender__outer__depth__in,
+	fender__outer__height__in,
+	fender__outer__width__in,
+	fender__thickness__in,
 	frame__body__gap__in,
 	frame__depth__in,
 	frame__ground__in,
@@ -61,6 +67,7 @@ export function bumper_assembly__jscad_a_():(Geom3&Colored)[] {
 		bumper__driver__extension__jscad_(),
 		bumper__passenger__extension__jscad_(),
 		bumper__cross__jscad_(),
+		fender__jscad_(),
 	]
 }
 function frame__jscad_():Geom3&Colored {
@@ -168,15 +175,41 @@ function bumper__cross__jscad_() {
 		$=>colorize([...gray, .8], $)
 	)
 }
-// function fender__jscad_():Geom3&Colored {
-// 	return _p_(
-// 		union(camper__back__fender__jscad_()),
-// 		$=>colorize([...gray, .6], $)
-// 	)
-// 	function camper__back__fender__jscad_():Geom3 {
-//
-// 	}
-// }
+function fender__jscad_():Geom3&Colored {
+	return _p_(
+		union(camper__back__fender__jscad_()),
+		$=>colorize([...gray, .6], $)
+	)
+	function camper__back__fender__jscad_():Geom3&Colored {
+		return _p_(
+			subtract(
+				cuboid({
+					center: [
+						fender__outer__width__in / 2,
+						fender__outer__depth__in / 2,
+						frame__ground__in + fender__inner__height__in / 2
+					],
+					size: [fender__outer__width__in, fender__outer__depth__in, fender__outer__height__in],
+				}),
+				cuboid({
+					center: [
+						fender__outer__width__in / 2,
+						-fender__thickness__in + body__z__in / 2,
+						frame__ground__in + receiver__outer__height__in + fender__thickness__in + (
+							-fender__thickness__in + body__frame__dy__in + body__height__in
+						) / 2
+					],
+					size: [
+						fender__outer__width__in,
+						fender__outer__depth__in - body__depth__in,
+						-fender__thickness__in + body__frame__dy__in + body__height__in,
+					]
+				})
+			),
+			$=>colorize([...gray, 0.4], $)
+		)
+	}
+}
 function project_colorize(
 	options:ProjectOptions, $:Geom3, _color:RGB|RGBA = $.color
 ):Geom2&Colored {

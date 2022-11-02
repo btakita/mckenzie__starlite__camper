@@ -47,10 +47,10 @@ import {
 	content__y__in,
 	doc__height__in,
 	doc__width__in,
-	fender__depth__in,
-	fender__height__in,
+	fender__inner__depth__in,
+	fender__inner__height__in,
 	fender__thickness__in,
-	fender__width__in,
+	fender__inner__width__in,
 	frame__body__gap__in,
 	frame__depth__in,
 	frame__hole__cy__in,
@@ -263,13 +263,13 @@ export function C__page_1() {
 				<svg
 					class="C__back__fender"
 					x={in_s_(body__x__in)}
-					width={in_s_(fender__width__in)}
-					height={in_s_(fender__height__in)}
+					width={in_s_(fender__inner__width__in)}
+					height={in_s_(fender__inner__height__in)}
 				>
 					<rect
 						fill="url(#sheet__pattern)"
-						width={in_s_(fender__width__in)}
-						height={in_s_(fender__height__in)}
+						width={in_s_(fender__inner__width__in)}
+						height={in_s_(fender__inner__height__in)}
 						stroke="darkgray"
 						stroke-width={fender__thickness__in * back__in__px}
 					>
@@ -283,7 +283,7 @@ export function C__page_1() {
 				<svg
 					class="C__back__receivers__x_axis"
 					x={0}
-					y={in_s_(fender__height__in)}
+					y={in_s_(fender__inner__height__in)}
 					width={in_s_(body__width__in)}
 					height={in_s_(back__receivers__axis__height__in)}
 				>
@@ -498,12 +498,12 @@ export function C__page_2($p:VoidProps<{
 		}
 		function C__driver__fender() {
 			return (
-				<svg class="C__driver__fender" width={in_s_(fender__depth__in)} height={in_s_(side__fender__height__in)}>
+				<svg class="C__driver__fender" width={in_s_(fender__inner__depth__in)} height={in_s_(side__fender__height__in)}>
 					<path
 						d={[
 							`M ${in__px_(body__depth__in)} 0`,
 							`V ${in__px_(side__frame__top__y__in + receiver__thickness__in)}`,
-							`H ${in__px_(fender__depth__in)}`,
+							`H ${in__px_(fender__inner__depth__in)}`,
 							`V ${in__px_(side__fender__height__in)}`,
 							`H ${0}`,
 							`V ${in__px_(side__body__height__in)}`,
@@ -669,11 +669,11 @@ export function C__page_2($p:VoidProps<{
 					/>
 					<C__driver__x_axis__tick
 						class="driver__x_axis__tick_4"
-						x={in_s_(fender__depth__in)}
+						x={in_s_(fender__inner__depth__in)}
 						text_x={
-							in_s_(side__bumper__frame__join__x__in + (fender__depth__in - side__bumper__frame__join__x__in) / 2)
+							in_s_(side__bumper__frame__join__x__in + (fender__inner__depth__in - side__bumper__frame__join__x__in) / 2)
 						}
-						text={in_s_(fender__depth__in - side__bumper__frame__join__x__in)}
+						text={in_s_(fender__inner__depth__in - side__bumper__frame__join__x__in)}
 					/>
 				</svg>
 			)
