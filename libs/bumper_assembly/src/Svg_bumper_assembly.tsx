@@ -51,7 +51,7 @@ import {
 	fender__inner__height__in,
 	fender__thickness__in,
 	fender__inner__width__in,
-	frame__body__gap__in,
+	frame__body__dy__in,
 	frame__depth__in,
 	frame__hole__cy__in,
 	frame__hole__cz__in,
@@ -583,8 +583,8 @@ export function C__page_2($p:VoidProps<{
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_1"
 						y={in_s_(side__body__height__in)}
-						text_y={in_s_(side__body__height__in + frame__body__gap__in / 2)}
-						text={in_s_(frame__body__gap__in)}
+						text_y={in_s_(side__body__height__in + frame__body__dy__in / 2)}
+						text={in_s_(frame__body__dy__in)}
 					/>
 					<C__driver__y_axis__tick
 						class="C__driver__y_axis__tick_2"

@@ -23,25 +23,25 @@ export const receiver__thickness__in = .125
 export const receiver__outer__width__in = receiver__inner__width__in + 2 * receiver__thickness__in
 export const receiver__outer__height__in = receiver__inner__height__in + 2 * receiver__thickness__in
 export const receiver__depth__in = receiver__outer__width__in
-export const frame__ground__in = 10
+export const ground__frame__in = 10
 export const fender__thickness__in = .1
 export const body__width__in = 96.75
 export const body__height__in = 11.5
 export const body__x__in = 0
 export const receivers__mid__width__in = 66
-export const frame__body__gap__in = 1
-export const receivers__y__in = body__height__in + frame__body__gap__in
+export const frame__body__dy__in = 1
+export const receivers__y__in = body__height__in + frame__body__dy__in
 export const receivers__width__in = receivers__mid__width__in + receiver__outer__width__in
 export const receivers__height__in = receiver__outer__height__in
 export const receivers__x__in = (body__width__in - receivers__width__in) / 2
 export const bumper__x__in = body__x__in
-export const bumper__y__in = body__height__in + frame__body__gap__in + receiver__thickness__in
+export const bumper__y__in = body__height__in + frame__body__dy__in + receiver__thickness__in
 export const bumper__width__in = body__width__in
 export const bumper__height__in = receiver__inner__height__in
 export const fender__inner__width__in = body__width__in
 export const fender__outer__width__in = fender__inner__width__in + 2 * fender__thickness__in
-export const fender__inner__height__in = body__height__in + frame__body__gap__in + receiver__outer__height__in
-export const fender__outer__height__in = fender__inner__height__in + 2 * fender__thickness__in
+export const fender__inner__height__in = body__height__in + frame__body__dy__in + receiver__outer__height__in
+export const fender__outer__height__in = fender__inner__height__in + fender__thickness__in
 export const back__drawing__width__in = body__width__in + 2 * fender__thickness__in
 export const back__scale = drawing__width__in / back__drawing__width__in
 export const back__in__px = in__px * back__scale
@@ -64,17 +64,17 @@ export const receiver__bolt__dx__in = .75
 export const body__depth__in = 8
 export const side__body__height__in = 7.5
 export const side__fender__height__in =
-	side__body__height__in + frame__body__gap__in + receiver__outer__height__in
+	side__body__height__in + frame__body__dy__in + receiver__outer__height__in
 export const bumper__extension__in = 6
-export const body__frame__dy__in = 2
+export const body__frame__dz__in = 2
 export const bumper__body__dz__in =
-	receiver__outer__width__in + bumper__extension__in - body__frame__dy__in
+	receiver__outer__width__in + bumper__extension__in - body__frame__dz__in
 export const body__z__in = fender__thickness__in + bumper__body__dz__in
 export const fender__inner__depth__in =
-	body__depth__in - body__frame__dy__in + bumper__extension__in + receiver__outer__width__in
+	body__depth__in - body__frame__dz__in + bumper__extension__in + receiver__outer__width__in
 export const fender__outer__depth__in = fender__inner__depth__in + fender__thickness__in
 export const frame__z__in = fender__thickness__in + receiver__outer__width__in + bumper__extension__in
-export const frame__depth__in = body__depth__in - body__frame__dy__in
+export const frame__depth__in = body__depth__in - body__frame__dz__in
 export const side__scale = drawing__width__in / (fender__inner__depth__in + axis__across__in)
 export const side__in__px = in__px * side__scale
 export const side__px__in = 1. / side__in__px
@@ -85,7 +85,7 @@ export const side__drawing__width__in = fender__inner__depth__in + axis__across_
 export const side__y_axis__x__in = fender__inner__depth__in
 export const axis__line__position__in = .1
 export const side__y_axis__height__in = side__fender__height__in
-export const side__frame__top__y__in = side__body__height__in + frame__body__gap__in
+export const side__frame__top__y__in = side__body__height__in + frame__body__dy__in
 export const side__frame__bottom__y__in = side__frame__top__y__in + receiver__outer__height__in
 export const bumper__z__in = fender__thickness__in
 export const side__bumper__x__in = 0
