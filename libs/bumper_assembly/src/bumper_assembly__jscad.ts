@@ -36,6 +36,7 @@ const { project } = modeling.extrusions
 const { subtract, union } = modeling.booleans
 const { colorize, cssColors } = modeling.colors
 const { gray } = cssColors
+const { path2 } = modeling.geometries
 const { cuboid } = modeling.primitives
 const { rotateZ } = modeling.transforms
 const project__options:ProjectOptions = {

@@ -336,7 +336,7 @@ export function C__page_1() {
 						class={$p.class}
 						x={$p.x}
 						text_x={$p.text_x}
-						text_y={in_s_(back__receivers__axis__height__in)}
+						text_y={in_s_(back__receivers__axis__height__in - .35)}
 						text={$p.text}
 						text_anchor={$p.text_anchor}
 					/>
@@ -367,7 +367,7 @@ export function C__page_1() {
 						class="C__back__fender__x_axis__tick_1"
 						x={in_s_(back__fender__x_axis__width__in)}
 						text_x={in_s_(back__fender__x_axis__width__in / 2)}
-						text_y={in_s_(back__fender__x_axis__height__in)}
+						text_y={in_s_(back__fender__x_axis__height__in - .35)}
 						text={in_s_(back__fender__x_axis__width__in)}
 						text_anchor={'middle'}
 					/>
@@ -683,7 +683,7 @@ export function C__page_2($p:VoidProps<{
 						{...$p}
 						font_size={in_s_(12 * px__in)}
 						text_x={$p.text_x}
-						text_y={in_s_(axis__line__position__in / side__scale + .2)}
+						text_y={in_s_((axis__line__position__in / side__scale) + .1)}
 						text={$p.text}
 						text_anchor={'middle'}
 					/>
