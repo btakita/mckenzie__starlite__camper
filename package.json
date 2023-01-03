@@ -16,15 +16,15 @@
 		"@babel/preset-typescript": "^7.18.6",
 		"@mckenzie_starlite__camper/bumper_assembly": "workspace:^1.0.0",
 		"@mckenzie_starlite__camper/dev": "workspace:^1.0.0",
-		"@rollup/plugin-babel": "^6.0.2",
+		"@rollup/plugin-babel": "^6.0.3",
 		"@rollup/plugin-run": "^3.0.1",
-		"@types/node": "^18.11.7",
-		"babel-preset-solid": "^1.6.0",
+		"@types/node": "^18.11.18",
+		"babel-preset-solid": "^1.6.6",
 		"pdfkit": "^0.13.0",
-		"rollup": "^3.2.3",
-		"solid-js": "^1.6.0",
+		"rollup": "^3.9.1",
+		"solid-js": "^1.6.6",
 		"svg-to-pdfkit": "^0.1.8",
-		"tsx": "^3.11.0",
-		"typescript": "^4.8.4"
+		"tsx": "^3.12.1",
+		"typescript": "^4.9.4"
 	}
 }
